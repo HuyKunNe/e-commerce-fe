@@ -13,7 +13,7 @@ export default {
 <style>
 #app {
     margin: 0;
-    width: 1920px;
+    width: 100vw;
     margin-left: -16px;
     font-family: 'Cousine', monospace;
     -webkit-font-smoothing: antialiased;

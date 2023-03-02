@@ -468,9 +468,9 @@ export default {
 <style lang="scss" scoped>
 .header {
     height: 100px;
+    width: calc(100% -231.5*2);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0 231.5px;
     position: relative;
 }
@@ -483,6 +483,19 @@ export default {
 }
 .left-logo-img:hover {
     cursor: pointer;
+}
+.left-logo{
+    width: 40%;
+    height: auto;
+    .left-logo-img{
+        max-width: 100%;
+    }
+}
+.middle-logo{
+    width: 20%;
+}
+.header-icon{
+    width: 35%;
 }
 .search-icon {
     height: 55px;

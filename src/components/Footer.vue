@@ -117,7 +117,7 @@ export default {
         padding: 20px 0;
         margin: 0 -10px;
         border: 2px solid black;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         .container {
             text-align: center;
             h2 {
@@ -126,10 +126,10 @@ export default {
         }
     }
     .footer-bottom {
-        width: 100%;
+        width: calc(100% - 231.5*2);
         height: 200px;
         .container {
-            margin: 0 231.5px auto;
+            margin: 0 150px auto;
             height: 100%;
             .row {
                 display: flex;
