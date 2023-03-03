@@ -1,377 +1,396 @@
 /* eslint-disable no-use-before-define */
 <template>
-    <div class="header">
-        <div class="left-logo">
-            <router-link to="/">
-                <img
-                    src="../assets/images/LeftLogo.png"
-                    alt="Bad Habits Official Store"
-                    class="left-logo-img"
-                    style="height: 95px"
-                />
-            </router-link>
-        </div>
-        <div class="middle-logo">
-            <router-link to="/">
-                <img
-                    src="../assets/images/MiddleLogo.png"
-                    alt="Bad Habits Official Store"
-                    class="middle-logo-img"
-                    style="height: 95px"
-                />
-            </router-link>
-        </div>
-        <div class="header-icon">
-            <router-link to="/">
-                <div class="icon">
-                    <div class="right-logo">
-                        <img
-                            src="../assets/images/RightLogo.png"
-                            alt="Bad Habits Official Store"
-                            class="right-logo-img"
-                            style="height: 55px; width: 40px"
-                        />
+    <div class="header-wrapper">
+        <div class="header">
+            <div class="left-logo">
+                <router-link to="/">
+                    <img
+                        src="../assets/images/LeftLogo.png"
+                        alt="Bad Habits Official Store"
+                        class="left-logo-img"
+                        style="height: 95px"
+                    />
+                </router-link>
+            </div>
+            <div class="middle-logo">
+                <router-link to="/">
+                    <img
+                        src="../assets/images/MiddleLogo.png"
+                        alt="Bad Habits Official Store"
+                        class="middle-logo-img"
+                        style="height: 95px"
+                    />
+                </router-link>
+            </div>
+            <div class="header-icon">
+                <router-link to="/">
+                    <div class="icon">
+                        <div class="right-logo">
+                            <img
+                                src="../assets/images/RightLogo.png"
+                                alt="Bad Habits Official Store"
+                                class="right-logo-img"
+                                style="height: 55px; width: 40px"
+                            />
+                        </div>
                     </div>
-                </div>
-            </router-link>
+                </router-link>
 
-            <!-- Search -->
-            <Popper>
+                <!-- Search -->
+                <Popper>
+                    <div class="icon">
+                        <div class="search-icon">
+                            <img
+                                src="../assets/images/search-icon.png"
+                                class="search-icon-img"
+                                style="height: 40px; width: 40px"
+                            />
+                        </div>
+                        <div class="icon--hover"></div>
+                    </div>
+                    <!-- Search Modal -->
+                    <template #content>
+                        <div class="search-modal">
+                            <div class="search-modal category">
+                                <button
+                                    class="search-modal category btn"
+                                    v-for="item in category"
+                                    :key="item.id"
+                                >
+                                    {{ item }}
+                                </button>
+                            </div>
+                            <div class="search-modal search-wrapper">
+                                <div
+                                    class="search-modal search-wrapper search-filed"
+                                >
+                                    <input
+                                        class="search-modal search-wrapper search-field-input"
+                                        type="text"
+                                        placeholder="Search"
+                                    />
+                                </div>
+                                <div
+                                    class="search-modal search-wrapper search-btn-field"
+                                >
+                                    <button class="search-btn">Search</button>
+                                </div>
+                            </div>
+                            <div class="popular">
+                                <div class="popular-heading">
+                                    <p class="popular-heading--text">POPULAR</p>
+                                </div>
+                                <div class="popular-list">
+                                    <div
+                                        class="popular-item"
+                                        v-for="item in popular"
+                                        :key="item.id"
+                                    >
+                                        <p class="popular-item--text">
+                                            {{ item }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </Popper>
+                <!-- Cart -->
                 <div class="icon">
-                    <div class="search-icon">
+                    <div
+                        class="cart-icon"
+                        @click="
+                            isOpened = true;
+                            calculatePrice();
+                        "
+                    >
                         <img
-                            src="../assets/images/search-icon.png"
+                            src="../assets/images/cart.png"
+                            alt=""
+                            class="search-icon-img"
+                            style="height: 40px; width: 40px"
+                        />
+                        <div class="cart-icon-count">
+                            <p class="">0</p>
+                        </div>
+                    </div>
+                    <div class="icon--hover"></div>
+                </div>
+                <VueSidePanel
+                    v-model="isOpened"
+                    width="600px"
+                    class="side-panel"
+                    hide-close-btn
+                >
+                    <template #header>
+                        <div style="text-align: left; height: 60px">
+                            <h2
+                                :style="{
+                                    fontSize: '28px',
+                                    margin: '30px 20px 0 30px',
+                                }"
+                            >
+                                Giỏ hàng
+                            </h2>
+                        </div>
+                        <div class="line-break"></div>
+                    </template>
+                    <template #default>
+                        <div class="cart list-item">
+                            <div class="cart list-item item">
+                                <div class="item-image">
+                                    <a
+                                        href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
+                                    >
+                                        <img
+                                            class="item-image--img"
+                                            src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
+                                            alt=""
+                                        />
+                                    </a>
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-info--title">
+                                        <div class="item-infor--title title">
+                                            <a
+                                                class="item-link"
+                                                href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
+                                                >Levents® Wash Tee/ Ivory
+                                                White</a
+                                            >
+                                        </div>
+                                        <div
+                                            class="item-infor--title remove-btn"
+                                        >
+                                            <button class="remove-btn">
+                                                x
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="item-info--size"
+                                        style="font-size: 18px"
+                                    >
+                                        <span>size SIZE 1</span>
+                                    </div>
+                                    <div class="item-info--price">
+                                        <div class="item-info--quantity">
+                                            <button
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                @click="calculatePrice()"
+                                            ></button>
+                                            <input
+                                                class="quantity-btn--counter"
+                                                min="0"
+                                                id="quantity-item"
+                                                placeholder="0"
+                                                name="quantity"
+                                                value="1"
+                                                type="number"
+                                            />
+                                            <button
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                @click="calculatePrice()"
+                                                class="plus"
+                                            ></button>
+                                        </div>
+                                        <div class="item-info--totalprice">
+                                            <input
+                                                type="text"
+                                                class="price-item"
+                                                readonly
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-break"></div>
+                            <div class="cart list-item item">
+                                <div class="item-image">
+                                    <a
+                                        href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
+                                    >
+                                        <img
+                                            class="item-image--img"
+                                            src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
+                                            alt=""
+                                        />
+                                    </a>
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-info--title">
+                                        <div class="item-infor--title title">
+                                            <a
+                                                class="item-link"
+                                                href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
+                                                >Levents® Wash Tee/ Ivory
+                                                White</a
+                                            >
+                                        </div>
+                                        <div
+                                            class="item-infor--title remove-btn"
+                                        >
+                                            <button class="remove-btn">
+                                                x
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="item-info--size"
+                                        style="font-size: 18px"
+                                    >
+                                        <span>size SIZE 1</span>
+                                    </div>
+                                    <div class="item-info--price">
+                                        <div class="item-info--quantity">
+                                            <button
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                @click="calculatePrice()"
+                                            ></button>
+                                            <input
+                                                class="quantity-btn--counter"
+                                                min="0"
+                                                id="quantity-item"
+                                                placeholder="0"
+                                                name="quantity"
+                                                value="1"
+                                                type="number"
+                                            />
+                                            <button
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                class="plus"
+                                                @click="calculatePrice()"
+                                            ></button>
+                                        </div>
+                                        <div class="item-info--totalprice">
+                                            <input
+                                                type="text"
+                                                class="price-item"
+                                                readonly
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-break"></div>
+                        </div>
+                        <div class="cart payment">
+                            <div class="cart payment--header">
+                                <p class="payment-header--title">Tạm tính</p>
+                                <input
+                                    type="text"
+                                    class="payment-price"
+                                    readonly
+                                />
+                            </div>
+                            <div class="cart payment-description">
+                                <p class="payment-description--text">
+                                    Các loại phí khác sẽ được tính trong phần
+                                    thanh toán
+                                </p>
+                            </div>
+                            <div class="cart-payment--btn">
+                                <button class="payment-btn">Thanh toán</button>
+                            </div>
+                        </div>
+                        <div class="line-break"></div>
+                        <div class="cart-recommend">
+                            <div class="cart-recommend-top">
+                                <p>Có thể bạn quan tâm</p>
+                            </div>
+                            <div class="cart-recommend content">
+                                <div class="cart-recommend list-products">
+                                    <div class="list-products-item">
+                                        <div class="item-img">
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                            >
+                                                <img
+                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
+                                                    alt=""
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="item-info">
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="title"
+                                                >Levents® Pepper Salt Long
+                                                Sleeve Polo/ Grey</a
+                                            >
+                                            <div class="price">430,000VNĐ</div>
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="detail"
+                                                >Xem chi tiết</a
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="line-break"
+                                        style="
+                                            margin-left: 30px;
+                                            margin-bottom: 20px;
+                                        "
+                                    ></div>
+                                    <div class="list-products-item">
+                                        <div class="item-img">
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                            >
+                                                <img
+                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
+                                                    alt=""
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="item-info">
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="title"
+                                                >Levents® Pepper Salt Long
+                                                Sleeve Polo/ Grey</a
+                                            >
+                                            <div class="price">430,000VNĐ</div>
+                                            <a
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="detail"
+                                                >Xem chi tiết</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="car-recommend-bottom">
+                                <button class="view-more">Xem thêm</button>
+                            </div>
+                        </div>
+                    </template>
+                </VueSidePanel>
+                <div class="icon">
+                    <div class="account-icon">
+                        <img
+                            src="../assets/images/account.png"
+                            alt=""
                             class="search-icon-img"
                             style="height: 40px; width: 40px"
                         />
                     </div>
-                </div>
-                <!-- Search Modal -->
-                <template #content>
-                    <div class="search-modal">
-                        <div class="search-modal category">
-                            <button
-                                class="search-modal category btn"
-                                v-for="item in category"
-                                :key="item.id"
-                            >
-                                {{ item }}
-                            </button>
-                        </div>
-                        <div class="search-modal search-wrapper">
-                            <div
-                                class="search-modal search-wrapper search-filed"
-                            >
-                                <input
-                                    class="search-modal search-wrapper search-field-input"
-                                    type="text"
-                                    placeholder="Search"
-                                />
-                            </div>
-                            <div
-                                class="search-modal search-wrapper search-btn-field"
-                            >
-                                <button class="search-btn">Search</button>
-                            </div>
-                        </div>
-                        <div class="popular">
-                            <div class="popular-heading">
-                                <p class="popular-heading--text">POPULAR</p>
-                            </div>
-                            <div class="popular-list">
-                                <div
-                                    class="popular-item"
-                                    v-for="item in popular"
-                                    :key="item.id"
-                                >
-                                    <p class="popular-item--text">
-                                        {{ item }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </Popper>
-            <!-- Cart -->
-            <div class="icon">
-                <div
-                    class="cart-icon"
-                    @click="
-                        isOpened = true;
-                        calculatePrice();
-                    "
-                >
-                    <img
-                        src="../assets/images/cart.png"
-                        alt=""
-                        class="search-icon-img"
-                        style="height: 40px; width: 40px"
-                    />
-                    <div class="cart-icon-count">
-                        <p class="">0</p>
-                    </div>
-                </div>
-            </div>
-            <VueSidePanel
-                v-model="isOpened"
-                width="600px"
-                class="side-panel"
-                hide-close-btn
-            >
-                <template #header>
-                    <div style="text-align: left; height: 60px">
-                        <h2
-                            :style="{
-                                fontSize: '28px',
-                                margin: '30px 20px 0 30px',
-                            }"
-                        >
-                            Giỏ hàng
-                        </h2>
-                    </div>
-                    <div class="line-break"></div>
-                </template>
-                <template #default>
-                    <div class="cart list-item">
-                        <div class="cart list-item item">
-                            <div class="item-image">
-                                <a
-                                    href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                >
-                                    <img
-                                        class="item-image--img"
-                                        src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info--title">
-                                    <div class="item-infor--title title">
-                                        <a
-                                            class="item-link"
-                                            href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                            >Levents® Wash Tee/ Ivory White</a
-                                        >
-                                    </div>
-                                    <div class="item-infor--title remove-btn">
-                                        <button class="remove-btn">x</button>
-                                    </div>
-                                </div>
-                                <div
-                                    class="item-info--size"
-                                    style="font-size: 18px"
-                                >
-                                    <span>size SIZE 1</span>
-                                </div>
-                                <div class="item-info--price">
-                                    <div class="item-info--quantity">
-                                        <button
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                            @click="calculatePrice()"
-                                        ></button>
-                                        <input
-                                            class="quantity-btn--counter"
-                                            min="0"
-                                            id="quantity-item"
-                                            placeholder="0"
-                                            name="quantity"
-                                            value="1"
-                                            type="number"
-                                        />
-                                        <button
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                            @click="calculatePrice()"
-                                            class="plus"
-                                        ></button>
-                                    </div>
-                                    <div class="item-info--totalprice">
-                                        <input
-                                            type="text"
-                                            class="price-item"
-                                            readonly
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-break"></div>
-                        <div class="cart list-item item">
-                            <div class="item-image">
-                                <a
-                                    href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                >
-                                    <img
-                                        class="item-image--img"
-                                        src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
-                                        alt=""
-                                    />
-                                </a>
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info--title">
-                                    <div class="item-infor--title title">
-                                        <a
-                                            class="item-link"
-                                            href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                            >Levents® Wash Tee/ Ivory White</a
-                                        >
-                                    </div>
-                                    <div class="item-infor--title remove-btn">
-                                        <button class="remove-btn">x</button>
-                                    </div>
-                                </div>
-                                <div
-                                    class="item-info--size"
-                                    style="font-size: 18px"
-                                >
-                                    <span>size SIZE 1</span>
-                                </div>
-                                <div class="item-info--price">
-                                    <div class="item-info--quantity">
-                                        <button
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                            @click="calculatePrice()"
-                                        ></button>
-                                        <input
-                                            class="quantity-btn--counter"
-                                            min="0"
-                                            id="quantity-item"
-                                            placeholder="0"
-                                            name="quantity"
-                                            value="1"
-                                            type="number"
-                                        />
-                                        <button
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                            class="plus"
-                                            @click="calculatePrice()"
-                                        ></button>
-                                    </div>
-                                    <div class="item-info--totalprice">
-                                        <input
-                                            type="text"
-                                            class="price-item"
-                                            readonly
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-break"></div>
-                    </div>
-                    <div class="cart payment">
-                        <div class="cart payment--header">
-                            <p class="payment-header--title">Tạm tính</p>
-                            <input type="text" class="payment-price" readonly />
-                        </div>
-                        <div class="cart payment-description">
-                            <p class="payment-description--text">
-                                Các loại phí khác sẽ được tính trong phần thanh
-                                toán
-                            </p>
-                        </div>
-                        <div class="cart-payment--btn">
-                            <button class="payment-btn">Thanh toán</button>
-                        </div>
-                    </div>
-                    <div class="line-break"></div>
-                    <div class="cart-recommend">
-                        <div class="cart-recommend-top">
-                            <p>Có thể bạn quan tâm</p>
-                        </div>
-                        <div class="cart-recommend content">
-                            <div class="cart-recommend list-products">
-                                <div class="list-products-item">
-                                    <div class="item-img">
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                        >
-                                            <img
-                                                src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
-                                                alt=""
-                                            />
-                                        </a>
-                                    </div>
-                                    <div class="item-info">
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            class="title"
-                                            >Levents® Pepper Salt Long Sleeve
-                                            Polo/ Grey</a
-                                        >
-                                        <div class="price">430,000VNĐ</div>
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            class="detail"
-                                            >Xem chi tiết</a
-                                        >
-                                    </div>
-                                </div>
-                                <div
-                                    class="line-break"
-                                    style="
-                                        margin-left: 30px;
-                                        margin-bottom: 20px;
-                                    "
-                                ></div>
-                                <div class="list-products-item">
-                                    <div class="item-img">
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                        >
-                                            <img
-                                                src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
-                                                alt=""
-                                            />
-                                        </a>
-                                    </div>
-                                    <div class="item-info">
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            class="title"
-                                            >Levents® Pepper Salt Long Sleeve
-                                            Polo/ Grey</a
-                                        >
-                                        <div class="price">430,000VNĐ</div>
-                                        <a
-                                            href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            class="detail"
-                                            >Xem chi tiết</a
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="car-recommend-bottom">
-                            <button class="view-more">Xem thêm</button>
-                        </div>
-                    </div>
-                </template>
-            </VueSidePanel>
-            <div class="icon">
-                <div class="account-icon">
-                    <img
-                        src="../assets/images/account.png"
-                        alt=""
-                        class="search-icon-img"
-                        style="height: 40px; width: 40px"
-                    />
+                    <div class="icon--hover"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header-mid-bar">
-        <div class="marquee">
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
-            <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+        <div class="header-mid-bar">
+            <div class="marquee">
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+                <span> FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 800K</span>
+            </div>
         </div>
     </div>
 </template>
@@ -466,9 +485,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.header-wrapper {
+    width: (100%);
+    height: 125px;
+}
 .header {
-    height: 100px;
-    width: calc(100% -231.5*2);
+    width: calc(100% - 463px);
     display: flex;
     justify-content: space-evenly;
     margin: 0 231.5px;
@@ -484,17 +506,17 @@ export default {
 .left-logo-img:hover {
     cursor: pointer;
 }
-.left-logo{
+.left-logo {
     width: 40%;
     height: auto;
-    .left-logo-img{
+    .left-logo-img {
         max-width: 100%;
     }
 }
-.middle-logo{
+.middle-logo {
     width: 20%;
 }
-.header-icon{
+.header-icon {
     width: 35%;
 }
 .search-icon {
@@ -503,15 +525,16 @@ export default {
 }
 .search-modal {
     font-family: Arial, Helvetica, sans-serif;
-    position: relative;
+    position: absolute;
     background-color: white;
     height: 480px;
-    width: calc(100% - 40px);
-    margin: 0 20px;
+    width: calc(100vw - 40px);
+    margin: 0 auto;
+    margin-left: -1310px;
     left: 0;
-    /* top: 100px; */
     border-radius: 5px;
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 .search-modal .category {
     top: 0;
@@ -626,8 +649,34 @@ export default {
 .account-icon {
     height: 55px;
 }
+.icon {
+    position: relative;
+}
+
 .icon:hover {
     cursor: pointer;
+}
+
+.search-icon:hover + .icon--hover {
+    display: block;
+}
+.cart-icon:hover + .icon--hover {
+    display: block;
+}
+.account-icon:hover + .icon--hover {
+    display: block;
+}
+.icon--hover {
+    content: "";
+    display: none;
+    border-style: solid;
+    border-width: 2px 10px;
+    border-color: #000;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .cart-icon {
     position: relative;
@@ -930,7 +979,8 @@ export default {
 .header-mid-bar {
     vertical-align: baseline;
     height: 25px;
-    width: calc(100% + 8px);
+    width: calc(100% + 16px);
+    margin-right: -8px;
     font-size: 14px;
     font-weight: 600;
     overflow: hidden;

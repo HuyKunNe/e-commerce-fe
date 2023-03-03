@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="footer" id="footer">
         <div class="footer-top">
             <div class="container">
                 <h2>"BAD HABITS DIGITAL RETAIL STORE"</h2>
@@ -107,9 +107,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.footer {
-    position: absolute;
-    height: 400px;
+#footer.footer {
+    position: relative;
+    height: 380px;
     width: calc(100% + 6px);
     overflow-x: hidden;
     bottom: 0;
