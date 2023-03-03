@@ -3,22 +3,16 @@
         <div class="header-bot-nav">
             <ul class="header-list">
                 <li>
-                    <a href=""
-                        >BEST SELLER
+                    <a href="">BEST SELLER
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="menu"
-                        >SẢN PHẨM
+                    <a href="" class="menu">SẢN PHẨM
                         <font-awesome-icon icon="fa-solid fa-caret-down" />
                         <div class="menu-dropdown">
                             <ul class="menu-list">
-                                <li
-                                    class="menu-item"
-                                    v-for="product in products"
-                                    :key="product.id"
-                                >
+                                <li class="menu-item" v-for="product in products" :key="product.id">
                                     {{ product }}
                                 </li>
                             </ul>
@@ -27,16 +21,11 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href=""
-                        >BỘ SƯU TẬP
+                    <a href="">BỘ SƯU TẬP
                         <font-awesome-icon icon="fa-solid fa-caret-down" />
                         <div class="menu-dropdown">
                             <ul class="menu-list">
-                                <li
-                                    class="menu-item"
-                                    v-for="colection in colections"
-                                    :key="colection.id"
-                                >
+                                <li class="menu-item" v-for="colection in colections" :key="colection.id">
                                     {{ colection }}
                                 </li>
                             </ul>
@@ -45,26 +34,22 @@
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        >BASIC LINE
+                    <a href="">BASIC LINE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        >MAKE YOUR STYLE
+                    <a href="">MAKE YOUR STYLE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        >OUTLET SALE
+                    <a href="">OUTLET SALE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href=""
-                        >BAD RABBIT CLUB®
+                    <a href="">BAD RABBIT CLUB®
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
@@ -111,24 +96,28 @@ export default {
     margin: 0 auto;
     left: 0;
     top: 0;
+
     .header-bot-nav {
         height: 100%;
         width: calc(100% - 263px);
-        margin: 0 231.5px;
+        margin: auto;
+
         .header-list {
             display: flex;
             justify-content: space-between;
             flex-direction: row;
             align-items: center;
             list-style-type: none;
-            width: calc(100% - 300px);
-            margin: 0 80px;
+            width: calc(100%);
+            margin: auto;
             padding: 30px 0;
+
             li {
-                width: 13%;
+                width: fit-content;
                 height: auto;
                 font-size: 18px;
                 text-align: center;
+
                 a {
                     position: relative;
                     text-align: center;
@@ -142,6 +131,7 @@ export default {
                 display: block;
                 cursor: pointer;
             }
+
             .header-list--hover {
                 display: none;
                 content: "";
@@ -155,22 +145,27 @@ export default {
                 width: fit-content;
                 margin: auto;
             }
+
             .menu {
                 position: relative;
+
                 .menu-dropdown {
                     display: none;
                     position: absolute;
                     width: fit-content;
                     margin-top: 10px;
-                    left: -10px;
+                    left: 50px;
 
                     .menu-list {
-                        padding-left: 100px;
+                        background-color: transparent;
+                        padding: 0;
+                        width: calc(100% + 19px);
+
                         .menu-item {
                             list-style-type: none;
                             list-style-position: outside;
                             background-color: white;
-                            width: 100%;
+                            width: calc(100% - 19px);
                             font-size: 14px;
                             font-weight: 600;
                             line-height: 21px;
@@ -182,16 +177,29 @@ export default {
                             overflow: hidden;
                             display: inherit;
                             border-radius: 5px;
-                            padding: 3px 0px 0 20px;
+                            padding: 3px 0px 0 10px;
                         }
+
                         .menu-item:hover {
                             cursor: pointer;
                             background-color: #000;
                             color: white;
                         }
                     }
+
+                    .menu-list::before {
+                        background-color: transparent;
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: -60px;
+                        width: 100%;
+                        height: 100%;
+                        z-index: -1;
+                    }
                 }
             }
+
             .menu::before {
                 content: "";
                 position: absolute;
@@ -201,6 +209,7 @@ export default {
                 height: 20px;
                 z-index: 1;
             }
+
             .menu:hover .menu-dropdown {
                 display: block;
             }
