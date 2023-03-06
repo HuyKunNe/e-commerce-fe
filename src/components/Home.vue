@@ -117,19 +117,366 @@
             </div>
         </div>
     </secttion>
+    <section class="section-best-seller" id="section-best-seller">
+        <div class="container">
+            <div class="s-title">
+                <span class="s-title--text">BEST-SELLING ITEM</span>
+                <span class="s-title--symbol down-arrow"
+                    ><font-awesome-icon icon="fa-solid fa-caret-down"
+                /></span>
+            </div>
+            <div class="s-content">
+                <div class="s-content-wrapper">
+                    <swiper
+                        :slidesPerView="3"
+                        :spaceBetween="30"
+                        :loop="true"
+                        :keyboard="{
+                            enabled: true,
+                        }"
+                        :navigation="{
+                            nextEl: '.btn-next',
+                            prevEl: '.btn-prev',
+                        }"
+                        :modules="modules"
+                        class="mySwiper"
+                    >
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide class="card">
+                            <div class="card-image">
+                                <img
+                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    alt=""
+                                    class="card-img"
+                                />
+                                <div class="overlay-image">
+                                    <img
+                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
+                                    <div class="overlay-btn">
+                                        <button class="view">
+                                            Xem
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                        <button class="quick-view">
+                                            Xem nhanh
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-tag">
+                                    <div class="car-tag--text">Best seller</div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <div class="description-title">
+                                    BASIC TEE - BLACK
+                                </div>
+                                <div class="description-price">330 000 VND</div>
+                            </div>
+                        </swiper-slide>
+                    </swiper>
+                </div>
+            </div>
+            <div class="s-button">
+                <div class="s-button-prev">
+                    <button class="btn-prev">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="prev-icon"
+                        >
+                            <g transform="matrix(-1,0,0,1,511.9997901916504,0)">
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+                <div class="s-button-next">
+                    <button class="btn-next">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="next-icon"
+                        >
+                            <g>
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-banner-two" id="section-banner-two">
+        <div class="container">
+            
+        </div>
+    </section>
+
+    <h5 class="go-top" id="go-top" @click="goToTop()">"Trở lại đầu trang"</h5>
     <Footer></Footer>
 </template>
 
 <script>
+import { useSwiper } from "swiper/vue";
 import Header from "./Header.vue";
 import HeaderBottomNav from "./HeaderBottomNav.vue";
 import Footer from "./Footer.vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/css";
+
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import SwiperCore, { Keyboard, Pagination, Navigation, Parallax } from "swiper";
+SwiperCore.use([Navigation, Parallax]);
+
 export default {
     name: "HomePage",
     components: {
         Header,
         Footer,
         HeaderBottomNav,
+        Swiper,
+        SwiperSlide,
+    },
+    methods: {
+        goToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0;
+        },
     },
     data() {
         return {
@@ -146,9 +493,29 @@ export default {
             ],
         };
     },
+    setup() {
+        const swiper = useSwiper();
+
+        return {
+            swiper,
+            modules: [Keyboard, Pagination, Navigation],
+        };
+    },
 };
 </script>
 <style lang="scss" scoped>
+#go-top.go-top {
+    writing-mode: vertical-rl;
+    z-index: 998;
+    position: fixed;
+    bottom: 20px;
+    padding: 8px;
+    right: 0;
+    background-color: transparent;
+}
+.go-top:hover {
+    cursor: pointer;
+}
 section {
     width: calc(100vw);
     height: calc(1080px);
@@ -234,15 +601,16 @@ section {
     background-position: center;
     // position: absolute;
     height: calc(1080px - 250px + 160px);
+    width: 100%;
     padding: 100px 0;
     margin: 50px 0;
     .container {
-        width: calc(100% - 493px);
+        width: calc(72%);
         padding: 0 15px;
         height: calc(100% - 30px);
         margin: auto;
         .list-banner {
-            width: calc(100% - 564px);
+            width: calc(72%);
             height: 100%;
             display: flex;
             justify-content: center;
@@ -383,6 +751,194 @@ section {
                     width: 100%;
                     height: 100%;
                 }
+            }
+        }
+    }
+}
+@keyframes slide1 {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, 10px);
+    }
+}
+#section-best-seller.section-best-seller {
+    display: block;
+    width: 100%;
+    height: 750px;
+    position: relative;
+    margin: auto;
+    .container {
+        background-color: white;
+        width: 75%;
+        height: calc(90%);
+        margin: auto;
+        display: flex;
+        justify-content: left;
+        flex-direction: column;
+        .s-title {
+            height: 7%;
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            .s-title--text {
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .s-title--symbol {
+                font-size: 38px;
+                font-weight: 700;
+            }
+            .down-arrow {
+                // rest of the styles from above
+                animation: slide1 1s ease-in-out infinite;
+                margin-top: -9px;
+            }
+        }
+        .s-content {
+            height: 80%;
+            width: 100%;
+            margin: auto;
+            .s-content-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+                width: 100%;
+                .card {
+                    width: 33%;
+                    height: fit-content;
+                    position: relative;
+                    .card-image {
+                        height: 450px;
+                        width: 450px;
+                        position: relative;
+                        .card-img {
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                        .overlay-image {
+                            width: 450px;
+                            height: 450px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            opacity: 0;
+                            transition: 0.5s ease;
+                            .overlay-img {
+                                height: 100%;
+                                width: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                            }
+                            .overlay-btn {
+                                height: 100%;
+                                width: 60%;
+                                margin: 0 20%;
+                                top: 0;
+                                right: 0;
+                                left: 0;
+                                bottom: 0;
+                                position: absolute;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                button {
+                                    width: 48%;
+                                    border-radius: 5px;
+                                    height: 30px;
+                                    border: 2px solid black;
+                                    padding: 2px 5px;
+                                    background-color: white;
+                                    text-transform: uppercase;
+                                    font-weight: 700;
+                                }
+                                button:hover {
+                                    background-color: black;
+                                    color: white;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        .card-tag {
+                            position: absolute;
+                            border: none;
+                            background-color: var(--primary-color);
+                            height: 22px;
+                            top: 0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            right: 0;
+                            .car-tag--text {
+                                font-size: 10px;
+                                font-weight: 700;
+                                padding: 2px 7px 0 7px;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .card-image:hover {
+                        cursor: pointer;
+                    }
+                    .card-image:hover .overlay-image {
+                        opacity: 1;
+                    }
+                    .overlay {
+                        top: 0;
+                        right: 0;
+                        position: absolute;
+                        -webkit-transform: translate(-50%, -50%);
+                        -ms-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%);
+                    }
+                    .description {
+                        height: 50px;
+                        width: 450px;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        font-weight: 700;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        > div {
+                            flex: 1;
+                        }
+                        .description-title:hover {
+                            cursor: pointer;
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+            }
+        }
+        .s-button {
+            margin-top: -20px;
+            height: 7%;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            flex-direction: row;
+
+            button:hover {
+                cursor: pointer;
+            }
+            button {
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
+                background-color: transparent;
+                border: none;
+                margin-right: 5px;
             }
         }
     }
