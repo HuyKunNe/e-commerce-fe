@@ -5,14 +5,23 @@
             <div class="header-sidebar--left">
                 <div class="side-bar">
                     <ul class="side-bar-menu">
-                        <li class="side-bar-item" v-for="item in sideBar" :key="item.id" :title="item">
+                        <li
+                            class="side-bar-item"
+                            v-for="item in sideBar"
+                            :key="item.id"
+                            :title="item"
+                        >
                             <span>{{ item }}</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="header-banner--full">
-                <img src="../assets/images/banner_chinh.png" alt="" class="first-banner--img" />
+                <img
+                    src="../assets/images/banner_chinh.png"
+                    alt=""
+                    class="first-banner--img"
+                />
             </div>
         </div>
     </div>
@@ -20,29 +29,47 @@
     <section class="section-bar-code" id="section-bar-code">
         <div class="container">
             <div class="banner">
-                <img src="../assets/images/bar-code.png" alt="" class="image-bar-code" />
+                <img
+                    src="../assets/images/bar-code.png"
+                    alt=""
+                    class="image-bar-code"
+                />
             </div>
         </div>
     </section>
-    <section class="section-scroll-one" id="section-scroll-one"
-        :style="{ 'background-image': `url(${require('../assets/images/section-scroll-1.png')})` }">
+    <section
+        class="section-scroll-one"
+        id="section-scroll-one"
+        :style="{
+            'background-image': `url(${require('../assets/images/section-scroll-1.png')})`,
+        }"
+    >
         <div class="container">
             <div class="list-banner">
                 <div class="banner-left">
                     <div class="banner-left banner-up">
-                        <img src="https://file.hstatic.net/1000351433/file/vuong_2_bb2b2b8aa0ea468d8e7e2536953a66cc.png"
-                            alt="" class="banner-img" />
+                        <img
+                            src="https://file.hstatic.net/1000351433/file/vuong_2_bb2b2b8aa0ea468d8e7e2536953a66cc.png"
+                            alt=""
+                            class="banner-img"
+                        />
                         <div class="image-cap">MOST WANTED</div>
                     </div>
                     <div class="banner-left banner-down">
-                        <img src="https://file.hstatic.net/1000351433/file/vuong_1_4435f62d0e4744eea32fa306afe9c12d.png"
-                            alt="" class="banner-img" />
+                        <img
+                            src="https://file.hstatic.net/1000351433/file/vuong_1_4435f62d0e4744eea32fa306afe9c12d.png"
+                            alt=""
+                            class="banner-img"
+                        />
                         <div class="image-cap">NEW ARRIVAL</div>
                     </div>
                 </div>
                 <div class="banner-right">
-                    <img src="https://file.hstatic.net/1000351433/file/doc_f885cfaf2fb54589a49f993ecaf6ce4d.png" alt=""
-                        class="banner-right--img" />
+                    <img
+                        src="https://file.hstatic.net/1000351433/file/doc_f885cfaf2fb54589a49f993ecaf6ce4d.png"
+                        alt=""
+                        class="banner-right--img"
+                    />
                     <div class="image-cap">NEW ARRIVAL</div>
                 </div>
             </div>
@@ -53,29 +80,41 @@
             <div class="list-banner">
                 <div class="row">
                     <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/1_0847b4b2f2474940a893e027baf28f9f.png" />
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/1_0847b4b2f2474940a893e027baf28f9f.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
                     <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/2_041897f230494ffd9bb7cc142c581057.png" />
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/2_041897f230494ffd9bb7cc142c581057.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
                     <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/3_7f1b0dc5df624b31a527a04993e4222b.png" />
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/3_7f1b0dc5df624b31a527a04993e4222b.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
                     <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/6_fab8c3692f804893aec0adb171258775.png" />
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/6_fab8c3692f804893aec0adb171258775.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
@@ -405,7 +444,7 @@
     </section>
     <section class="section-banner-two" id="section-banner-two">
         <div class="container">
-            
+            <img src="../assets/images/banner2.png" alt="" class="banner-img" />
         </div>
     </section>
 
@@ -766,7 +805,7 @@ section {
 #section-best-seller.section-best-seller {
     display: block;
     width: 100%;
-    height: 750px;
+    height: 900px;
     position: relative;
     margin: auto;
     .container {
@@ -778,7 +817,7 @@ section {
         justify-content: left;
         flex-direction: column;
         .s-title {
-            height: 7%;
+            height: 15%;
             width: 300px;
             display: flex;
             justify-content: space-between;
@@ -799,7 +838,7 @@ section {
             }
         }
         .s-content {
-            height: 80%;
+            height: 75%;
             width: 100%;
             margin: auto;
             .s-content-wrapper {
@@ -920,7 +959,7 @@ section {
         }
         .s-button {
             margin-top: -20px;
-            height: 7%;
+            height: 10%;
             display: flex;
             justify-content: left;
             align-items: center;
@@ -938,6 +977,20 @@ section {
                 border: none;
                 margin-right: 5px;
             }
+        }
+    }
+}
+#section-banner-two.section-banner-two {
+    width: 100%;
+    height: 1080px;
+    margin-bottom: 50px;
+    .container {
+        width: 100%;
+        height: 100%;
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
