@@ -429,14 +429,15 @@
                                 </div>
                                 <div class="price">
                                     <del class="cost"
-                                        >{{ product.price.toLocaleString() }} VND</del
-                                    >
+                                        >{{ currencyVND(product.price) }}
+                                    </del>
                                     <span class="price-sale"
                                         >{{
-                                            priceSale(product.id - 1)
+                                            currencyVND(
+                                                priceSale(product.id - 1)
+                                            )
                                         }}
-                                        VND</span
-                                    >
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -555,9 +556,11 @@ export default {
                 0.01
             );
         },
-        formatPrice(value) {
-            let val = (value / 1).toFixed(2).replace(".", ",");
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        currencyVND(value) {
+            return value.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "VND",
+            });
         },
     },
     data() {
@@ -616,7 +619,7 @@ export default {
                     imageOverlayUrl:
                         "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
                     name: "BASIC TEE - BLACK",
-                    price: 330000,
+                    price: 33000000,
                     salePercent: 30,
                     quickImage: [
                         "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
@@ -1607,7 +1610,7 @@ section {
                             }
 
                             .price {
-                                width: 45%;
+                                width: 55%;
                                 margin: auto;
                                 display: flex;
                                 justify-content: space-between;
