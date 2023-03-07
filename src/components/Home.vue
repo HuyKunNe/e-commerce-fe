@@ -403,7 +403,14 @@
                                                 icon="fa-regular fa-eye"
                                             />
                                         </button>
-                                        <button class="quick-view">
+                                        <button
+                                            class="quick-view"
+                                            @click="
+                                                handleShowModalCollection(
+                                                    product.id - 1
+                                                )
+                                            "
+                                        >
                                             Xem nhanh
                                             <font-awesome-icon
                                                 icon="fa-regular fa-eye"
@@ -501,6 +508,81 @@
                 </div>
             </div>
         </div>
+        <v-dialog
+            v-model="isShowModalCollection"
+            width="500px"
+            height="350px"
+            class="dialog"
+        >
+            <v-card
+                width="100%"
+                height="100%"
+                class="card-loader"
+                variant="outlined"
+            >
+                <swiper
+                    :navigation="true"
+                    :modules="modules"
+                    :loop="true"
+                    class="modal-image"
+                >
+                    <swiper-slide
+                        class="image-content"
+                        v-for="image in productCollectionShow.quickImage"
+                        :key="image.id"
+                    >
+                        <img :src="image" alt="" />
+                    </swiper-slide>
+                </swiper>
+                <div class="modal-content">
+                    <div class="detail">
+                        <div class="detail--name">
+                            <h3>{{ productCollectionShow.name }}</h3>
+                        </div>
+                        <div class="detail--price">
+                            <h5>
+                                {{ currencyVND(productCollectionShow.price) }}
+                            </h5>
+                            <del>
+                                <h5>
+                                    {{
+                                        currencyVND(
+                                            priceSale(
+                                                productCollectionShow.id - 1
+                                            )
+                                        )
+                                    }}
+                                </h5>
+                            </del>
+                        </div>
+                    </div>
+                    <div class="break-line"></div>
+                    <div class="order">
+                        <div class="size">
+                            <span>Size: </span>
+                            <button class="size-btn">S</button
+                            ><button class="size-btn">M</button
+                            ><button class="size-btn">L</button>
+                        </div>
+                        <div class="size-choosing">
+                            <a href="">HƯỚNG DẪN CHỌN SIZE</a>
+                        </div>
+                        <div class="add-to-cart">
+                            <button class="add-btn">Thêm vào giỏ</button>
+                        </div>
+                        <div class="logo-small">
+                            <div class="logo-image">
+                                <img
+                                    src="../assets/images/MiddleLogo.png"
+                                    alt=""
+                                    class="logo-img"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </v-card>
+        </v-dialog>
     </section>
 
     <h5 class="go-top" id="go-top" @click="goToTop()">"Trở lại đầu trang"</h5>
@@ -562,6 +644,11 @@ export default {
                 currency: "VND",
             });
         },
+        handleShowModalCollection(id) {
+            this.isShowModalCollection = true;
+            this.productCollectionShow = this.productCollection[id];
+            console.log(this.productCollectionShow);
+        },
     },
     data() {
         return {
@@ -621,12 +708,7 @@ export default {
                     name: "BASIC TEE - BLACK",
                     price: 33000000,
                     salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
+                    quickImage: [],
                 },
                 {
                     id: 2,
@@ -742,7 +824,9 @@ export default {
                 },
             ],
             isShowModal: false,
+            isShowModalCollection: false,
             productShowInModal: {},
+            productCollectionShow: {},
         };
     },
     computed: {},
@@ -1301,7 +1385,7 @@ section {
             .break-line {
                 width: 100%;
                 height: 7%;
-                border-top: 3px solid #000;
+                border-bottom: 3px solid #000;
             }
             .order {
                 width: 100%;
