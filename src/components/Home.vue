@@ -378,17 +378,21 @@
                     :modules="modules"
                     class="swiper"
                 >
-                    <swiper-slide class="card">
+                    <swiper-slide
+                        class="card"
+                        v-for="product in productCollection"
+                        :key="product.id"
+                    >
                         <div class="card-image-wrapper">
                             <div class="card-image">
                                 <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
+                                    :src="product.imageUrl"
                                     alt=""
                                     class="card-img"
                                 />
                                 <div class="overlay_loader">
                                     <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
+                                        :src="product.imageOverlayUrl"
                                         alt=""
                                         class="lazy_loader"
                                     />
@@ -413,417 +417,26 @@
                             <div class="description-name">
                                 <h4>
                                     <a
-                                        title="ACID CORDUROY"
+                                        :title="product.name"
                                         href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
+                                        >{{ product.name }}</a
                                     >
                                 </h4>
                             </div>
                             <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
+                                <div class="sale-label">
+                                    {{ product.salePercent }}% OFF
+                                </div>
                                 <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
+                                    <del class="cost"
+                                        >{{ product.price.toLocaleString() }} VND</del
                                     >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
+                                    <span class="price-sale"
+                                        >{{
+                                            priceSale(product.id - 1)
+                                        }}
+                                        VND</span
                                     >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide class="card">
-                        <div class="card-image-wrapper">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/1_0bac43dfa7894d1b9816c8e8d4f07d76_large.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay_loader">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__8__a2f1af83b063441ca9222ffa361f54b2_grande.jpg"
-                                        alt=""
-                                        class="lazy_loader"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-description">
-                            <div class="description-name">
-                                <h4>
-                                    <a
-                                        title="ACID CORDUROY"
-                                        href="/products/acid-corduroy"
-                                        >ACID CORDUROY</a
-                                    >
-                                </h4>
-                            </div>
-                            <div class="description-price">
-                                <div class="sale-label">30% OFF</div>
-                                <div class="price">
-                                    <del class="cost">650 000 VND</del>
-                                    <span class="price-sale">325 000 VND</span>
                                 </div>
                             </div>
                         </div>
@@ -935,6 +548,17 @@ export default {
             this.productShowInModal = this.products[id];
             console.log(this.productShowInModal);
         },
+        priceSale(i) {
+            return (
+                this.productCollection[i].price *
+                (100 - this.productCollection[i].salePercent) *
+                0.01
+            );
+        },
+        formatPrice(value) {
+            let val = (value / 1).toFixed(2).replace(".", ",");
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        },
     },
     data() {
         return {
@@ -984,10 +608,141 @@ export default {
                     price: "330 000 VND",
                 },
             ],
+            productCollection: [
+                {
+                    id: 1,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 2,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 3,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 4,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 5,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 6,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 7,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 8,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: 330000,
+                    salePercent: 30,
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+            ],
             isShowModal: false,
             productShowInModal: {},
         };
     },
+    computed: {},
     setup() {
         const swiper = useSwiper();
 
@@ -1601,13 +1356,13 @@ section {
                         }
                     }
                 }
-                .logo-small{
+                .logo-small {
                     height: 30%;
                     width: 100%;
-                    .logo-image{
+                    .logo-image {
                         height: 100%;
                         width: 100%;
-                        .logo-img{
+                        .logo-img {
                             height: 100%;
                             width: auto;
                             object-fit: cover;
@@ -1773,9 +1528,13 @@ section {
                                     display: flex;
                                     justify-content: space-between;
                                     align-items: center;
-
+                                    .view {
+                                        width: 40%;
+                                    }
+                                    .quick-view {
+                                        width: 50%;
+                                    }
                                     button {
-                                        width: 48%;
                                         border-radius: 5px;
                                         height: 30px;
                                         border: 2px solid black;
@@ -1811,11 +1570,15 @@ section {
                         height: 20%;
 
                         .description-name {
-                            height: 50%;
+                            height: 60%;
                             width: 100%;
                             margin: auto;
                             text-align: center;
                             text-transform: uppercase;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0 auto;
                             :hover {
                                 color: var(--primary-color);
                             }
@@ -1823,7 +1586,9 @@ section {
 
                         .description-price {
                             width: 100%;
-                            height: 50%;
+                            height: 40%;
+                            padding: 0;
+
                             .sale-label {
                                 position: absolute;
                                 background-image: url(https://file.hstatic.net/1000351433/file/label-sale_778ce78ae28d436c92f2d6de66effd3b.png);
