@@ -147,16 +147,20 @@
                         :modules="modules"
                         class="mySwiper"
                     >
-                        <swiper-slide class="card">
+                        <swiper-slide
+                            class="card"
+                            v-for="product in products"
+                            :key="product.id"
+                        >
                             <div class="card-image">
                                 <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
+                                    :src="product.imageUrl"
                                     alt=""
                                     class="card-img"
                                 />
                                 <div class="overlay-image">
                                     <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
+                                        :src="product.imageOverlayUrl"
                                         alt=""
                                         class="overlay-img"
                                     />
@@ -167,7 +171,12 @@
                                                 icon="fa-regular fa-eye"
                                             />
                                         </button>
-                                        <button class="quick-view">
+                                        <button
+                                            class="quick-view"
+                                            @click="
+                                                handleShowModal(product.id - 1)
+                                            "
+                                        >
                                             Xem nhanh
                                             <font-awesome-icon
                                                 icon="fa-regular fa-eye"
@@ -181,204 +190,11 @@
                             </div>
                             <div class="description">
                                 <div class="description-title">
-                                    BASIC TEE - BLACK
+                                    {{ product.name }}
                                 </div>
-                                <div class="description-price">330 000 VND</div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="card">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay-image">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
-                                        alt=""
-                                        class="overlay-img"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
+                                <div class="description-price">
+                                    {{ product.price }}
                                 </div>
-                                <div class="card-tag">
-                                    <div class="car-tag--text">Best seller</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <div class="description-title">
-                                    BASIC TEE - BLACK
-                                </div>
-                                <div class="description-price">330 000 VND</div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="card">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay-image">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
-                                        alt=""
-                                        class="overlay-img"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-tag">
-                                    <div class="car-tag--text">Best seller</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <div class="description-title">
-                                    BASIC TEE - BLACK
-                                </div>
-                                <div class="description-price">330 000 VND</div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="card">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay-image">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
-                                        alt=""
-                                        class="overlay-img"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-tag">
-                                    <div class="car-tag--text">Best seller</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <div class="description-title">
-                                    BASIC TEE - BLACK
-                                </div>
-                                <div class="description-price">330 000 VND</div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="card">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay-image">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
-                                        alt=""
-                                        class="overlay-img"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-tag">
-                                    <div class="car-tag--text">Best seller</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <div class="description-title">
-                                    BASIC TEE - BLACK
-                                </div>
-                                <div class="description-price">330 000 VND</div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="card">
-                            <div class="card-image">
-                                <img
-                                    src="https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg"
-                                    alt=""
-                                    class="card-img"
-                                />
-                                <div class="overlay-image">
-                                    <img
-                                        src="https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg"
-                                        alt=""
-                                        class="overlay-img"
-                                    />
-                                    <div class="overlay-btn">
-                                        <button class="view">
-                                            Xem
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                        <button class="quick-view">
-                                            Xem nhanh
-                                            <font-awesome-icon
-                                                icon="fa-regular fa-eye"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-tag">
-                                    <div class="car-tag--text">Best seller</div>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <div class="description-title">
-                                    BASIC TEE - BLACK
-                                </div>
-                                <div class="description-price">330 000 VND</div>
                             </div>
                         </swiper-slide>
                     </swiper>
@@ -441,6 +257,68 @@
                 </div>
             </div>
         </div>
+        <v-dialog
+            v-model="isShowModal"
+            width="500px"
+            height="350px"
+            class="dialog"
+        >
+            <v-card
+                width="100%"
+                height="100%"
+                class="card-loader"
+                variant="outlined"
+            >
+                <swiper
+                    :navigation="true"
+                    :modules="modules"
+                    :loop="true"
+                    class="modal-image"
+                >
+                    <swiper-slide
+                        class="image-content"
+                        v-for="image in productShowInModal.quickImage"
+                        :key="image.id"
+                    >
+                        <img :src="image" alt="" />
+                    </swiper-slide>
+                </swiper>
+                <div class="modal-content">
+                    <div class="detail">
+                        <div class="detail--name">
+                            <h3>{{ productShowInModal.name }}</h3>
+                        </div>
+                        <div class="detail--price">
+                            <h5>{{ productShowInModal.price }}</h5>
+                        </div>
+                    </div>
+                    <div class="break-line"></div>
+                    <div class="order">
+                        <div class="size">
+                            <span>Size: </span>
+                            <button class="size-btn">S</button
+                            ><button class="size-btn">M</button
+                            ><button class="size-btn">L</button>
+                        </div>
+                        <div class="size-choosing">
+                            <a href="">HƯỚNG DẪN CHỌN SIZE</a>
+                        </div>
+                        <div class="add-to-cart">
+                            <button class="add-btn">Thêm vào giỏ</button>
+                        </div>
+                        <div class="logo-small">
+                            <div class="logo-image">
+                                <img
+                                    src="../assets/images/MiddleLogo.png"
+                                    alt=""
+                                    class="logo-img"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </v-card>
+        </v-dialog>
     </section>
     <section class="section-banner-two" id="section-banner-two">
         <div class="container">
@@ -950,7 +828,6 @@
                             </div>
                         </div>
                     </swiper-slide>
-                    
                 </swiper>
             </div>
             <div class="s-button">
@@ -1011,6 +888,7 @@
             </div>
         </div>
     </section>
+
     <h5 class="go-top" id="go-top" @click="goToTop()">"Trở lại đầu trang"</h5>
     <Footer></Footer>
 </template>
@@ -1052,6 +930,11 @@ export default {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0;
         },
+        handleShowModal(id) {
+            this.isShowModal = true;
+            this.productShowInModal = this.products[id];
+            console.log(this.productShowInModal);
+        },
     },
     data() {
         return {
@@ -1066,6 +949,43 @@ export default {
                 "PHỤ KIỆN",
                 "OUTLET SALE",
             ],
+            products: [
+                {
+                    id: 1,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
+                    name: "BASIC TEE - BLACK",
+                    price: "330 000 VND",
+                    quickImage: [
+                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
+                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
+                    ],
+                },
+                {
+                    id: 2,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg",
+                    name: "SOCIAL K*LL TEE",
+                    price: "430 000 VND",
+                },
+                {
+                    id: 3,
+                    imageUrl:
+                        "https://product.hstatic.net/1000351433/product/5672_96fa3e3cf3734f34af79df96fc964824_grande.jpg",
+                    imageOverlayUrl:
+                        "https://product.hstatic.net/1000351433/product/17__1__6d77306c20474829b2be9c40426a7eff_grande.jpg",
+                    name: "BASIC TEE - WHITE    ",
+                    price: "330 000 VND",
+                },
+            ],
+            isShowModal: false,
+            productShowInModal: {},
         };
     },
     setup() {
@@ -1556,6 +1476,150 @@ section {
         }
     }
 }
+
+.dialog {
+    border: 2px solid #000;
+    .card-loader {
+        width: 500px;
+        height: 350px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        .modal-image {
+            height: 100%;
+            width: 60%;
+            background-color: white;
+
+            .image-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40%;
+                height: auto;
+                img {
+                    width: 90%;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+        .modal-content {
+            height: 100%;
+            width: 40%;
+            background-color: white;
+            padding-right: 10px;
+            display: flex;
+            justify-content: left;
+            flex-direction: column;
+            .detail {
+                margin-top: 20px;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                height: 20%;
+                .detail--name {
+                    margin-top: 5px;
+                    height: 50%;
+                    width: 100%;
+                    h3 {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+                .detail--price {
+                    height: 50%;
+                    width: 100%;
+                    h5 {
+                        font-weight: 700;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .break-line {
+                width: 100%;
+                height: 7%;
+                border-top: 3px solid #000;
+            }
+            .order {
+                width: 100%;
+                height: 65%;
+                display: flex;
+                justify-content: left;
+                // align-items: center;
+                flex-direction: column;
+                .size {
+                    width: 70%;
+                    height: 20%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    span {
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        color: #000;
+                        font-weight: 700;
+                    }
+                    .size-btn {
+                        width: fit-content;
+                        padding: 0 4px;
+                        border: 1px solid var(--primary-text);
+                        border-radius: 4px;
+                        font-size: 12px;
+                        &:hover {
+                            background-color: #000;
+                            color: white;
+                        }
+                    }
+                }
+                .size-choosing {
+                    width: 100%;
+                    height: 30%;
+                    a {
+                        text-decoration: none;
+                        color: var(--primary-color);
+                        font-weight: 700;
+                    }
+                }
+                .add-to-cart {
+                    width: 80%;
+                    height: 20%;
+                    .add-btn {
+                        border: none;
+                        background-color: var(--primary-color);
+                        font-size: 14px;
+                        font-weight: 600;
+                        width: 90%;
+                        border-radius: 4px;
+                        padding: 5px;
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
+                }
+                .logo-small{
+                    height: 30%;
+                    width: 100%;
+                    .logo-image{
+                        height: 100%;
+                        width: 100%;
+                        .logo-img{
+                            height: 100%;
+                            width: auto;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .s-button {
     margin-top: -20px;
     height: 10%;
@@ -1752,7 +1816,7 @@ section {
                             margin: auto;
                             text-align: center;
                             text-transform: uppercase;
-                            :hover{
+                            :hover {
                                 color: var(--primary-color);
                             }
                         }

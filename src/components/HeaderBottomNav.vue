@@ -88,6 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 #header-bot-bar.header-bot-bar {
+    text-transform: uppercase;
     z-index: 9999;
     background-color: white;
     position: sticky;
@@ -117,6 +118,7 @@ export default {
                 width: fit-content;
                 height: auto;
                 font-size: 18px;
+                font-weight: 700;
                 text-align: center;
 
                 a {
