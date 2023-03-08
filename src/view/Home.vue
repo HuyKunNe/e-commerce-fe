@@ -1677,21 +1677,25 @@ section {
                             }
 
                             .price {
-                                width: 55%;
+                                width: 100%;
                                 margin: auto;
                                 display: flex;
-                                justify-content: space-between;
+                                justify-content: center;
                                 align-items: center;
                                 padding-top: 10px;
 
                                 .cost {
                                     font-size: 12px;
+                                    width: fit-content;
+                                    margin: 0 12px;
                                     font-weight: bold;
                                     text-transform: uppercase;
                                 }
 
                                 .price-sale {
                                     font-size: 14px;
+                                    margin: 0 12px;
+                                    width: fit-content;
                                     font-weight: bold;
                                     text-transform: uppercase;
                                     color: var(--primary-color);
