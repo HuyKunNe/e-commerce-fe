@@ -14,22 +14,34 @@
                         </div>
                         <div class="footer-social-list">
                             <div class="social-item instagram">
-                                <font-awesome-icon
-                                    icon="fa-brands fa-instagram"
-                                />
+                                <a
+                                    href="https://www.instagram.com/huykundangcode/"
+                                >
+                                    <font-awesome-icon
+                                        icon="fa-brands fa-instagram"
+                                    />
+                                </a>
                             </div>
                             <div class="social-item facebook">
-                                <font-awesome-icon
-                                    icon="fa-brands fa-facebook"
-                                />
+                                <a href="https://www.facebook.com/huykun1512">
+                                    <font-awesome-icon
+                                        icon="fa-brands fa-facebook"
+                                    />
+                                </a>
                             </div>
                             <div class="social-item tiktok">
-                                <font-awesome-icon icon="fa-brands fa-tiktok" />
+                                <a href="https://www.tiktok.com/huykunne">
+                                    <font-awesome-icon
+                                        icon="fa-brands fa-tiktok"
+                                    />
+                                </a>
                             </div>
                             <div class="social-item github">
-                                <font-awesome-icon
-                                    icon="fa-brands fa-github"
-                                />
+                                <a href="https://www.github.com/huykunne">
+                                    <font-awesome-icon
+                                        icon="fa-brands fa-github"
+                                    />
+                                </a>
                             </div>
                         </div>
                         <div class="footer-title">
@@ -155,9 +167,15 @@ export default {
                         justify-content: space-between;
                         font-size: 41px;
                         margin-bottom: 30px;
-                        .social-item:hover {
-                            cursor: pointer;
-                            color: var(--primary-color);
+                        .social-item {
+                            a {
+                                color: black;
+                                text-decoration: none;
+                                &:hover {
+                                    cursor: pointer;
+                                    color: var(--primary-color);
+                                }
+                            }
                         }
                     }
                     .register-form {
