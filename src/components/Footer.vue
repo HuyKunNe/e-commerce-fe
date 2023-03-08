@@ -26,9 +26,9 @@
                             <div class="social-item tiktok">
                                 <font-awesome-icon icon="fa-brands fa-tiktok" />
                             </div>
-                            <div class="social-item youtube">
+                            <div class="social-item github">
                                 <font-awesome-icon
-                                    icon="fa-brands fa-youtube"
+                                    icon="fa-brands fa-github"
                                 />
                             </div>
                         </div>
@@ -43,6 +43,7 @@
                                     placeholder="Email address"
                                     aria-label="Email Address"
                                     class="input-group-text"
+                                    v-model="email"
                                 />
                                 <button type="submit" class="input-group-btn">
                                     Đăng ký
@@ -103,6 +104,11 @@
 <script>
 export default {
     name: "FooterComponent",
+    data() {
+        return {
+            email: "",
+        };
+    },
 };
 </script>
 
@@ -126,7 +132,7 @@ export default {
         }
     }
     .footer-bottom {
-        width: calc(100% - 231.5*2);
+        width: calc(100% - 231.5 * 2);
         height: 200px;
         .container {
             margin: 0 150px auto;
@@ -199,14 +205,14 @@ export default {
                         list-style-type: none;
                         padding-left: 0;
                         list-style-position: outside;
-                        font-family: 'Cousine', monospace;
+                        font-family: "Cousine", monospace;
                         text-align: left;
                     }
                     .address-list {
                         margin-top: 0;
-                        font-family: 'Cousine', monospace;
+                        font-family: "Cousine", monospace;
                         li {
-                            b{
+                            b {
                                 font-size: 14px;
                             }
                             font-size: 14px;
@@ -214,35 +220,35 @@ export default {
                             height: 21px;
                         }
                     }
-                    .copyright{
-                        a{
+                    .copyright {
+                        a {
                             text-decoration: none;
                             color: var(--primary-text);
                         }
                     }
-                    a:visited{
+                    a:visited {
                         background-color: var(--primary-text);
                     }
-                    a:hover{
+                    a:hover {
                         color: var(--primary-color);
                     }
                 }
-                .footer-menu{
+                .footer-menu {
                     display: flex;
                     justify-content: center;
                     align-items: start;
-                    ul{
+                    ul {
                         margin: 0;
                         list-style-type: none;
                         list-style-position: outside;
                     }
-                    .menu-list{
-                        li{
+                    .menu-list {
+                        li {
                             margin-bottom: 25px;
                             height: 21px;
                             font-weight: 600;
                         }
-                        li:hover{
+                        li:hover {
                             cursor: pointer;
                             color: var(--primary-color);
                         }
