@@ -179,7 +179,7 @@ export default {
                             overflow: hidden;
                             display: inherit;
                             border-radius: 5px;
-                            padding: 3px 0px 0 10px;
+                            padding: 3px 15px 0 10px;
                         }
 
                         .menu-item:hover {
