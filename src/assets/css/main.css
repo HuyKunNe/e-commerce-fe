@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap");
 
 :root {
     --primary-color: rgb(244, 121, 22);
@@ -11,28 +11,28 @@ input[type="number"] {
     appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
 
 ::-webkit-scrollbar {
     width: 7px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgba(244, 121, 22, 0.9); 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(244, 121, 22, 0.9);
     border-radius: 20px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgba(244, 121, 22, 0.9); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(244, 121, 22, 0.9);
     border-radius: 20px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(244, 121, 22, 0.85); 
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(244, 121, 22, 0.85);
+}

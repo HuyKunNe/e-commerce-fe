@@ -329,7 +329,7 @@
                                     <div
                                         class="line-break"
                                         style="
-                                            margin-left: 30px;
+                                            margin-left: 30px,
                                             margin-bottom: 20px;
                                         "
                                     ></div>
@@ -368,7 +368,7 @@
                     </template>
                 </VueSidePanel>
                 <div class="icon">
-                    <div class="account-icon">
+                    <div class="account-icon" @click="viewAccount">
                         <img
                             src="../assets/images/account.png"
                             alt=""
@@ -475,6 +475,12 @@ export default {
                     style: "currency",
                     currency: "VND",
                 }).format(sum);
+        },
+        async viewAccount() {
+            let user = localStorage.getItem("user-info");
+            if (user) {
+                this.$router.push({ name: "Login" });
+            }
         },
     },
     setup() {
@@ -684,7 +690,7 @@ export default {
 }
 .cart-icon-count {
     position: absolute;
-    top: -5px;
+    top: 7px;
     right: 12px;
     font-size: 14px;
     font-weight: 600;

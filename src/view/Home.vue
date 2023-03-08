@@ -584,16 +584,16 @@
             </v-card>
         </v-dialog>
     </section>
-
-    <h5 class="go-top" id="go-top" @click="goToTop()">"Trở lại đầu trang"</h5>
+    <GoToTop></GoToTop>
     <Footer></Footer>
 </template>
 
 <script>
 import { useSwiper } from "swiper/vue";
-import Header from "./Header.vue";
-import HeaderBottomNav from "./HeaderBottomNav.vue";
-import Footer from "./Footer.vue";
+import GoToTop from "@/components/GoToTop.vue";
+import Header from "../components/Header.vue";
+import HeaderBottomNav from "../components/HeaderBottomNav.vue";
+import Footer from "../components/Footer.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css/grid";
 // Import Swiper styles
@@ -620,12 +620,9 @@ export default {
         HeaderBottomNav,
         Swiper,
         SwiperSlide,
+        GoToTop,
     },
     methods: {
-        goToTop() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0;
-        },
         handleShowModal(id) {
             this.isShowModal = true;
             this.productShowInModal = this.products[id];
@@ -841,20 +838,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#go-top.go-top {
-    writing-mode: vertical-rl;
-    z-index: 998;
-    position: fixed;
-    bottom: 20px;
-    padding: 8px;
-    right: 0;
-    background-color: transparent;
-}
-
-.go-top:hover {
-    cursor: pointer;
-}
-
 section {
     width: calc(100vw);
     height: calc(1080px);
@@ -1527,7 +1510,7 @@ section {
         flex-direction: column;
 
         .s-title {
-            width: 16%;
+            width: 18%;
             height: 10%;
             display: flex;
             justify-content: space-between;
