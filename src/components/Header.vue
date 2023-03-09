@@ -137,14 +137,16 @@
                     </template>
                     <template #default>
                         <div class="cart list-item">
-                            <div class="cart list-item item">
+                            <div
+                                class="cart list-item item"
+                                v-for="item in carts"
+                                :key="item.id"
+                            >
                                 <div class="item-image">
-                                    <a
-                                        href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                    >
+                                    <a :href="item.href">
                                         <img
                                             class="item-image--img"
-                                            src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
+                                            :src="item.imageUrl"
                                             alt=""
                                         />
                                     </a>
@@ -154,15 +156,20 @@
                                         <div class="item-infor--title title">
                                             <a
                                                 class="item-link"
-                                                href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                                >Levents® Wash Tee/ Ivory
-                                                White</a
+                                                :href="item.href"
+                                                >{{ item.name }}</a
                                             >
                                         </div>
                                         <div
                                             class="item-infor--title remove-btn"
                                         >
-                                            <button class="remove-btn">
+                                            <button
+                                                class="remove-btn"
+                                                @click="
+                                                    removeItemInCarts();
+                                                    calculatePrice();
+                                                "
+                                            >
                                                 x
                                             </button>
                                         </div>
@@ -171,7 +178,7 @@
                                         class="item-info--size"
                                         style="font-size: 18px"
                                     >
-                                        <span>size SIZE 1</span>
+                                        <span>size SIZE {{ item.size }}</span>
                                     </div>
                                     <div class="item-info--price">
                                         <div class="item-info--quantity">
@@ -183,83 +190,15 @@
                                                 class="quantity-btn--counter"
                                                 min="0"
                                                 id="quantity-item"
-                                                placeholder="0"
+                                                placeholder="1"
                                                 name="quantity"
-                                                value="1"
+                                                v-model="item.quantity"
                                                 type="number"
                                             />
                                             <button
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                 @click="calculatePrice()"
                                                 class="plus"
-                                            ></button>
-                                        </div>
-                                        <div class="item-info--totalprice">
-                                            <input
-                                                type="text"
-                                                class="price-item"
-                                                readonly
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="line-break"></div>
-                            <div class="cart list-item item">
-                                <div class="item-image">
-                                    <a
-                                        href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                    >
-                                        <img
-                                            class="item-image--img"
-                                            src="https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div class="item-info">
-                                    <div class="item-info--title">
-                                        <div class="item-infor--title title">
-                                            <a
-                                                class="item-link"
-                                                href="https://levents.asia/product/levents-wash-tee/levents-wash-tee-off-white/?attribute_pa_size=size-1"
-                                                >Levents® Wash Tee/ Ivory
-                                                White</a
-                                            >
-                                        </div>
-                                        <div
-                                            class="item-infor--title remove-btn"
-                                        >
-                                            <button class="remove-btn">
-                                                x
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="item-info--size"
-                                        style="font-size: 18px"
-                                    >
-                                        <span>size SIZE 1</span>
-                                    </div>
-                                    <div class="item-info--price">
-                                        <div class="item-info--quantity">
-                                            <button
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                @click="calculatePrice()"
-                                            ></button>
-                                            <input
-                                                class="quantity-btn--counter"
-                                                min="0"
-                                                id="quantity-item"
-                                                placeholder="0"
-                                                name="quantity"
-                                                value="1"
-                                                type="number"
-                                            />
-                                            <button
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="plus"
-                                                @click="calculatePrice()"
                                             ></button>
                                         </div>
                                         <div class="item-info--totalprice">
@@ -329,7 +268,7 @@
                                     <div
                                         class="line-break"
                                         style="
-                                            margin-left: 30px,
+                                            margin-left: 30px;
                                             margin-bottom: 20px;
                                         "
                                     ></div>
@@ -447,6 +386,38 @@ export default {
                 "Jacket",
             ],
             price: 375000,
+            carts: [
+                {
+                    id: 1,
+                    name: "Levents® Wash Tee/ Ivory White",
+                    price: 375000,
+                    size: 1,
+                    quantity: 1,
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
+                    href: "#",
+                },
+                {
+                    id: 2,
+                    name: "Levents® Wash Tee/ Ivory White",
+                    price: 37000,
+                    size: 1,
+                    quantity: 1,
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
+                    href: "#",
+                },
+                {
+                    id: 3,
+                    name: "Levents® Wash Tee/ Ivory White",
+                    price: 35000,
+                    size: 1,
+                    quantity: 1,
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
+                    href: "#",
+                },
+            ],
         };
     },
     methods: {
@@ -455,32 +426,43 @@ export default {
             var sum = 0;
             var elt = document.getElementsByClassName("cart list-item");
             for (var i = 1; i < elt.length; i++) {
-                var price = this.price;
                 var quantity = elt[i].querySelector(".item-info--quantity");
                 var quantityValue = quantity.querySelector(
                     ".quantity-btn--counter"
                 );
+                var price = this.carts.find((x) => x.id === i).price;
                 var totalPrice = price * quantityValue.value;
                 sum += totalPrice;
-
                 elt[i].querySelector(".price-item").value =
                     new Intl.NumberFormat("vi-VN", {
                         style: "currency",
                         currency: "VND",
                     }).format(totalPrice);
             }
-            // console.log(sum);
             document.getElementsByClassName("payment-price")[0].value =
                 new Intl.NumberFormat("vi-VN", {
                     style: "currency",
                     currency: "VND",
                 }).format(sum);
         },
+        formatPrice(price) {
+            return new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(price);
+        },
         async viewAccount() {
             let user = localStorage.getItem("user-info");
             if (user) {
                 this.$router.push({ name: "Login" });
             }
+        },
+        removeItemInCarts(id) {
+            console.log(id);
+            // var carts = this.carts.filter((item) => item.id - 1 !== id);
+            // console.log(carts);
+            // this.carts = carts;
+            // return this.carts;
         },
     },
     setup() {
@@ -886,7 +868,7 @@ export default {
     color: white;
     border: none;
     border-radius: 5px;
-    background-color: var(--primary-color);
+    background-color: #000;
 }
 .payment-btn:hover {
     cursor: pointer;
@@ -927,7 +909,7 @@ export default {
         }
         .item-info {
             font-size: 20px;
-            width: calc(100% - 150px);
+            width: calc(100% - 170px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -944,14 +926,15 @@ export default {
             .detail {
                 height: 24px;
                 width: 158px;
-                border: 1px solid var(--primary-color);
+                border: 1px solid #000;
                 display: flex;
+                font-size: 16px;
                 justify-content: center;
                 align-items: center;
                 border-radius: 5px;
-                padding: 5px 2px;
+                padding: 15px 2px;
                 color: white;
-                background-color: var(--primary-color);
+                background-color: #000;
             }
             .detail:hover {
                 opacity: 0.85;
@@ -972,7 +955,7 @@ export default {
             width: 484px;
             font-size: 16px;
             padding: 8px 0;
-            background-color: var(--primary-color);
+            background-color: #000;
             color: white;
         }
         .view-more:hover {

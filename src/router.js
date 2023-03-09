@@ -24,13 +24,13 @@ const routes = [
             },
             {
                 name: "Register",
-                path: "register",
+                path: "/register",
                 component: RegisterPage,
                 meta: { title: "Tạo tài khoản – Bad Habits Official Store" },
             },
             {
                 name: "Profile",
-                path: "profile",
+                path: "/profile",
                 component: ProfilePage,
                 meta: { title: "Tài khoản – Bad Habits Official Store" },
             },
