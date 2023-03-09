@@ -4,34 +4,22 @@
         <div class="header">
             <div class="left-logo">
                 <router-link to="/">
-                    <img
-                        src="../assets/images/LeftLogo.png"
-                        alt="Bad Habits Official Store"
-                        class="left-logo-img"
-                        style="height: 95px"
-                    />
+                    <img src="../assets/images/LeftLogo.png" alt="Bad Habits Official Store" class="left-logo-img"
+                        style="height: 95px" />
                 </router-link>
             </div>
             <div class="middle-logo">
                 <router-link to="/">
-                    <img
-                        src="../assets/images/MiddleLogo.png"
-                        alt="Bad Habits Official Store"
-                        class="middle-logo-img"
-                        style="height: 95px"
-                    />
+                    <img src="../assets/images/MiddleLogo.png" alt="Bad Habits Official Store" class="middle-logo-img"
+                        style="height: 95px" />
                 </router-link>
             </div>
             <div class="header-icon">
                 <router-link to="/">
                     <div class="icon">
                         <div class="right-logo">
-                            <img
-                                src="../assets/images/RightLogo.png"
-                                alt="Bad Habits Official Store"
-                                class="right-logo-img"
-                                style="height: 55px; width: 40px"
-                            />
+                            <img src="../assets/images/RightLogo.png" alt="Bad Habits Official Store" class="right-logo-img"
+                                style="height: 55px; width: 40px" />
                         </div>
                     </div>
                 </router-link>
@@ -40,11 +28,8 @@
                 <Popper>
                     <div class="icon">
                         <div class="search-icon">
-                            <img
-                                src="../assets/images/search-icon.png"
-                                class="search-icon-img"
-                                style="height: 40px; width: 40px"
-                            />
+                            <img src="../assets/images/search-icon.png" class="search-icon-img"
+                                style="height: 40px; width: 40px" />
                         </div>
                         <div class="icon--hover"></div>
                     </div>
@@ -52,27 +37,16 @@
                     <template #content>
                         <div class="search-modal">
                             <div class="search-modal category">
-                                <button
-                                    class="search-modal category btn"
-                                    v-for="item in category"
-                                    :key="item.id"
-                                >
+                                <button class="search-modal category btn" v-for="item in category" :key="item.id">
                                     {{ item }}
                                 </button>
                             </div>
                             <div class="search-modal search-wrapper">
-                                <div
-                                    class="search-modal search-wrapper search-filed"
-                                >
-                                    <input
-                                        class="search-modal search-wrapper search-field-input"
-                                        type="text"
-                                        placeholder="Search"
-                                    />
+                                <div class="search-modal search-wrapper search-filed">
+                                    <input class="search-modal search-wrapper search-field-input" type="text"
+                                        placeholder="Search" />
                                 </div>
-                                <div
-                                    class="search-modal search-wrapper search-btn-field"
-                                >
+                                <div class="search-modal search-wrapper search-btn-field">
                                     <button class="search-btn">Search</button>
                                 </div>
                             </div>
@@ -81,11 +55,7 @@
                                     <p class="popular-heading--text">POPULAR</p>
                                 </div>
                                 <div class="popular-list">
-                                    <div
-                                        class="popular-item"
-                                        v-for="item in popular"
-                                        :key="item.id"
-                                    >
+                                    <div class="popular-item" v-for="item in popular" :key="item.id">
                                         <p class="popular-item--text">
                                             {{ item }}
                                         </p>
@@ -97,39 +67,25 @@
                 </Popper>
                 <!-- Cart -->
                 <div class="icon">
-                    <div
-                        class="cart-icon"
-                        @click="
-                            isOpened = true;
-                            calcTotalPriceOnClick();
-                        "
-                    >
-                        <img
-                            src="../assets/images/cart.png"
-                            alt=""
-                            class="search-icon-img"
-                            style="height: 40px; width: 40px"
-                        />
+                    <div class="cart-icon" @click="
+                        isOpened = true;
+                    calcTotalPriceOnClick();
+                                                ">
+                        <img src="../assets/images/cart.png" alt="" class="search-icon-img"
+                            style="height: 40px; width: 40px" />
                         <div class="cart-icon-count">
                             <p class="">0</p>
                         </div>
                     </div>
                     <div class="icon--hover"></div>
                 </div>
-                <VueSidePanel
-                    v-model="isOpened"
-                    width="600px"
-                    class="side-panel"
-                    hide-close-btn
-                >
+                <VueSidePanel v-model="isOpened" width="600px" class="side-panel" hide-close-btn>
                     <template #header>
                         <div style="text-align: left; height: 60px">
-                            <h2
-                                :style="{
-                                    fontSize: '28px',
-                                    margin: '30px 20px 0 30px',
-                                }"
-                            >
+                            <h2 :style="{
+                                fontSize: '28px',
+                                margin: '30px 20px 0 30px',
+                            }">
                                 Giỏ hàng
                             </h2>
                         </div>
@@ -137,95 +93,52 @@
                     </template>
                     <template #default>
                         <div class="cart list-item">
-                            <div
-                                class="cart list-item--empty"
-                                v-if="carts.length === 0"
-                            >
+                            <div class="cart list-item--empty" v-if="carts.length === 0">
                                 Không có sản phẩm trong giỏ hàng
                             </div>
-                            <div
-                                class="cart list-item item"
-                                v-for="item in carts"
-                                :key="item.id"
-                            >
+                            <div class="cart list-item item" v-for="item in carts" :key="item.id">
                                 <div class="item-image">
                                     <a :href="item.href">
-                                        <img
-                                            class="item-image--img"
-                                            :src="item.imageUrl"
-                                            alt=""
-                                        />
+                                        <img class="item-image--img" :src="item.imageUrl" alt="" />
                                     </a>
                                 </div>
                                 <div class="item-info">
                                     <div class="item-info--title">
                                         <div class="item-infor--title title">
-                                            <a
-                                                class="item-link"
-                                                :href="item.href"
-                                                >{{ item.name }}</a
-                                            >
+                                            <a class="item-link" :href="item.href">{{ item.name }}</a>
                                         </div>
-                                        <div
-                                            class="item-infor--title remove-btn"
-                                        >
-                                            <button
-                                                class="remove-btn"
-                                                @click="
-                                                    removeItemInCarts(item.id);
-                                                    calcTotalPrice();
-                                                "
-                                            >
+                                        <div class="item-infor--title remove-btn">
+                                            <button class="remove-btn" @click="
+                                                removeItemInCarts(item.id);
+                                            calcTotalPrice();
+                                                                                                ">
                                                 x
                                             </button>
                                         </div>
                                     </div>
-                                    <div
-                                        class="item-info--size"
-                                        style="font-size: 18px"
-                                    >
+                                    <div class="item-info--size" style="font-size: 18px">
                                         <span>size SIZE {{ item.size }}</span>
                                     </div>
                                     <div class="item-info--price">
                                         <div class="item-info--quantity">
-                                            <button
-                                                @click="
-                                                    minus(item.id);
-                                                    calculatePrice(item.id);
-                                                "
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-minus"
-                                                />
+                                            <button @click="
+                                                minus(item.id);
+                                            calculatePrice(item.id);
+                                                                                                ">
+                                                <font-awesome-icon icon="fa-solid fa-minus" />
                                             </button>
-                                            <input
-                                                class="quantity-btn--counter"
-                                                id="quantity-item"
-                                                placeholder="1"
-                                                name="quantity"
-                                                v-model.lazy="item.quantity"
-                                                type="text"
-                                                readonly
-                                            />
-                                            <button
-                                                @click="
-                                                    plus(item.id);
-                                                    calculatePrice(item.id);
-                                                "
-                                                class="plus"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-plus"
-                                                />
+                                            <input class="quantity-btn--counter" id="quantity-item" placeholder="1"
+                                                name="quantity" v-model.lazy="item.quantity" type="text" readonly />
+                                            <button @click="
+                                                plus(item.id);
+                                            calculatePrice(item.id);
+                                                                                                " class="plus">
+                                                <font-awesome-icon icon="fa-solid fa-plus" />
                                             </button>
                                         </div>
                                         <div class="item-info--totalprice">
-                                            <input
-                                                type="text"
-                                                class="price-item"
-                                                readonly
-                                                v-model.lazy="item.priceFormat"
-                                            />
+                                            <input type="text" class="price-item" readonly
+                                                v-model.lazy="item.priceFormat" />
                                         </div>
                                     </div>
                                 </div>
@@ -235,13 +148,8 @@
                         <div class="cart payment">
                             <div class="cart payment--header">
                                 <p class="payment-header--title">Tạm tính</p>
-                                <input
-                                    type="text"
-                                    class="payment-price"
-                                    v-model.lazy="totalPrice"
-                                    @changed="formatNumber(totalPrice)"
-                                    readonly
-                                />
+                                <input type="text" class="payment-price" v-model.lazy="totalPrice"
+                                    @changed="formatNumber(totalPrice)" readonly />
                             </div>
                             <div class="cart payment-description">
                                 <p class="payment-description--text">
@@ -263,60 +171,39 @@
                                     <div class="list-products-item">
                                         <div class="item-img">
                                             <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            >
-                                                <img
-                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
-                                                    alt=""
-                                                />
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/">
+                                                <img src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
+                                                    alt="" />
                                             </a>
                                         </div>
                                         <div class="item-info">
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="title"
-                                                >Levents® Pepper Salt Long
-                                                Sleeve Polo/ Grey</a
-                                            >
+                                            <a href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="title">Levents® Pepper Salt Long
+                                                Sleeve Polo/ Grey</a>
                                             <div class="price">430,000VNĐ</div>
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="detail"
-                                                >Xem chi tiết</a
-                                            >
+                                            <a href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="detail">Xem chi tiết</a>
                                         </div>
                                     </div>
-                                    <div
-                                        class="line-break"
-                                        :style="{
-                                            marginLeft: 30 + 'px',
-                                            marginBottom: 20 + 'px',
-                                        }"
-                                    ></div>
+                                    <div class="line-break" :style="{
+                                        marginLeft: 30 + 'px',
+                                        marginBottom: 20 + 'px',
+                                    }"></div>
                                     <div class="list-products-item">
                                         <div class="item-img">
                                             <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            >
-                                                <img
-                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
-                                                    alt=""
-                                                />
+                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/">
+                                                <img src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
+                                                    alt="" />
                                             </a>
                                         </div>
                                         <div class="item-info">
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="title"
-                                                >Levents® Pepper Salt Long
-                                                Sleeve Polo/ Grey</a
-                                            >
+                                            <a href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="title">Levents® Pepper Salt Long
+                                                Sleeve Polo/ Grey</a>
                                             <div class="price">430,000VNĐ</div>
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="detail"
-                                                >Xem chi tiết</a
-                                            >
+                                            <a href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                class="detail">Xem chi tiết</a>
                                         </div>
                                     </div>
                                 </div>
@@ -329,12 +216,8 @@
                 </VueSidePanel>
                 <div class="icon">
                     <div class="account-icon" @click="viewAccount">
-                        <img
-                            src="../assets/images/account.png"
-                            alt=""
-                            class="search-icon-img"
-                            style="height: 40px; width: 40px"
-                        />
+                        <img src="../assets/images/account.png" alt="" class="search-icon-img"
+                            style="height: 40px; width: 40px" />
                     </div>
                     <div class="icon--hover"></div>
                 </div>
@@ -473,7 +356,7 @@ export default {
         },
         async viewAccount() {
             let user = localStorage.getItem("user-info");
-            if (user) {
+            if (!user) {
                 this.$router.push({ name: "Login" });
             }
         },
@@ -520,6 +403,7 @@ export default {
     width: (100%);
     height: 125px;
 }
+
 .header {
     width: calc(100% - 463px);
     display: flex;
@@ -527,6 +411,7 @@ export default {
     margin: 0 231.5px;
     position: relative;
 }
+
 .header-icon {
     display: flex;
     align-items: center;
@@ -534,26 +419,33 @@ export default {
     flex-direction: row;
     width: 30%;
 }
+
 .left-logo-img:hover {
     cursor: pointer;
 }
+
 .left-logo {
     width: 40%;
     height: auto;
+
     .left-logo-img {
         max-width: 100%;
     }
 }
+
 .middle-logo {
     width: 20%;
 }
+
 .header-icon {
     width: 35%;
 }
+
 .search-icon {
     height: 55px;
     position: relative;
 }
+
 .search-modal {
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
@@ -567,6 +459,7 @@ export default {
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
+
 .search-modal .category {
     top: 0;
     position: relative;
@@ -582,6 +475,7 @@ export default {
     box-shadow: none;
     margin-bottom: 20px;
 }
+
 .search-modal .category .btn {
     width: fit-content;
     height: fit-content;
@@ -592,11 +486,13 @@ export default {
     color: var(--primary-text);
     background-color: rgba(214, 213, 211, 0.1);
 }
+
 .search-modal .category .btn:hover {
     cursor: pointer;
     opacity: 0.8;
     background-color: var(--primary-color);
 }
+
 .search-wrapper {
     position: relative;
     width: 70%;
@@ -608,10 +504,12 @@ export default {
     top: 0;
     box-shadow: none;
 }
+
 .search-field {
     height: 50px;
     width: 70%;
 }
+
 .search-field-input {
     display: inline-block;
     position: absolute;
@@ -620,12 +518,14 @@ export default {
     height: 50px;
     font-size: 17px;
 }
+
 .search-btn-field {
     height: 50px;
     width: 20%;
     margin: calc(15%-50px) 0;
     background-color: var(--primary-color);
 }
+
 .search-btn {
     border: none;
     background-color: transparent;
@@ -634,13 +534,16 @@ export default {
     width: 100%;
     font-weight: 600;
 }
+
 .search-btn-field:hover {
     opacity: 0.8;
     background-color: var(--primary-color);
 }
+
 .search-btn:hover {
     cursor: pointer;
 }
+
 .popular {
     position: relative;
     margin: 40px 0 auto;
@@ -651,6 +554,7 @@ export default {
     left: 200px;
     /* box-shadow: none; */
 }
+
 .popular-list {
     margin-top: -20px;
     display: flex;
@@ -659,27 +563,33 @@ export default {
     display: flex;
     flex-wrap: wrap-reverse;
 }
+
 .popular-item {
     width: 30%;
     height: 20%;
     margin-top: -10px;
     font-size: 14px;
 }
+
 .popular-item--text {
     width: 50%;
 }
+
 .popular-item--text:hover {
     cursor: pointer;
     font-weight: 600;
     font-size: 16px;
     color: var(--primary-color);
 }
+
 .popular-heading--text {
     font-weight: 600;
 }
+
 .account-icon {
     height: 55px;
 }
+
 .icon {
     position: relative;
 }
@@ -688,15 +598,18 @@ export default {
     cursor: pointer;
 }
 
-.search-icon:hover + .icon--hover {
+.search-icon:hover+.icon--hover {
     display: block;
 }
-.cart-icon:hover + .icon--hover {
+
+.cart-icon:hover+.icon--hover {
     display: block;
 }
-.account-icon:hover + .icon--hover {
+
+.account-icon:hover+.icon--hover {
     display: block;
 }
+
 .icon--hover {
     content: "";
     display: none;
@@ -709,10 +622,12 @@ export default {
     right: 0;
     margin: auto;
 }
+
 .cart-icon {
     position: relative;
     height: 55px;
 }
+
 .cart-icon-count {
     position: absolute;
     top: 7px;
@@ -720,8 +635,10 @@ export default {
     font-size: 14px;
     font-weight: 600;
 }
+
 .cart.list-item {
     width: 100%;
+
     .cart.list-item--empty {
         margin-left: 30px;
         width: 540px;
@@ -733,6 +650,7 @@ export default {
         color: var(--solid-text);
     }
 }
+
 .cart.list-item.item {
     margin: 30px;
     width: 540px;
@@ -741,14 +659,17 @@ export default {
     align-items: center;
     justify-content: center;
 }
+
 .item-image {
     width: 30%;
 }
+
 .item-image--img {
     height: 130px;
     max-width: 300px;
     /* object-fit: none; */
 }
+
 .item-info {
     margin: 0 auto;
     width: 70%;
@@ -757,31 +678,38 @@ export default {
     flex-direction: column;
     justify-content: space-between;
 }
+
 .item-info--title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .item-infor--title.title {
     width: 90%;
 }
+
 .item-infor--title.remove-btn {
     text-align: right;
     width: 10%;
 }
+
 .remove-btn {
     border: none;
     background-color: transparent;
 }
+
 .remove-btn:hover {
     cursor: pointer;
 }
+
 .item-info--title a {
     text-decoration: none;
     font-size: 20px;
     height: 34%;
     width: 100%;
 }
+
 .item-info--size {
     height: calc(33%-10px);
     align-items: center;
@@ -792,14 +720,17 @@ export default {
     display: flex;
     justify-content: left;
     width: 100%;
+
     .item-info--quantity {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 30%;
+
         button {
             width: 30%;
         }
+
         .quantity-btn--counter {
             width: 35%;
             display: flex;
@@ -807,6 +738,7 @@ export default {
             align-items: center;
             text-align: center;
             font-size: 18px;
+
             &:focus-visible {
                 border-top-style: hidden;
                 border-right-style: hidden;
@@ -817,21 +749,25 @@ export default {
         }
     }
 }
+
 .item-info--totalprice {
     display: flex;
     justify-content: right;
     width: 50%;
 }
+
 .payment-price {
     border: none;
     font-size: 16px;
     color: var(--solid-text);
 }
+
 .line-break {
     align-items: center;
     border-bottom: 2px solid rgba(112, 112, 112, 0.3);
     margin: 0 30px auto;
 }
+
 .item-info--title a:visited {
     color: var(--primary-color);
 }
@@ -840,6 +776,7 @@ export default {
     width: 540px;
     margin-bottom: 30px;
 }
+
 .cart.payment--header {
     display: flex;
     align-items: center;
@@ -850,10 +787,12 @@ export default {
     margin-top: 30px;
     margin-bottom: 24px; */
 }
+
 .cart.payment--header input {
     text-align: right;
     outline: none;
 }
+
 .payment-header--title {
     width: 30%;
     color: var(--solid-text);
@@ -861,6 +800,7 @@ export default {
     height: 24px;
     margin: 0;
 }
+
 .price-item {
     border: none;
     outline: none;
@@ -868,23 +808,27 @@ export default {
     width: 60%;
     text-align: right;
 }
+
 .payment-description {
     width: 100%;
     margin: 0 30px auto;
     text-align: center;
 }
+
 .payment-description--text {
     width: 100%;
     font-size: 16px;
     color: var(--primary-text);
     font-style: italic;
 }
+
 .cart-payment--btn {
     width: 100%;
     margin: 20px 30px auto;
     text-align: center;
     height: 36px;
 }
+
 .payment-btn {
     width: 90%;
     height: 34px;
@@ -896,10 +840,12 @@ export default {
     border-radius: 5px;
     background-color: #000;
 }
+
 .payment-btn:hover {
     cursor: pointer;
     opacity: 0.85;
 }
+
 .vsp.vsp--right-side.side-panel {
     height: calc(100vh - 2px);
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -908,31 +854,38 @@ export default {
 .cart-recommend {
     width: 100%;
     margin: 20px 0;
+
     p {
         font-size: 16px;
         height: 19px;
         color: var(--primary-text);
     }
+
     .cart-recommend-top {
         margin-left: 30px;
+
         p {
             font-size: 18px;
             height: 19px;
             color: var(--primary-text);
         }
     }
+
     .list-products-item {
         height: 130px;
         margin-left: 30px;
         display: flex;
         margin-bottom: 20px;
+
         .item-img {
             height: 100%;
             margin-right: 20px;
+
             img {
                 width: 130px;
             }
         }
+
         .item-info {
             font-size: 20px;
             width: calc(100% - 170px);
@@ -940,15 +893,19 @@ export default {
             flex-direction: column;
             justify-content: space-between;
             align-items: left;
+
             a {
                 text-decoration: none;
             }
+
             .title {
                 color: var(--primary-color);
             }
+
             .title:visited {
                 color: var(--primary-color);
             }
+
             .detail {
                 height: 24px;
                 width: 158px;
@@ -962,11 +919,13 @@ export default {
                 color: white;
                 background-color: #000;
             }
+
             .detail:hover {
                 opacity: 0.85;
             }
         }
     }
+
     .car-recommend-bottom {
         width: calc(100% - 60px);
         margin: 0 30px auto;
@@ -976,6 +935,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
         .view-more {
             border-radius: 5px;
             border: none;
@@ -985,6 +945,7 @@ export default {
             background-color: #000;
             color: white;
         }
+
         .view-more:hover {
             opacity: 0.85;
             cursor: pointer;
@@ -1002,6 +963,7 @@ export default {
     overflow: hidden;
     position: absolute;
     top: 100px;
+
     .marquee {
         background-color: #000;
         display: block;
@@ -1013,6 +975,7 @@ export default {
         justify-content: center;
         align-items: center;
         animation: marquee 15s linear infinite;
+
         span {
             color: white;
             float: left;
@@ -1020,10 +983,12 @@ export default {
         }
     }
 }
+
 @keyframes marquee {
     0% {
         left: 0;
     }
+
     100% {
         left: -100%;
     }
