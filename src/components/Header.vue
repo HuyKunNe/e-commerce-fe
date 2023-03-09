@@ -101,7 +101,7 @@
                         class="cart-icon"
                         @click="
                             isOpened = true;
-                            calculatePrice();
+                            calcTotalPriceOnClick();
                         "
                     >
                         <img
@@ -138,6 +138,12 @@
                     <template #default>
                         <div class="cart list-item">
                             <div
+                                class="cart list-item--empty"
+                                v-if="carts.length === 0"
+                            >
+                                Không có sản phẩm trong giỏ hàng
+                            </div>
+                            <div
                                 class="cart list-item item"
                                 v-for="item in carts"
                                 :key="item.id"
@@ -166,8 +172,8 @@
                                             <button
                                                 class="remove-btn"
                                                 @click="
-                                                    removeItemInCarts();
-                                                    calculatePrice();
+                                                    removeItemInCarts(item.id);
+                                                    calcTotalPrice();
                                                 "
                                             >
                                                 x
@@ -183,29 +189,42 @@
                                     <div class="item-info--price">
                                         <div class="item-info--quantity">
                                             <button
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                @click="calculatePrice()"
-                                            ></button>
+                                                @click="
+                                                    minus(item.id);
+                                                    calculatePrice(item.id);
+                                                "
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-minus"
+                                                />
+                                            </button>
                                             <input
                                                 class="quantity-btn--counter"
-                                                min="0"
                                                 id="quantity-item"
                                                 placeholder="1"
                                                 name="quantity"
-                                                v-model="item.quantity"
-                                                type="number"
+                                                v-model.lazy="item.quantity"
+                                                type="text"
+                                                readonly
                                             />
                                             <button
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                @click="calculatePrice()"
+                                                @click="
+                                                    plus(item.id);
+                                                    calculatePrice(item.id);
+                                                "
                                                 class="plus"
-                                            ></button>
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-plus"
+                                                />
+                                            </button>
                                         </div>
                                         <div class="item-info--totalprice">
                                             <input
                                                 type="text"
                                                 class="price-item"
                                                 readonly
+                                                v-model.lazy="item.priceFormat"
                                             />
                                         </div>
                                     </div>
@@ -219,6 +238,8 @@
                                 <input
                                     type="text"
                                     class="payment-price"
+                                    v-model.lazy="totalPrice"
+                                    @changed="formatNumber(totalPrice)"
                                     readonly
                                 />
                             </div>
@@ -267,10 +288,10 @@
                                     </div>
                                     <div
                                         class="line-break"
-                                        style="
-                                            margin-left: 30px;
-                                            margin-bottom: 20px;
-                                        "
+                                        :style="{
+                                            marginLeft: 30 + 'px',
+                                            marginBottom: 20 + 'px',
+                                        }"
                                     ></div>
                                     <div class="list-products-item">
                                         <div class="item-img">
@@ -335,10 +356,10 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import Popper from "vue3-popper";
 import { VueSidePanel } from "vue3-side-panel";
 import "vue3-side-panel/dist/vue3-side-panel.css";
-import { ref } from "vue";
 export default {
     name: "HeaderComponent",
     components: {
@@ -385,7 +406,7 @@ export default {
                 "Hoodie",
                 "Jacket",
             ],
-            price: 375000,
+            totalPrice: "",
             carts: [
                 {
                     id: 1,
@@ -393,6 +414,8 @@ export default {
                     price: 375000,
                     size: 1,
                     quantity: 1,
+                    totalPrice: 375000,
+                    priceFormat: 375000,
                     imageUrl:
                         "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
                     href: "#",
@@ -403,6 +426,8 @@ export default {
                     price: 37000,
                     size: 1,
                     quantity: 1,
+                    totalPrice: 37000,
+                    priceFormat: 37000,
                     imageUrl:
                         "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
                     href: "#",
@@ -413,6 +438,8 @@ export default {
                     price: 35000,
                     size: 1,
                     quantity: 1,
+                    totalPrice: 35000,
+                    priceFormat: 35000,
                     imageUrl:
                         "https://levents.asia/wp-content/uploads/2022/10/z3809177331705_cdfaae50251a4d9e50ac691d815112fd-2048x2048.jpg",
                     href: "#",
@@ -421,35 +448,28 @@ export default {
         };
     },
     methods: {
-        calculatePrice() {
-            //Get selected data
-            var sum = 0;
-            var elt = document.getElementsByClassName("cart list-item");
-            for (var i = 1; i < elt.length; i++) {
-                var quantity = elt[i].querySelector(".item-info--quantity");
-                var quantityValue = quantity.querySelector(
-                    ".quantity-btn--counter"
-                );
-                var price = this.carts.find((x) => x.id === i).price;
-                var totalPrice = price * quantityValue.value;
-                sum += totalPrice;
-                elt[i].querySelector(".price-item").value =
-                    new Intl.NumberFormat("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                    }).format(totalPrice);
-            }
-            document.getElementsByClassName("payment-price")[0].value =
-                new Intl.NumberFormat("vi-VN", {
-                    style: "currency",
-                    currency: "VND",
-                }).format(sum);
+        async calculatePrice(id) {
+            var product = this.carts.find((obj) => obj.id === id);
+            product.totalPrice = product.price * product.quantity;
+            product.priceFormat = this.formatNumber(product.totalPrice);
+            this.calcTotalPrice();
         },
-        formatPrice(price) {
-            return new Intl.NumberFormat("vi-VN", {
-                style: "currency",
-                currency: "VND",
-            }).format(price);
+        async calcTotalPrice() {
+            var totalPrice = 0;
+            this.carts.forEach((product) => {
+                totalPrice += product.price * product.quantity;
+            });
+            this.totalPrice = this.formatNumber(totalPrice);
+        },
+        async calcTotalPriceOnClick() {
+            var totalPrice = 0;
+            this.carts.forEach((product) => {
+                totalPrice += product.price * product.quantity;
+                product.priceFormat = this.formatNumber(
+                    product.price * product.quantity
+                );
+            });
+            this.totalPrice = this.formatNumber(totalPrice);
         },
         async viewAccount() {
             let user = localStorage.getItem("user-info");
@@ -459,10 +479,33 @@ export default {
         },
         removeItemInCarts(id) {
             console.log(id);
-            // var carts = this.carts.filter((item) => item.id - 1 !== id);
-            // console.log(carts);
-            // this.carts = carts;
-            // return this.carts;
+            var carts = this.carts.filter((item) => item.id !== id);
+            console.log(carts);
+            this.carts = carts;
+            return this.carts;
+        },
+        minus(id) {
+            if (this.carts.find((obj) => obj.id === id).quantity === 0) return;
+            this.carts.find((obj) => obj.id === id).quantity--;
+            console.log(
+                id,
+                " ",
+                this.carts.find((obj) => obj.id === id).quantity
+            );
+        },
+        plus(id) {
+            this.carts.find((obj) => obj.id === id).quantity++;
+            console.log(
+                id,
+                " ",
+                this.carts.find((obj) => obj.id === id).quantity
+            );
+        },
+        formatNumber(number) {
+            return new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(number);
         },
     },
     setup() {
@@ -679,6 +722,16 @@ export default {
 }
 .cart.list-item {
     width: 100%;
+    .cart.list-item--empty {
+        margin-left: 30px;
+        width: 540px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-style: italic;
+        color: var(--solid-text);
+    }
 }
 .cart.list-item.item {
     margin: 30px;
@@ -734,62 +787,35 @@ export default {
     align-items: center;
     justify-content: left;
 }
-.quantity-btn--counter {
-    outline: none;
-}
-.item-info--quantity {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 50%;
-}
-.item-infor--quantity,
-.item-info--quantity * {
-    box-sizing: border-box;
-}
-
-.item-info--quantity button {
-    outline: none;
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: none;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-    margin: 0;
-    position: relative;
-}
-
-.item-info--quantity button:before,
-.item-info--quantity button:after {
-    display: inline-block;
-    position: absolute;
-    content: "";
-    width: 1rem;
-    height: 2px;
-    background-color: #383838;
-    transform: translate(-50%, -50%);
-}
-.item-info--quantity button.plus:after {
-    transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.item-info--quantity input[type="number"] {
-    font-family: sans-serif;
-    max-width: 3rem;
-    padding: 0.5rem;
-    border: none;
-    font-size: 18px;
-    border-width: 0 2px;
-    text-align: center;
-}
 
 .item-info--price {
     display: flex;
     justify-content: left;
     width: 100%;
+    .item-info--quantity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        button {
+            width: 30%;
+        }
+        .quantity-btn--counter {
+            width: 35%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 18px;
+            &:focus-visible {
+                border-top-style: hidden;
+                border-right-style: hidden;
+                border-left-style: hidden;
+                border-bottom-style: hidden;
+                outline: none;
+            }
+        }
+    }
 }
 .item-info--totalprice {
     display: flex;
@@ -944,6 +970,7 @@ export default {
     .car-recommend-bottom {
         width: calc(100% - 60px);
         margin: 0 30px auto;
+        margin-top: 40px;
         height: 30px;
         border: none;
         display: flex;
