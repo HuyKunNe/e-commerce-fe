@@ -37,42 +37,47 @@
                 </router-link>
 
                 <!-- Search -->
-                <Popper>
-                    <div class="icon">
-                        <div class="search-icon">
-                            <img
-                                src="../assets/images/search-icon.png"
-                                class="search-icon-img"
-                                style="height: 40px; width: 40px"
-                            />
-                        </div>
-                        <div class="icon--hover"></div>
+                <div class="icon">
+                    <div class="search-icon" @click="handleShowSearchModal()">
+                        <img
+                            src="../assets/images/search-icon.png"
+                            class="search-icon-img"
+                            style="height: 40px; width: 40px"
+                        />
                     </div>
-                    <!-- Search Modal -->
-                    <template #content>
+                    <div class="icon--hover"></div>
+                </div>
+                <v-dialog
+                    v-model="isShowSearchModal"
+                    width="1860px"
+                    height="540px"
+                    class="dialog"
+                >
+                    <v-card
+                        width="100%"
+                        height="100%"
+                        class="dialog-loader"
+                        variant="outlined"
+                    >
                         <div class="search-modal">
-                            <div class="search-modal category">
+                            <div class="category">
                                 <button
-                                    class="search-modal category btn"
+                                    class="category-btn"
                                     v-for="item in category"
                                     :key="item.id"
                                 >
                                     {{ item }}
                                 </button>
                             </div>
-                            <div class="search-modal search-wrapper">
-                                <div
-                                    class="search-modal search-wrapper search-filed"
-                                >
+                            <div class="search-wrapper">
+                                <div class="search-filed">
                                     <input
-                                        class="search-modal search-wrapper search-field-input"
+                                        class="search-field-input"
                                         type="text"
                                         placeholder="Search"
                                     />
                                 </div>
-                                <div
-                                    class="search-modal search-wrapper search-btn-field"
-                                >
+                                <div class="search-btn-field">
                                     <button class="search-btn">Search</button>
                                 </div>
                             </div>
@@ -93,8 +98,8 @@
                                 </div>
                             </div>
                         </div>
-                    </template>
-                </Popper>
+                    </v-card>
+                </v-dialog>
                 <!-- Cart -->
                 <div class="icon">
                     <div
@@ -260,28 +265,29 @@
                             </div>
                             <div class="cart-recommend content">
                                 <div class="cart-recommend list-products">
-                                    <div class="list-products-item">
+                                    <div
+                                        class="list-products-item"
+                                        v-for="item in recommends"
+                                        :key="item.id"
+                                    >
                                         <div class="item-img">
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            >
+                                            <a :href="item.href">
                                                 <img
-                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
+                                                    :src="item.imageUrl"
                                                     alt=""
                                                 />
                                             </a>
                                         </div>
                                         <div class="item-info">
                                             <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
+                                                :href="item.href"
                                                 class="title"
-                                                >Levents® Pepper Salt Long
-                                                Sleeve Polo/ Grey</a
+                                                >{{ item.name }}</a
                                             >
-                                            <div class="price">430,000VNĐ</div>
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="detail"
+                                            <div class="price">
+                                                {{ formatNumber(item.price) }}
+                                            </div>
+                                            <a :href="item.href" class="detail"
                                                 >Xem chi tiết</a
                                             >
                                         </div>
@@ -293,32 +299,6 @@
                                             marginBottom: 20 + 'px',
                                         }"
                                     ></div>
-                                    <div class="list-products-item">
-                                        <div class="item-img">
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                            >
-                                                <img
-                                                    src="https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg"
-                                                    alt=""
-                                                />
-                                            </a>
-                                        </div>
-                                        <div class="item-info">
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="title"
-                                                >Levents® Pepper Salt Long
-                                                Sleeve Polo/ Grey</a
-                                            >
-                                            <div class="price">430,000VNĐ</div>
-                                            <a
-                                                href="https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/"
-                                                class="detail"
-                                                >Xem chi tiết</a
-                                            >
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="car-recommend-bottom">
@@ -357,19 +337,16 @@
 
 <script>
 import { ref } from "vue";
-import Popper from "vue3-popper";
 import { VueSidePanel } from "vue3-side-panel";
 import "vue3-side-panel/dist/vue3-side-panel.css";
 export default {
     name: "HeaderComponent",
     components: {
-        Popper,
         VueSidePanel,
     },
     data() {
         return {
-            isSearchModalOpen: false,
-            displayModalOpen: this.isSearchModalOpen ? "block" : "none",
+            isShowSearchModal: false,
             category: [
                 "KHÁC",
                 "NEW ARRIVAL",
@@ -445,6 +422,32 @@ export default {
                     href: "#",
                 },
             ],
+            recommends: [
+                {
+                    id: 2,
+                    href: "https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/",
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg",
+                    name: "Levents® Pepper Salt Long Sleeve Polo/ Grey",
+                    price: 430000,
+                },
+                {
+                    id: 2,
+                    href: "https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/",
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg",
+                    name: "Levents® Pepper Salt Long Sleeve Polo/ Grey",
+                    price: 430000,
+                },
+                {
+                    id: 3,
+                    href: "https://levents.asia/product/levents-pepper-salt-long-sleeve-polo/levents-pepper-salt-long-sleeve-polo-grey/",
+                    imageUrl:
+                        "https://levents.asia/wp-content/uploads/2023/01/z4114159853574_727c49c4a01c10f3d562dcf4f852c0ff-150x150.jpg",
+                    name: "Levents® Pepper Salt Long Sleeve Polo/ Grey",
+                    price: 430000,
+                },
+            ],
         };
     },
     methods: {
@@ -507,6 +510,9 @@ export default {
                 currency: "VND",
             }).format(number);
         },
+        handleShowSearchModal() {
+            this.isShowSearchModal = true;
+        },
     },
     setup() {
         return {
@@ -516,6 +522,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.dialog-loader {
+    position: absolute;
+    top: -100px;
+}
 .header-wrapper {
     width: (100%);
     height: 125px;
@@ -558,85 +568,88 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     background-color: white;
-    height: 480px;
-    width: calc(100vw - 40px);
+    height: 100%;
+    width: calc(100%);
     margin: 0 auto;
-    margin-left: -1310px;
     left: 0;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    flex-direction: column;
     border-radius: 5px;
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 9999;
 }
-.search-modal .category {
+.category {
     top: 0;
     position: relative;
     margin: 0 auto;
-    margin-top: 10px;
-    width: 85%;
-    height: 150px;
+    width: 90%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     flex-wrap: wrap;
     box-shadow: none;
-    margin-bottom: 20px;
 }
-.search-modal .category .btn {
+.category-btn {
     width: fit-content;
     height: fit-content;
     padding: 10px 30px;
-    margin: 0 20px;
+    margin: 10px 20px;
     font-size: 15px;
+    border-radius: 4px;
     font-weight: 600;
     color: var(--primary-text);
     background-color: rgba(214, 213, 211, 0.1);
 }
-.search-modal .category .btn:hover {
+.category-btn:hover {
     cursor: pointer;
     opacity: 0.8;
     background-color: var(--primary-color);
 }
 .search-wrapper {
+    margin-top: 30px;
     position: relative;
-    width: 70%;
-    height: 50px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    width: 60%;
+    height: 10%;
+    margin: auto;
     top: 0;
     box-shadow: none;
-}
-.search-field {
-    height: 50px;
-    width: 70%;
-}
-.search-field-input {
-    display: inline-block;
-    position: absolute;
-    width: 100%;
-    padding-left: 20px;
-    height: 50px;
-    font-size: 17px;
-}
-.search-btn-field {
-    height: 50px;
-    width: 20%;
-    margin: calc(15%-50px) 0;
-    background-color: var(--primary-color);
-}
-.search-btn {
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    height: 100%;
-    width: 100%;
-    font-weight: 600;
-}
-.search-btn-field:hover {
-    opacity: 0.8;
-    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    .search-filed {
+        height: 100%;
+        width: 70%;
+        .search-field-input {
+            display: inline-block;
+            width: 100%;
+            padding-left: 20px;
+            height: 100%;
+            font-size: 17px;
+        }
+    }
+    .search-btn-field {
+        height: 100%;
+        width: 20%;
+        margin: calc(15%-50px) 0;
+        background-color: var(--primary-color);
+        .search-btn {
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+            height: 100%;
+            width: 100%;
+            font-weight: 600;
+        }
+    }
+    .search-btn-field:hover {
+        opacity: 0.8;
+        background-color: var(--primary-color);
+    }
 }
 .search-btn:hover {
     cursor: pointer;
@@ -644,8 +657,8 @@ export default {
 .popular {
     position: relative;
     margin: 40px 0 auto;
-    width: 940px;
-    height: 200px;
+    width: 70%;
+    height: 40%;
     border: none;
     flex-wrap: wrap;
     left: 200px;
@@ -676,6 +689,7 @@ export default {
 }
 .popular-heading--text {
     font-weight: 600;
+    padding-bottom: 20px;
 }
 .account-icon {
     height: 55px;
@@ -833,9 +847,13 @@ export default {
     margin: 0 30px auto;
 }
 .item-info--title a:visited {
-    color: var(--primary-color);
+    color: black;
 }
-
+.item-info--title {
+    a:hover {
+        color: var(--primary-color);
+    }
+}
 .cart.payment {
     width: 540px;
     margin-bottom: 30px;
@@ -943,10 +961,13 @@ export default {
             a {
                 text-decoration: none;
             }
-            .title {
-                color: var(--primary-color);
+            .price {
+                font-size: 16px;
             }
-            .title:visited {
+            .title{
+                color: black;
+            }
+            .title:hover {
                 color: var(--primary-color);
             }
             .detail {

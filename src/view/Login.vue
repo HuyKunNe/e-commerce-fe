@@ -1,6 +1,6 @@
 <template>
     <Header></Header>
-    <HeaderBottomNav></HeaderBottomNav>
+    <HeaderBottomNav :class="header - navbar"></HeaderBottomNav>
     <section class="customer" id="customer">
         <div class="container">
             <div class="customer-login">
@@ -108,6 +108,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header-bot-bar {
+    position: relative !important;
+    z-index: 1 !important;
+}
 #customer.customer {
     height: 500px;
     width: 100%;
