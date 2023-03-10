@@ -16,6 +16,7 @@
                             <div class="social-item instagram">
                                 <a
                                     href="https://www.instagram.com/huykundangcode/"
+                                    target="_blank"
                                 >
                                     <font-awesome-icon
                                         icon="fa-brands fa-instagram"
@@ -23,21 +24,30 @@
                                 </a>
                             </div>
                             <div class="social-item facebook">
-                                <a href="https://www.facebook.com/huykun1512">
+                                <a
+                                    href="https://www.facebook.com/huykun1512"
+                                    target="_blank"
+                                >
                                     <font-awesome-icon
                                         icon="fa-brands fa-facebook"
                                     />
                                 </a>
                             </div>
                             <div class="social-item tiktok">
-                                <a href="https://www.tiktok.com/huykunne">
+                                <a
+                                    href="https://www.tiktok.com/huykunne"
+                                    target="_blank"
+                                >
                                     <font-awesome-icon
                                         icon="fa-brands fa-tiktok"
                                     />
                                 </a>
                             </div>
                             <div class="social-item github">
-                                <a href="https://www.github.com/huykunne">
+                                <a
+                                    href="https://www.github.com/huykunne"
+                                    target="_blank"
+                                >
                                     <font-awesome-icon
                                         icon="fa-brands fa-github"
                                     />

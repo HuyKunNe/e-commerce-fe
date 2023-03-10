@@ -59,6 +59,7 @@
             </div>
         </div>
     </section>
+
     <Footer></Footer>
 </template>
 
@@ -66,12 +67,14 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
+import Sidebar from "@/components/Sidebar.vue";
 export default {
     name: "ProfilePage",
     components: {
         Header,
         Footer,
         HeaderBottomNav,
+        Sidebar,
     },
     data() {
         return {
@@ -234,5 +237,9 @@ export default {
             }
         }
     }
+}
+.section-test {
+    height: 580px;
+    width: 100vw;
 }
 </style>
