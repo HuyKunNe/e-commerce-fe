@@ -59,12 +59,13 @@
             </div>
         </div>
     </section>
-
+    <GoToTop></GoToTop>
     <Footer></Footer>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import GoToTop from "@/components/GoToTop.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 export default {
@@ -73,6 +74,7 @@ export default {
         Header,
         Footer,
         HeaderBottomNav,
+        GoToTop,
     },
     data() {
         return {
