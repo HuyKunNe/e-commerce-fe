@@ -393,7 +393,7 @@ export default {
             this.totalPrice = this.formatNumber(totalPrice);
         },
         async viewAccount() {
-            let user = localStorage.getItem("user-info");
+            let user = localStorage.getItem("user-login");
             if (!user) {
                 this.$router.push({ name: "Login" });
             }

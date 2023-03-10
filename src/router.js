@@ -24,7 +24,7 @@ const routes = [
       },
       {
         name: "Register",
-        path: "/register",
+        path: "register",
         component: RegisterPage,
         meta: { title: "Tạo tài khoản – Bad Habits Official Store" },
       },
