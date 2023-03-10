@@ -64,17 +64,15 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
-import Sidebar from "@/components/Sidebar.vue";
 export default {
     name: "ProfilePage",
     components: {
         Header,
         Footer,
         HeaderBottomNav,
-        Sidebar,
     },
     data() {
         return {

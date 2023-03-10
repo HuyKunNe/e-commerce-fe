@@ -32,7 +32,7 @@ export default {
         return {
             sideBarLists: [
                 { name: "BEST SELLER", collectionName: "best-seller", id: 1 },
-                { name: "BASIC LINE", collectionName: "basic-line", id: 3 },
+                { name: "BASIC LINE", collectionName: "basic-collection", id: 3 },
                 {
                     name: "TẤT CẢ SẢN PHẨM",
                     collectionName: "all-products",
@@ -57,23 +57,6 @@ export default {
             },
         };
     },
-    methods: {
-        async fetchCollectionData(id) {
-            const result = await axios.get(
-                `http://localhost:3000/collections/${id}`
-            );
-            console.warn(result.data);
-            this.collection = result.data;
-        },
-    },
-    watch: {
-        $route: {
-            immediate: true,
-            handler() {
-                this.collectionName = this.$route.params.collectionName;
-            },
-        },
-    },
 };
 </script>
 
@@ -89,8 +72,6 @@ export default {
     .sidebar {
         padding-top: 15px;
         padding-left: 15px;
-        .sidebar-menu {
-        }
         .sidebar-item {
             text-decoration: none;
             list-style-type: none;

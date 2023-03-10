@@ -4,22 +4,34 @@
         <div class="header">
             <div class="left-logo">
                 <router-link to="/">
-                    <img src="../assets/images/LeftLogo.png" alt="Bad Habits Official Store" class="left-logo-img"
-                        style="height: 95px" />
+                    <img
+                        src="../assets/images/LeftLogo.png"
+                        alt="Bad Habits Official Store"
+                        class="left-logo-img"
+                        style="height: 95px"
+                    />
                 </router-link>
             </div>
             <div class="middle-logo">
                 <router-link to="/">
-                    <img src="../assets/images/MiddleLogo.png" alt="Bad Habits Official Store" class="middle-logo-img"
-                        style="height: 95px" />
+                    <img
+                        src="../assets/images/MiddleLogo.png"
+                        alt="Bad Habits Official Store"
+                        class="middle-logo-img"
+                        style="height: 95px"
+                    />
                 </router-link>
             </div>
             <div class="header-icon">
                 <router-link to="/">
                     <div class="icon">
                         <div class="right-logo">
-                            <img src="../assets/images/RightLogo.png" alt="Bad Habits Official Store" class="right-logo-img"
-                                style="height: 55px; width: 40px" />
+                            <img
+                                src="../assets/images/RightLogo.png"
+                                alt="Bad Habits Official Store"
+                                class="right-logo-img"
+                                style="height: 55px; width: 40px"
+                            />
                         </div>
                     </div>
                 </router-link>
@@ -74,7 +86,11 @@
                                     <p class="popular-heading--text">POPULAR</p>
                                 </div>
                                 <div class="popular-list">
-                                    <div class="popular-item" v-for="item in popular" :key="item.id">
+                                    <div
+                                        class="popular-item"
+                                        v-for="item in popular"
+                                        :key="item.id"
+                                    >
                                         <p class="popular-item--text">
                                             {{ item }}
                                         </p>
@@ -86,25 +102,40 @@
                 </v-dialog>
                 <!-- Cart -->
                 <div class="icon">
-                    <div class="cart-icon" @click="
-                        isOpened = true;
-                    calcTotalPriceOnClick();
-                                                ">
-                        <img src="../assets/images/cart.png" alt="" class="search-icon-img"
-                            style="height: 40px; width: 40px" />
+                    <div
+                        class="cart-icon"
+                        @click="
+                            isOpened = true;
+                            calcTotalPriceOnClick();
+                        "
+                    >
+                        <img
+                            src="../assets/images/cart.png"
+                            alt=""
+                            class="search-icon-img"
+                            style="height: 40px; width: 40px"
+                        />
                         <div class="cart-icon-count">
-                            <p class="">0</p>
+                            <p class="">{{ carts.length
+                             }}</p>
                         </div>
                     </div>
                     <div class="icon--hover"></div>
                 </div>
-                <VueSidePanel v-model="isOpened" width="600px" class="side-panel" hide-close-btn>
+                <VueSidePanel
+                    v-model="isOpened"
+                    width="600px"
+                    class="side-panel"
+                    hide-close-btn
+                >
                     <template #header>
                         <div style="text-align: left; height: 60px">
-                            <h2 :style="{
-                                fontSize: '28px',
-                                margin: '30px 20px 0 30px',
-                            }">
+                            <h2
+                                :style="{
+                                    fontSize: '28px',
+                                    margin: '30px 20px 0 30px',
+                                }"
+                            >
                                 Giỏ hàng
                             </h2>
                         </div>
@@ -112,52 +143,95 @@
                     </template>
                     <template #default>
                         <div class="cart list-item">
-                            <div class="cart list-item--empty" v-if="carts.length === 0">
+                            <div
+                                class="cart list-item--empty"
+                                v-if="carts.length === 0"
+                            >
                                 Không có sản phẩm trong giỏ hàng
                             </div>
-                            <div class="cart list-item item" v-for="item in carts" :key="item.id">
+                            <div
+                                class="cart list-item item"
+                                v-for="item in carts"
+                                :key="item.id"
+                            >
                                 <div class="item-image">
                                     <a :href="item.href">
-                                        <img class="item-image--img" :src="item.imageUrl" alt="" />
+                                        <img
+                                            class="item-image--img"
+                                            :src="item.imageUrl"
+                                            alt=""
+                                        />
                                     </a>
                                 </div>
                                 <div class="item-info">
                                     <div class="item-info--title">
                                         <div class="item-infor--title title">
-                                            <a class="item-link" :href="item.href">{{ item.name }}</a>
+                                            <a
+                                                class="item-link"
+                                                :href="item.href"
+                                                >{{ item.name }}</a
+                                            >
                                         </div>
-                                        <div class="item-infor--title remove-btn">
-                                            <button class="remove-btn" @click="
-                                                removeItemInCarts(item.id);
-                                            calcTotalPrice();
-                                                                                                ">
+                                        <div
+                                            class="item-infor--title remove-btn"
+                                        >
+                                            <button
+                                                class="remove-btn"
+                                                @click="
+                                                    removeItemInCarts(item.id);
+                                                    calcTotalPrice();
+                                                "
+                                            >
                                                 x
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="item-info--size" style="font-size: 18px">
+                                    <div
+                                        class="item-info--size"
+                                        style="font-size: 18px"
+                                    >
                                         <span>size SIZE {{ item.size }}</span>
                                     </div>
                                     <div class="item-info--price">
                                         <div class="item-info--quantity">
-                                            <button @click="
-                                                minus(item.id);
-                                            calculatePrice(item.id);
-                                                                                                ">
-                                                <font-awesome-icon icon="fa-solid fa-minus" />
+                                            <button
+                                                @click="
+                                                    minus(item.id);
+                                                    calculatePrice(item.id);
+                                                "
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-minus"
+                                                />
                                             </button>
-                                            <input class="quantity-btn--counter" id="quantity-item" placeholder="1"
-                                                name="quantity" v-model.lazy="item.quantity" type="text" readonly />
-                                            <button @click="
-                                                plus(item.id);
-                                            calculatePrice(item.id);
-                                                                                                " class="plus">
-                                                <font-awesome-icon icon="fa-solid fa-plus" />
+                                            <input
+                                                class="quantity-btn--counter"
+                                                id="quantity-item"
+                                                placeholder="1"
+                                                name="quantity"
+                                                v-model.lazy="item.quantity"
+                                                type="text"
+                                                readonly
+                                            />
+                                            <button
+                                                @click="
+                                                    plus(item.id);
+                                                    calculatePrice(item.id);
+                                                "
+                                                class="plus"
+                                            >
+                                                <font-awesome-icon
+                                                    icon="fa-solid fa-plus"
+                                                />
                                             </button>
                                         </div>
                                         <div class="item-info--totalprice">
-                                            <input type="text" class="price-item" readonly
-                                                v-model.lazy="item.priceFormat" />
+                                            <input
+                                                type="text"
+                                                class="price-item"
+                                                readonly
+                                                v-model.lazy="item.priceFormat"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -167,8 +241,13 @@
                         <div class="cart payment">
                             <div class="cart payment--header">
                                 <p class="payment-header--title">Tạm tính</p>
-                                <input type="text" class="payment-price" v-model.lazy="totalPrice"
-                                    @changed="formatNumber(totalPrice)" readonly />
+                                <input
+                                    type="text"
+                                    class="payment-price"
+                                    v-model.lazy="totalPrice"
+                                    @changed="formatNumber(totalPrice)"
+                                    readonly
+                                />
                             </div>
                             <div class="cart payment-description">
                                 <p class="payment-description--text">
@@ -231,8 +310,12 @@
                 </VueSidePanel>
                 <div class="icon">
                     <div class="account-icon" @click="viewAccount">
-                        <img src="../assets/images/account.png" alt="" class="search-icon-img"
-                            style="height: 40px; width: 40px" />
+                        <img
+                            src="../assets/images/account.png"
+                            alt=""
+                            class="search-icon-img"
+                            style="height: 40px; width: 40px"
+                        />
                     </div>
                     <div class="icon--hover"></div>
                 </div>
@@ -638,15 +721,15 @@ export default {
     cursor: pointer;
 }
 
-.search-icon:hover+.icon--hover {
+.search-icon:hover + .icon--hover {
     display: block;
 }
 
-.cart-icon:hover+.icon--hover {
+.cart-icon:hover + .icon--hover {
     display: block;
 }
 
-.account-icon:hover+.icon--hover {
+.account-icon:hover + .icon--hover {
     display: block;
 }
 
@@ -944,7 +1027,7 @@ export default {
             .price {
                 font-size: 16px;
             }
-            .title{
+            .title {
                 color: black;
             }
             .title:hover {

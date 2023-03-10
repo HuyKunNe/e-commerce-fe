@@ -2,18 +2,27 @@
     <div class="header-bot-bar" id="header-bot-bar">
         <div class="header-bot-nav">
             <ul class="header-list">
-                <li>
-                    <a href="">BEST SELLER
+                <li @click="viewCollection('best-seller')">
+                    <a
+                        >BEST SELLER
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
-                <li>
-                    <a href="" class="menu">SẢN PHẨM
+                <li @click="viewCollection('all-products')">
+                    <a class="menu"
+                        >SẢN PHẨM
                         <font-awesome-icon icon="fa-solid fa-caret-down" />
                         <div class="menu-dropdown">
                             <ul class="menu-list">
-                                <li class="menu-item" v-for="product in products" :key="product.id">
-                                    {{ product }}
+                                <li
+                                    class="menu-item"
+                                    v-for="product in products"
+                                    :key="product.id"
+                                    @click="
+                                        viewCollection(product.collectionName)
+                                    "
+                                >
+                                    {{ product.name }}
                                 </li>
                             </ul>
                         </div>
@@ -21,11 +30,16 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="">BỘ SƯU TẬP
+                    <a href=""
+                        >BỘ SƯU TẬP
                         <font-awesome-icon icon="fa-solid fa-caret-down" />
                         <div class="menu-dropdown">
                             <ul class="menu-list">
-                                <li class="menu-item" v-for="colection in colections" :key="colection.id">
+                                <li
+                                    class="menu-item"
+                                    v-for="colection in colections"
+                                    :key="colection.id"
+                                >
                                     {{ colection }}
                                 </li>
                             </ul>
@@ -34,22 +48,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">BASIC LINE
+                    <a
+                        >BASIC LINE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href="">MAKE YOUR STYLE
+                    <a
+                        >MAKE YOUR STYLE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href="">OUTLET SALE
+                    <a
+                        >OUTLET SALE
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
                 <li>
-                    <a href="">BAD RABBIT CLUB®
+                    <a
+                        >BAD RABBIT CLUB®
                         <div class="header-list--hover"></div>
                     </a>
                 </li>
@@ -67,12 +85,16 @@ export default {
     data() {
         return {
             products: [
-                "TẤT CẢ SẢN PHẨM",
-                "ÁO THUN",
-                "ÁO SƠMI",
-                "ÁO KHOÁC",
-                "QUẦN",
-                "PHỤ KIỆN",
+                {
+                    name: "TẤT CẢ SẢN PHẨM",
+                    collectionName: "all-products",
+                    id: 2,
+                },
+                { name: "ÁO THUN", collectionName: "tshirt", id: 1 },
+                { name: "ÁO SƠMI", collectionName: "shirt", id: 4 },
+                { name: "ÁO KHOÁC", collectionName: "outerwear", id: 7 },
+                { name: "QUẦN", collectionName: "pants", id: 5 },
+                { name: "PHỤ KIỆN", collectionName: "accessories", id: 6 },
             ],
             colections: [
                 "BỘ SƯU TẬP BASIC",
@@ -82,6 +104,14 @@ export default {
                 "BỘ SƯU TẬP NỮ",
             ],
         };
+    },
+    methods: {
+        viewCollection(path) {
+            this.$router.push({
+                name: "Collection",
+                params: { collectionName: path },
+            });
+        },
     },
 };
 </script>
@@ -127,6 +157,9 @@ export default {
                     text-decoration: none;
                     color: var(--primary-text);
                 }
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             a:hover .header-list--hover {
@@ -150,7 +183,6 @@ export default {
 
             .menu {
                 position: relative;
-
                 .menu-dropdown {
                     display: none;
                     position: absolute;
