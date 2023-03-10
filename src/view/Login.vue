@@ -104,6 +104,12 @@ export default {
             document.getElementById("recover-password").style.display = "none";
         },
     },
+    mounted() {
+        let user = localStorage.getItem("user-login");
+        if (user) {
+            this.$router.push({ name: "Home" });
+        }
+    },
 };
 </script>
 

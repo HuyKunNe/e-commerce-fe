@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LoginPage from "./view/Login.vue";
 import RegisterPage from "./view/Register.vue";
 import ProfilePage from "./view/Profile.vue";
+import AddressPage from "./view/Address.vue";
 const routes = [
   {
     name: "Home",
@@ -30,8 +31,14 @@ const routes = [
       },
       {
         name: "Profile",
-        path: "/profile",
+        path: "profile",
         component: ProfilePage,
+        meta: { title: "Tài khoản – Bad Habits Official Store" },
+      },
+      {
+        name: "Address",
+        path: "address",
+        component: AddressPage,
         meta: { title: "Tài khoản – Bad Habits Official Store" },
       },
     ],
@@ -46,7 +53,6 @@ router.beforeEach((to) => {
   document.title =
     to.meta.title ||
     "BAD HABITS | BADDEST SINCE 2017 – Bad Habits Official Store";
-  console.log(to.meta.title);
 });
 
 export default router;

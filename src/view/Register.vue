@@ -98,6 +98,12 @@ export default {
             password: "",
         };
     },
+    mounted() {
+        let user = localStorage.getItem("user-login");
+        if (user) {
+            this.$router.push({ name: "Home" });
+        }
+    },
 };
 </script>
 
