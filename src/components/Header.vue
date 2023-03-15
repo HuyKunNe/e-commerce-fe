@@ -116,8 +116,7 @@
                             style="height: 40px; width: 40px"
                         />
                         <div class="cart-icon-count">
-                            <p class="">{{ carts.length
-                             }}</p>
+                            <p class="">{{ carts.length }}</p>
                         </div>
                     </div>
                     <div class="icon--hover"></div>
@@ -303,7 +302,12 @@
                                 </div>
                             </div>
                             <div class="car-recommend-bottom">
-                                <button class="view-more">Xem thêm</button>
+                                <button
+                                    class="view-more"
+                                    @click="viewCollection('all-products')"
+                                >
+                                    Xem thêm
+                                </button>
                             </div>
                         </div>
                     </template>
@@ -514,6 +518,12 @@ export default {
         handleShowSearchModal() {
             this.isShowSearchModal = true;
         },
+        viewCollection(path) {
+            this.$router.push({
+                name: "Collection",
+                params: { collectionName: path },
+            });
+        },
     },
     setup() {
         return {
@@ -588,7 +598,7 @@ export default {
     flex-direction: column;
     border-radius: 5px;
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    z-index: 999;
 }
 .category {
     top: 0;

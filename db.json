@@ -1,0 +1,315 @@
+{
+    "collections": [
+        {
+            "id": 1,
+            "name": "BEST SELLER",
+            "path": "best-seller",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "TẤT CẢ SẢN PHẨM",
+            "path": "all-products",
+            "products": [
+                {
+                    "id": 1,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 2,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 3,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 4,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 5,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 6,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 7,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 8,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 9,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "id": 10,
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "BASIC LINE",
+            "path": "basic-collection",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "ÁO THUN",
+            "path": "tshirt",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "ÁO SƠMI",
+            "path": "shirt",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "QUẦN",
+            "path": "pants",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "PHỤ KIỆN",
+            "path": "accessories",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "ÁO KHOÁC",
+            "path": "outerwear",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "OUTLET SALE",
+            "path": "sale-end-season",
+            "products": [
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                },
+                {
+                    "productName": "MOUNTAIN SHORT OLIVE",
+                    "price": 500000,
+                    "status": "new",
+                    "imageUrl": "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
+                    "lazyLoadUrl": "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg"
+                }
+            ]
+        }
+    ]
+}

@@ -43,6 +43,7 @@ import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import axios from "axios";
+import { globals } from "../globals";
 export default {
     name: "CollectionPage",
     components: {
@@ -76,18 +77,23 @@ export default {
             return number.toLocaleString("vi-VN");
         },
     },
+    mounted() {
+        this.fetchCollectionData();
+    },
     watch: {
         $route: {
             immediate: true,
             handler() {
                 this.collectionName = this.$route.params.collectionName;
+                this.fetchCollectionData();
             },
         },
     },
-    created() {
-        this.fetchCollectionData();
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0;
+    setup() {
+        const categories = globals.categories;
+        return {
+            categories,
+        };
     },
 };
 </script>

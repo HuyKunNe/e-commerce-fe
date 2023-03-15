@@ -16,7 +16,7 @@
                             <ul class="menu-list">
                                 <li
                                     class="menu-item"
-                                    v-for="product in products"
+                                    v-for="product in categories"
                                     :key="product.id"
                                     @click="
                                         viewCollection(product.collectionName)
@@ -78,7 +78,7 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
+import { globals } from "../globals";
 export default {
     name: "HeaderBotBar",
     components: { FontAwesomeIcon },
@@ -111,7 +111,14 @@ export default {
                 name: "Collection",
                 params: { collectionName: path },
             });
+            console.log(path);
         },
+    },
+    setup() {
+        const categories = globals.categories;
+        return {
+            categories,
+        };
     },
 };
 </script>
@@ -119,7 +126,7 @@ export default {
 <style lang="scss" scoped>
 #header-bot-bar.header-bot-bar {
     text-transform: uppercase;
-    z-index: 9999;
+    z-index: 98;
     background-color: white;
     position: sticky;
     width: 100%;
