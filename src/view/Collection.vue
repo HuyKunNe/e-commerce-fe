@@ -62,6 +62,8 @@ export default {
     },
     methods: {
         async fetchCollectionData() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0;
             await axios
                 .get(
                     `http://localhost:3000/collections?path_like=${this.collectionName}`
@@ -78,11 +80,11 @@ export default {
         },
     },
     mounted() {
+        this.collectionName = this.$route.params.collectionName;
         this.fetchCollectionData();
     },
     watch: {
         $route: {
-            immediate: true,
             handler() {
                 this.collectionName = this.$route.params.collectionName;
                 this.fetchCollectionData();
@@ -100,6 +102,7 @@ export default {
 
 <style lang="scss" scoped>
 #list-products.list-products {
+    min-height: 500px;
     width: 100%;
     height: fit-content;
     position: relative;

@@ -304,7 +304,9 @@
                             <div class="car-recommend-bottom">
                                 <button
                                     class="view-more"
-                                    @click="viewCollection('all-products')"
+                                    @click="
+                                        viewCollection('all-products')
+                                    "
                                 >
                                     Xem thêm
                                 </button>
@@ -518,11 +520,12 @@ export default {
         handleShowSearchModal() {
             this.isShowSearchModal = true;
         },
-        viewCollection(path) {
-            this.$router.push({
+        async viewCollection(path) {
+            await this.$router.push({
                 name: "Collection",
                 params: { collectionName: path },
             });
+            location.reload(true);
         },
     },
     setup() {

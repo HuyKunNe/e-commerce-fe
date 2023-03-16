@@ -5,14 +5,24 @@
             <div class="header-sidebar--left">
                 <div class="side-bar">
                     <ul class="side-bar-menu">
-                        <li class="side-bar-item" v-for="item in sideBar" :key="item.id" :title="item">
-                            <span>{{ item }}</span>
+                        <li
+                            class="side-bar-item"
+                            v-for="item in sideBar"
+                            :key="item.id"
+                            :title="item"
+                            @click="viewCollection(item.collectionName)"
+                        >
+                            <span>{{ item.name }}</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="header-banner--full">
-                <img src="../assets/images/banner_chinh.png" alt="" class="first-banner--img" />
+                <img
+                    src="../assets/images/banner_chinh.png"
+                    alt=""
+                    class="first-banner--img"
+                />
             </div>
         </div>
     </div>
@@ -20,30 +30,53 @@
     <section class="section-bar-code" id="section-bar-code">
         <div class="container">
             <div class="banner">
-                <img src="../assets/images/bar-code.png" alt="" class="image-bar-code" />
+                <img
+                    src="../assets/images/bar-code.png"
+                    alt=""
+                    class="image-bar-code"
+                />
             </div>
         </div>
     </section>
-    <section class="section-scroll-one" id="section-scroll-one" :style="{
-        'background-image': `url(${require('../assets/images/section-scroll-1.png')})`,
-    }">
+    <section
+        class="section-scroll-one"
+        id="section-scroll-one"
+        :style="{
+            'background-image': `url(${require('../assets/images/section-scroll-1.png')})`,
+        }"
+    >
         <div class="container">
             <div class="list-banner">
                 <div class="banner-left">
-                    <div class="banner-left banner-up">
-                        <img src="https://file.hstatic.net/1000351433/file/vuong_2_bb2b2b8aa0ea468d8e7e2536953a66cc.png"
-                            alt="" class="banner-img" />
+                    <div
+                        class="banner-left banner-up"
+                        @click="viewCollection('all-products')"
+                    >
+                        <img
+                            src="https://file.hstatic.net/1000351433/file/vuong_2_bb2b2b8aa0ea468d8e7e2536953a66cc.png"
+                            alt=""
+                            class="banner-img"
+                        />
                         <div class="image-cap">MOST WANTED</div>
                     </div>
-                    <div class="banner-left banner-down">
-                        <img src="https://file.hstatic.net/1000351433/file/vuong_1_4435f62d0e4744eea32fa306afe9c12d.png"
-                            alt="" class="banner-img" />
+                    <div
+                        class="banner-left banner-down"
+                        @click="viewCollection('all-products')"
+                    >
+                        <img
+                            src="https://file.hstatic.net/1000351433/file/vuong_1_4435f62d0e4744eea32fa306afe9c12d.png"
+                            alt=""
+                            class="banner-img"
+                        />
                         <div class="image-cap">NEW ARRIVAL</div>
                     </div>
                 </div>
                 <div class="banner-right">
-                    <img src="https://file.hstatic.net/1000351433/file/doc_f885cfaf2fb54589a49f993ecaf6ce4d.png" alt=""
-                        class="banner-right--img" />
+                    <img
+                        src="https://file.hstatic.net/1000351433/file/doc_f885cfaf2fb54589a49f993ecaf6ce4d.png"
+                        alt=""
+                        class="banner-right--img"
+                    />
                     <div class="image-cap">NEW ARRIVAL</div>
                 </div>
             </div>
@@ -53,30 +86,54 @@
         <div class="container">
             <div class="list-banner">
                 <div class="row">
-                    <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/1_0847b4b2f2474940a893e027baf28f9f.png" />
+                    <div
+                        class="banner"
+                        @click="viewCollection('basic-collection')"
+                    >
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/1_0847b4b2f2474940a893e027baf28f9f.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
-                    <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/2_041897f230494ffd9bb7cc142c581057.png" />
+                    <div
+                        class="banner"
+                        @click="viewCollection('basic-collection')"
+                    >
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/2_041897f230494ffd9bb7cc142c581057.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
-                    <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/3_7f1b0dc5df624b31a527a04993e4222b.png" />
+                    <div
+                        class="banner"
+                        @click="viewCollection('basic-collection')"
+                    >
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/3_7f1b0dc5df624b31a527a04993e4222b.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
                     </div>
-                    <div class="banner">
-                        <img class="banner-img" alt="BASIC COLLECTION"
-                            src="https://file.hstatic.net/1000351433/file/6_fab8c3692f804893aec0adb171258775.png" />
+                    <div
+                        class="banner"
+                        @click="viewCollection('basic-collection')"
+                    >
+                        <img
+                            class="banner-img"
+                            alt="BASIC COLLECTION"
+                            src="https://file.hstatic.net/1000351433/file/6_fab8c3692f804893aec0adb171258775.png"
+                        />
                         <div class="image--cap">
                             <p>BASIC COLLECTION</p>
                         </div>
@@ -89,31 +146,60 @@
         <div class="container">
             <div class="s-title">
                 <span class="s-title--text">BEST-SELLING ITEM</span>
-                <span class="s-title--symbol down-arrow"><font-awesome-icon icon="fa-solid fa-caret-down" /></span>
+                <span class="s-title--symbol down-arrow"
+                    ><font-awesome-icon icon="fa-solid fa-caret-down"
+                /></span>
             </div>
             <div class="s-content">
                 <div class="s-content-wrapper">
-                    <swiper :slidesPerView="3" :spaceBetween="30" :loop="true" :keyboard="{
-                        enabled: true,
-                    }" :navigation="{
-    nextEl: '.btn-next',
-    prevEl: '.btn-prev',
-}" :modules="modules" class="mySwiper">
-                        <swiper-slide class="card" v-for="product in products" :key="product.id">
+                    <swiper
+                        :slidesPerView="3"
+                        :spaceBetween="30"
+                        :loop="true"
+                        :keyboard="{
+                            enabled: true,
+                        }"
+                        :navigation="{
+                            nextEl: '.btn-next',
+                            prevEl: '.btn-prev',
+                        }"
+                        :modules="modules"
+                        class="mySwiper"
+                    >
+                        <swiper-slide
+                            class="card"
+                            v-for="product in products"
+                            :key="product.id"
+                        >
                             <div class="card-image">
-                                <img :src="product.imageUrl" alt="" class="card-img" />
+                                <img
+                                    :src="product.imageUrl"
+                                    alt=""
+                                    class="card-img"
+                                />
                                 <div class="overlay-image">
-                                    <img :src="product.imageOverlayUrl" alt="" class="overlay-img" />
+                                    <img
+                                        :src="product.imageOverlayUrl"
+                                        alt=""
+                                        class="overlay-img"
+                                    />
                                     <div class="overlay-btn">
                                         <button class="view">
                                             Xem
-                                            <font-awesome-icon icon="fa-regular fa-eye" />
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
                                         </button>
-                                        <button class="quick-view" @click="
-                                            handleShowModal(product.id - 1)
-                                        ">
+                                        <button
+                                            class="quick-view"
+                                            @click="
+                                                handleShowModal(product.id - 1)
+                                            "
+                                        >
                                             Xem nhanh
-                                            <font-awesome-icon icon="fa-regular fa-eye" />
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
                                         </button>
                                     </div>
                                 </div>
@@ -136,36 +222,83 @@
             <div class="s-button">
                 <div class="s-button-prev">
                     <button class="btn-prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background: new 0 0 512 512" xml:space="preserve" class="prev-icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="prev-icon"
+                        >
                             <g transform="matrix(-1,0,0,1,511.9997901916504,0)">
-                                <path xmlns="http://www.w3.org/2000/svg"
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
                                     d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
-                                    fill-rule="evenodd" fill="#000000" data-original="#000000" class=""></path>
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
                             </g>
                         </svg>
                     </button>
                 </div>
                 <div class="s-button-next">
                     <button class="btn-next">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background: new 0 0 512 512" xml:space="preserve" class="next-icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="next-icon"
+                        >
                             <g>
-                                <path xmlns="http://www.w3.org/2000/svg"
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
                                     d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
-                                    fill-rule="evenodd" fill="#000000" data-original="#000000" class=""></path>
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
                             </g>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <v-dialog v-model="isShowModal" width="500px" height="350px" class="dialog">
-            <v-card width="100%" height="100%" class="card-loader" variant="outlined">
-                <swiper :navigation="true" :modules="modules" :loop="true" class="modal-image">
-                    <swiper-slide class="image-content" v-for="image in productShowInModal.quickImage" :key="image.id">
+        <v-dialog
+            v-model="isShowModal"
+            width="500px"
+            height="350px"
+            class="dialog"
+        >
+            <v-card
+                width="100%"
+                height="100%"
+                class="card-loader"
+                variant="outlined"
+            >
+                <swiper
+                    :navigation="true"
+                    :modules="modules"
+                    :loop="true"
+                    class="modal-image"
+                >
+                    <swiper-slide
+                        class="image-content"
+                        v-for="image in productShowInModal.quickImage"
+                        :key="image.id"
+                    >
                         <img :src="image" alt="" />
                     </swiper-slide>
                 </swiper>
@@ -182,8 +315,9 @@
                     <div class="order">
                         <div class="size">
                             <span>Size: </span>
-                            <button class="size-btn">S</button><button class="size-btn">M</button><button
-                                class="size-btn">L</button>
+                            <button class="size-btn">S</button
+                            ><button class="size-btn">M</button
+                            ><button class="size-btn">L</button>
                         </div>
                         <div class="size-choosing">
                             <a href="">HƯỚNG DẪN CHỌN SIZE</a>
@@ -193,7 +327,11 @@
                         </div>
                         <div class="logo-small">
                             <div class="logo-image">
-                                <img src="../assets/images/MiddleLogo.png" alt="" class="logo-img" />
+                                <img
+                                    src="../assets/images/MiddleLogo.png"
+                                    alt=""
+                                    class="logo-img"
+                                />
                             </div>
                         </div>
                     </div>
@@ -212,47 +350,90 @@
                 <h2>
                     <a href="/collections/sale-end-season"> END OF SEASON </a>
                 </h2>
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="" height="" x="0" y="0" viewBox="0 0 490.677 490.677"
-                    style="enable-background: new 0 0 512 512" xml:space="preserve" class="arrows">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    version="1.1"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns:svgjs="http://svgjs.com/svgjs"
+                    width=""
+                    height=""
+                    x="0"
+                    y="0"
+                    viewBox="0 0 490.677 490.677"
+                    style="enable-background: new 0 0 512 512"
+                    xml:space="preserve"
+                    class="arrows"
+                >
                     <g>
                         <g xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path
                                     d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333    L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"
-                                    fill="#000000" data-original="#000000" class=""></path>
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
                             </g>
                         </g>
                     </g>
                 </svg>
             </div>
             <div class="s-content">
-                <swiper :slidesPerView="3" :spaceBetween="30" :loop="false" :slidesPerGroup="1" :grid="{
-                    rows: 2,
-                }" :keyboard="{
-    enabled: true,
-}" :navigation="{
-    nextEl: '.btn-next',
-    prevEl: '.btn-prev',
-}" :modules="modules" class="swiper">
-                    <swiper-slide class="card" v-for="product in productCollection" :key="product.id">
+                <swiper
+                    :slidesPerView="3"
+                    :spaceBetween="30"
+                    :loop="false"
+                    :slidesPerGroup="1"
+                    :grid="{
+                        rows: 2,
+                    }"
+                    :keyboard="{
+                        enabled: true,
+                    }"
+                    :navigation="{
+                        nextEl: '.btn-next',
+                        prevEl: '.btn-prev',
+                    }"
+                    :modules="modules"
+                    class="swiper"
+                >
+                    <swiper-slide
+                        class="card"
+                        v-for="product in productCollection"
+                        :key="product.id"
+                    >
                         <div class="card-image-wrapper">
                             <div class="card-image">
-                                <img :src="product.imageUrl" alt="" class="card-img" />
+                                <img
+                                    :src="product.imageUrl"
+                                    alt=""
+                                    class="card-img"
+                                />
                                 <div class="overlay_loader">
-                                    <img :src="product.imageOverlayUrl" alt="" class="lazy_loader" />
+                                    <img
+                                        :src="product.imageOverlayUrl"
+                                        alt=""
+                                        class="lazy_loader"
+                                    />
                                     <div class="overlay-btn">
                                         <button class="view">
                                             Xem
-                                            <font-awesome-icon icon="fa-regular fa-eye" />
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
                                         </button>
-                                        <button class="quick-view" @click="
-                                            handleShowModalCollection(
-                                                product.id - 1
-                                            )
-                                        ">
+                                        <button
+                                            class="quick-view"
+                                            @click="
+                                                handleShowModalCollection(
+                                                    product.id - 1
+                                                )
+                                            "
+                                        >
                                             Xem nhanh
-                                            <font-awesome-icon icon="fa-regular fa-eye" />
+                                            <font-awesome-icon
+                                                icon="fa-regular fa-eye"
+                                            />
                                         </button>
                                     </div>
                                 </div>
@@ -261,7 +442,11 @@
                         <div class="card-description">
                             <div class="description-name">
                                 <h4>
-                                    <a :title="product.name" href="/products/acid-corduroy">{{ product.name }}</a>
+                                    <a
+                                        :title="product.name"
+                                        href="/products/acid-corduroy"
+                                        >{{ product.name }}</a
+                                    >
                                 </h4>
                             </div>
                             <div class="description-price">
@@ -269,13 +454,15 @@
                                     {{ product.salePercent }}% OFF
                                 </div>
                                 <div class="price">
-                                    <del class="cost">{{ currencyVND(product.price) }}
+                                    <del class="cost"
+                                        >{{ currencyVND(product.price) }}
                                     </del>
-                                    <span class="price-sale">{{
-                                        currencyVND(
-                                            priceSale(product.id - 1)
-                                        )
-                                    }}
+                                    <span class="price-sale"
+                                        >{{
+                                            currencyVND(
+                                                priceSale(product.id - 1)
+                                            )
+                                        }}
                                     </span>
                                 </div>
                             </div>
@@ -286,36 +473,83 @@
             <div class="s-button">
                 <div class="s-button-prev">
                     <button class="btn-prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background: new 0 0 512 512" xml:space="preserve" class="prev-icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="prev-icon"
+                        >
                             <g transform="matrix(-1,0,0,1,511.9997901916504,0)">
-                                <path xmlns="http://www.w3.org/2000/svg"
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
                                     d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
-                                    fill-rule="evenodd" fill="#000000" data-original="#000000" class=""></path>
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
                             </g>
                         </svg>
                     </button>
                 </div>
                 <div class="s-button-next">
                     <button class="btn-next">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background: new 0 0 512 512" xml:space="preserve" class="next-icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs"
+                            x="0"
+                            y="0"
+                            viewBox="0 0 512 512"
+                            style="enable-background: new 0 0 512 512"
+                            xml:space="preserve"
+                            class="next-icon"
+                        >
                             <g>
-                                <path xmlns="http://www.w3.org/2000/svg"
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
                                     d="m468.8 235.007-401.359-231.73a24.2 24.2 0 0 0 -12.087-3.285h-.07a24.247 24.247 0 0 0 -12.094 3.287 24 24 0 0 0 -12.11 20.992v463.456a24.186 24.186 0 0 0 36.36 20.994l401.36-231.731a24.238 24.238 0 0 0 0-41.983z"
-                                    fill-rule="evenodd" fill="#000000" data-original="#000000" class=""></path>
+                                    fill-rule="evenodd"
+                                    fill="#000000"
+                                    data-original="#000000"
+                                    class=""
+                                ></path>
                             </g>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <v-dialog v-model="isShowModalCollection" width="500px" height="350px" class="dialog">
-            <v-card width="100%" height="100%" class="card-loader" variant="outlined">
-                <swiper :navigation="true" :modules="modules" :loop="true" class="modal-image">
-                    <swiper-slide class="image-content" v-for="image in productCollectionShow.quickImage" :key="image.id">
+        <v-dialog
+            v-model="isShowModalCollection"
+            width="500px"
+            height="350px"
+            class="dialog"
+        >
+            <v-card
+                width="100%"
+                height="100%"
+                class="card-loader"
+                variant="outlined"
+            >
+                <swiper
+                    :navigation="true"
+                    :modules="modules"
+                    :loop="true"
+                    class="modal-image"
+                >
+                    <swiper-slide
+                        class="image-content"
+                        v-for="image in productCollectionShow.quickImage"
+                        :key="image.id"
+                    >
                         <img :src="image" alt="" />
                     </swiper-slide>
                 </swiper>
@@ -345,8 +579,9 @@
                     <div class="order">
                         <div class="size">
                             <span>Size: </span>
-                            <button class="size-btn">S</button><button class="size-btn">M</button><button
-                                class="size-btn">L</button>
+                            <button class="size-btn">S</button
+                            ><button class="size-btn">M</button
+                            ><button class="size-btn">L</button>
                         </div>
                         <div class="size-choosing">
                             <a href="">HƯỚNG DẪN CHỌN SIZE</a>
@@ -356,7 +591,11 @@
                         </div>
                         <div class="logo-small">
                             <div class="logo-image">
-                                <img src="../assets/images/MiddleLogo.png" alt="" class="logo-img" />
+                                <img
+                                    src="../assets/images/MiddleLogo.png"
+                                    alt=""
+                                    class="logo-img"
+                                />
                             </div>
                         </div>
                     </div>
@@ -381,7 +620,7 @@ import "swiper/css";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import { globals } from "@/globals";
 // import required modules
 import SwiperCore, {
     Keyboard,
@@ -426,20 +665,15 @@ export default {
             this.productCollectionShow = this.productCollection[id];
             console.log(this.productCollectionShow);
         },
+        async viewCollection(path) {
+            await this.$router.push({
+                name: "Collection",
+                params: { collectionName: path },
+            });
+        },
     },
     data() {
         return {
-            sideBar: [
-                "BEST SELLER",
-                "BASIC LINE",
-                "TẤT CẢ SẢN PHẨM",
-                "ÁO THUN",
-                "ÁO SƠMI",
-                "ÁO KHOÁC",
-                "QUẦN",
-                "PHỤ KIỆN",
-                "OUTLET SALE",
-            ],
             products: [
                 {
                     id: 1,
@@ -609,10 +843,11 @@ export default {
     computed: {},
     setup() {
         const swiper = useSwiper();
-
+        const sideBar = globals.categories;
         return {
             swiper,
             modules: [Keyboard, Pagination, Navigation, Grid],
+            sideBar,
         };
     },
 };
@@ -890,7 +1125,6 @@ section {
 }
 
 @keyframes slide1 {
-
     0%,
     100% {
         transform: translate(0, 0);
@@ -1068,7 +1302,7 @@ section {
                         align-items: center;
                         flex-direction: column;
 
-                        >div {
+                        > div {
                             flex: 1;
                         }
 
