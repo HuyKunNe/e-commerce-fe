@@ -29,7 +29,10 @@
                             </div>
                             <div
                                 class="sale-label"
-                                v-if="item.salePercent !== 0"
+                                v-if="
+                                    item.salePercent !== 0 &&
+                                    item.salePercent !== undefined
+                                "
                             >
                                 {{ item.salePercent }}% OFF
                             </div>
@@ -39,7 +42,12 @@
                                 {{ item.productName }}
                             </div>
                             <div class="item-price">
-                                <del class="cost" v-if="item.salePercent !== 0"
+                                <del
+                                    class="cost"
+                                    v-if="
+                                        item.salePercent !== 0 &&
+                                        item.salePercent !== undefined
+                                    "
                                     >{{
                                         currencyVND(
                                             item.price *
