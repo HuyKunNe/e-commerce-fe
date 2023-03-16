@@ -22,13 +22,35 @@
                                 class="item-img--lazyload"
                                 :src="item.imageUrl[1]"
                             />
+                            <div class="card-tag" v-if="item.status !== ''">
+                                <div class="car-tag--text">
+                                    {{ item.status }}
+                                </div>
+                            </div>
+                            <div
+                                class="sale-label"
+                                v-if="item.salePercent !== 0"
+                            >
+                                {{ item.salePercent }}% OFF
+                            </div>
                         </div>
                         <div class="item-description">
                             <div class="item-name">
                                 {{ item.productName }}
                             </div>
                             <div class="item-price">
-                                {{ formatNumber(item.price) }} VND
+                                <del class="cost" v-if="item.salePercent !== 0"
+                                    >{{
+                                        currencyVND(
+                                            item.price *
+                                                ((100 - item.salePercent) *
+                                                    0.01)
+                                        )
+                                    }}
+                                </del>
+                                <span class="price-sale">
+                                    {{ currencyVND(item.price) }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -79,8 +101,11 @@ export default {
                     console.log(error);
                 });
         },
-        formatNumber(number) {
-            return number.toLocaleString("vi-VN");
+        currencyVND(value) {
+            return value.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "VND",
+            });
         },
     },
     mounted() {
@@ -161,6 +186,35 @@ export default {
                         &:hover {
                             cursor: pointer;
                         }
+                        .card-tag {
+                            position: absolute;
+                            top: 0;
+                            left: 20px;
+                            font-size: 10px;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            padding: 3px 8px;
+                            background-color: var(--primary-color);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .sale-label {
+                            position: absolute;
+                            bottom: 30px;
+                            right: 30px;
+                            background-image: url(https://file.hstatic.net/1000351433/file/label-sale_778ce78ae28d436c92f2d6de66effd3b.png);
+                            height: 9%;
+                            width: 22%;
+                            font-size: 12px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-size: cover;
+                            background-position: center;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                        }
                     }
                     .item-image:hover .item-img--lazyload {
                         opacity: 1;
@@ -190,6 +244,19 @@ export default {
                             display: flex;
                             justify-content: center;
                             align-items: center;
+                            .cost {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 12px;
+                                padding-right: 30px;
+                            }
+                            .price-sale {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: var(--primary-color);
+                            }
                         }
                     }
                 }
