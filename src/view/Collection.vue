@@ -12,11 +12,15 @@
                         :key="item.id"
                     >
                         <div class="item-image">
-                            <img alt="" class="item-img" :src="item.imageUrl" />
+                            <img
+                                alt=""
+                                class="item-img"
+                                :src="item.imageUrl[0]"
+                            />
                             <img
                                 alt=""
                                 class="item-img--lazyload"
-                                :src="item.lazyLoadUrl"
+                                :src="item.imageUrl[1]"
                             />
                         </div>
                         <div class="item-description">

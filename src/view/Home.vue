@@ -173,13 +173,17 @@
                         >
                             <div class="card-image">
                                 <img
-                                    :src="product.imageUrl"
+                                    :src="product.imageUrl[0]"
                                     alt=""
                                     class="card-img"
                                 />
                                 <div class="overlay-image">
                                     <img
-                                        :src="product.imageOverlayUrl"
+                                        :src="
+                                            product.imageUrl[1] === null
+                                                ? product.imageUrl[0]
+                                                : product.imageUrl[1]
+                                        "
                                         alt=""
                                         class="overlay-img"
                                     />
@@ -192,9 +196,7 @@
                                         </button>
                                         <button
                                             class="quick-view"
-                                            @click="
-                                                handleShowModal(product.id - 1)
-                                            "
+                                            @click="handleShowModal(product.id)"
                                         >
                                             Xem nhanh
                                             <font-awesome-icon
@@ -203,16 +205,39 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-tag">
+                                <div
+                                    class="card-tag"
+                                    v-if="product.status === 'best seller'"
+                                >
                                     <div class="car-tag--text">Best seller</div>
+                                </div>
+                                <div
+                                    class="sale-label"
+                                    v-if="product.salePercent !== 0"
+                                >
+                                    {{ product.salePercent }}% OFF
                                 </div>
                             </div>
                             <div class="description">
                                 <div class="description-title">
-                                    {{ product.name }}
+                                    {{ product.productName }}
                                 </div>
                                 <div class="description-price">
-                                    {{ product.price }}
+                                    <del
+                                        class="cost"
+                                        v-if="product.salePercent !== 0"
+                                        >{{
+                                            currencyVND(
+                                                product.price *
+                                                    ((100 -
+                                                        product.salePercent) *
+                                                        0.01)
+                                            )
+                                        }}
+                                    </del>
+                                    <span class="price-sale">
+                                        {{ currencyVND(product.price) }}
+                                    </span>
                                 </div>
                             </div>
                         </swiper-slide>
@@ -296,7 +321,7 @@
                 >
                     <swiper-slide
                         class="image-content"
-                        v-for="image in productShowInModal.quickImage"
+                        v-for="image in productShowInModal.imageUrl"
                         :key="image.id"
                     >
                         <img :src="image" alt="" />
@@ -305,10 +330,10 @@
                 <div class="modal-content">
                     <div class="detail">
                         <div class="detail--name">
-                            <h3>{{ productShowInModal.name }}</h3>
+                            <h3>{{ productShowInModal.productName }}</h3>
                         </div>
                         <div class="detail--price">
-                            <h5>{{ productShowInModal.price }}</h5>
+                            <h5>{{ currencyVND(productShowInModal.price) }}</h5>
                         </div>
                     </div>
                     <div class="break-line"></div>
@@ -629,6 +654,7 @@ import SwiperCore, {
     Parallax,
     Grid,
 } from "swiper";
+import axios from "axios";
 SwiperCore.use([Navigation, Parallax]);
 
 export default {
@@ -644,8 +670,10 @@ export default {
     methods: {
         handleShowModal(id) {
             this.isShowModal = true;
-            this.productShowInModal = this.products[id];
-            console.log(this.productShowInModal);
+            this.productShowInModal = this.products.find(
+                (item) => item.id === id
+            );
+            console.log("product: ", this.productShowInModal);
         },
         priceSale(i) {
             return (
@@ -674,41 +702,7 @@ export default {
     },
     data() {
         return {
-            products: [
-                {
-                    id: 1,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: "330 000 VND",
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 2,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/7085_31073e8c63b94054b420ddf02896b43e_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/z4136493820881_be35e57cda6f8add219e86ca13f72c60_c33231d504874072b0a34380797a3e72_grande.jpg",
-                    name: "SOCIAL K*LL TEE",
-                    price: "430 000 VND",
-                },
-                {
-                    id: 3,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5672_96fa3e3cf3734f34af79df96fc964824_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/17__1__6d77306c20474829b2be9c40426a7eff_grande.jpg",
-                    name: "BASIC TEE - WHITE    ",
-                    price: "330 000 VND",
-                },
-            ],
+            products: [],
             productCollection: [
                 {
                     id: 1,
@@ -849,6 +843,16 @@ export default {
             modules: [Keyboard, Pagination, Navigation, Grid],
             sideBar,
         };
+    },
+    mounted() {
+        axios
+            .get(`http://localhost:3000/collections?path_like=best-seller`)
+            .then((res) => {
+                this.products = res.data[0].products;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
 };
 </script>
@@ -1301,15 +1305,51 @@ section {
                         justify-content: center;
                         align-items: center;
                         flex-direction: column;
+                        position: relative;
 
-                        > div {
-                            flex: 1;
+                        .description-title {
+                            height: 50%;
+                            &hover {
+                                cursor: pointer;
+                                color: var(--primary-color);
+                            }
                         }
-
-                        .description-title:hover {
-                            cursor: pointer;
-                            color: var(--primary-color);
+                        .description-price {
+                            height: 50%;
+                            width: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            .cost {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 12px;
+                                padding-right: 30px;
+                            }
+                            .price-sale {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: var(--primary-color);
+                            }
                         }
+                    }
+                    .sale-label {
+                        position: absolute;
+                        bottom: 30px;
+                        right: 30px;
+                        background-image: url(https://file.hstatic.net/1000351433/file/label-sale_778ce78ae28d436c92f2d6de66effd3b.png);
+                        height: 9%;
+                        width: 18%;
+                        font-size: 12px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-size: cover;
+                        background-position: center;
+                        text-transform: uppercase;
+                        font-weight: 700;
                     }
                 }
             }
@@ -1365,11 +1405,11 @@ section {
                 align-items: center;
                 flex-direction: column;
                 width: 100%;
-                height: 20%;
+                height: 30%;
 
                 .detail--name {
                     margin-top: 5px;
-                    height: 50%;
+                    height: 60%;
                     width: 100%;
 
                     h3 {
@@ -1379,9 +1419,12 @@ section {
                 }
 
                 .detail--price {
-                    height: 50%;
+                    height: 40%;
                     width: 100%;
-
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    align-content: space-between;
                     h5 {
                         font-weight: 700;
                         font-size: 14px;
@@ -1392,13 +1435,13 @@ section {
 
             .break-line {
                 width: 100%;
-                height: 7%;
+                height: 5%;
                 border-bottom: 3px solid #000;
             }
 
             .order {
                 width: 100%;
-                height: 65%;
+                height: 57%;
                 display: flex;
                 justify-content: left;
                 // align-items: center;
