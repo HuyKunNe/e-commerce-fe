@@ -17,11 +17,28 @@
                                 class="item-img"
                                 :src="item.imageUrl[0]"
                             />
-                            <img
-                                alt=""
-                                class="item-img--lazyload"
-                                :src="item.imageUrl[1]"
-                            />
+                            <div class="overlay-img">
+                                <img
+                                    alt=""
+                                    class="item-img--lazyload"
+                                    :src="item.imageUrl[1]"
+                                />
+                                <div class="overlay-btn">
+                                    <button class="view">
+                                        Xem
+                                        <font-awesome-icon
+                                            icon="fa-regular fa-eye"
+                                        />
+                                    </button>
+                                    <button class="quick-view">
+                                        Xem nhanh
+                                        <font-awesome-icon
+                                            icon="fa-regular fa-eye"
+                                        />
+                                    </button>
+                                </div>
+                            </div>
+
                             <div class="card-tag" v-if="item.status !== ''">
                                 <div class="car-tag--text">
                                     {{ item.status }}
@@ -181,18 +198,65 @@ export default {
                             object-fit: cover;
                             object-position: center;
                         }
-                        .item-img--lazyload {
+
+                        .overlay-img {
                             position: absolute;
                             top: 0;
                             left: 0;
                             right: 0;
                             bottom: 0;
                             width: 100%;
-                            height: auto;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: 0.3s ease;
                             opacity: 0;
+                            .item-img--lazyload {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
                         }
                         &:hover {
                             cursor: pointer;
+                        }
+                        .overlay-btn {
+                            height: 100%;
+                            width: 70%;
+                            margin-left: -30px;
+                            // margin: 0 20%;
+                            margin: auto;
+                            top: 0;
+                            right: 0;
+                            left: 0;
+                            bottom: 0;
+                            position: absolute;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+
+                            .view {
+                                width: 40%;
+                            }
+
+                            .quick-view {
+                                width: 55%;
+                            }
+
+                            button {
+                                border-radius: 5px;
+                                height: 30px;
+                                border: 2px solid black;
+                                padding: 2px 5px;
+                                background-color: white;
+                                text-transform: uppercase;
+                                font-weight: 700;
+                            }
+
+                            button:hover {
+                                background-color: black;
+                                color: white;
+                                cursor: pointer;
+                            }
                         }
                         .card-tag {
                             position: absolute;
@@ -224,7 +288,7 @@ export default {
                             font-weight: 700;
                         }
                     }
-                    .item-image:hover .item-img--lazyload {
+                    .item-image:hover .overlay-img {
                         opacity: 1;
                     }
                     .item-description {
