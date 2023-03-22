@@ -5,11 +5,20 @@ import RegisterPage from "./view/Register.vue";
 import ProfilePage from "./view/Profile.vue";
 import AddressPage from "./view/Address.vue";
 import CollectionPage from "./view/Collection.vue";
+import TestVue from "./view/Test.vue";
 const routes = [
     {
         name: "Home",
         component: HomePage,
         path: "/",
+        meta: {
+            title: "BAD HABITS | BADDEST SINCE 2017 – Bad Habits Official Store",
+        },
+    },
+    {
+        name: "ProductModal",
+        component: TestVue,
+        path: "/test",
         meta: {
             title: "BAD HABITS | BADDEST SINCE 2017 – Bad Habits Official Store",
         },

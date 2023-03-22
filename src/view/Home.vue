@@ -196,7 +196,7 @@
                                         </button>
                                         <button
                                             class="quick-view"
-                                            @click="handleShowModal(product.id)"
+                                            @click="ShowproductModal(product)"
                                         >
                                             Xem nhanh
                                             <font-awesome-icon
@@ -226,7 +226,11 @@
                                     <del
                                         class="cost"
                                         v-if="product.salePercent !== 0"
-                                        >{{
+                                    >
+                                        {{ currencyVND(product.price) }}
+                                    </del>
+                                    <span class="price-sale">
+                                        {{
                                             currencyVND(
                                                 product.price *
                                                     ((100 -
@@ -234,9 +238,6 @@
                                                         0.01)
                                             )
                                         }}
-                                    </del>
-                                    <span class="price-sale">
-                                        {{ currencyVND(product.price) }}
                                     </span>
                                 </div>
                             </div>
@@ -301,68 +302,7 @@
                 </div>
             </div>
         </div>
-        <v-dialog
-            v-model="isShowModal"
-            width="500px"
-            height="350px"
-            class="dialog"
-        >
-            <v-card
-                width="100%"
-                height="100%"
-                class="card-loader"
-                variant="outlined"
-            >
-                <swiper
-                    :navigation="true"
-                    :modules="modules"
-                    :loop="true"
-                    class="modal-image"
-                >
-                    <swiper-slide
-                        class="image-content"
-                        v-for="image in productShowInModal.imageUrl"
-                        :key="image.id"
-                    >
-                        <img :src="image" alt="" />
-                    </swiper-slide>
-                </swiper>
-                <div class="modal-content">
-                    <div class="detail">
-                        <div class="detail--name">
-                            <h3>{{ productShowInModal.productName }}</h3>
-                        </div>
-                        <div class="detail--price">
-                            <h5>{{ currencyVND(productShowInModal.price) }}</h5>
-                        </div>
-                    </div>
-                    <div class="break-line"></div>
-                    <div class="order">
-                        <div class="size">
-                            <span>Size: </span>
-                            <button class="size-btn">S</button
-                            ><button class="size-btn">M</button
-                            ><button class="size-btn">L</button>
-                        </div>
-                        <div class="size-choosing">
-                            <a href="">HƯỚNG DẪN CHỌN SIZE</a>
-                        </div>
-                        <div class="add-to-cart">
-                            <button class="add-btn">Thêm vào giỏ</button>
-                        </div>
-                        <div class="logo-small">
-                            <div class="logo-image">
-                                <img
-                                    src="../assets/images/MiddleLogo.png"
-                                    alt=""
-                                    class="logo-img"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </v-card>
-        </v-dialog>
+        <product-modal v-model="isShowproductModal" :product="productInModal" />
     </section>
     <section class="section-banner-two" id="section-banner-two">
         <div class="container">
@@ -430,13 +370,17 @@
                         <div class="card-image-wrapper">
                             <div class="card-image">
                                 <img
-                                    :src="product.imageUrl"
+                                    :src="product.imageUrl[0]"
                                     alt=""
                                     class="card-img"
                                 />
                                 <div class="overlay_loader">
                                     <img
-                                        :src="product.imageOverlayUrl"
+                                        :src="
+                                            product.imageUrl[1] === null
+                                                ? product.imageUrl[0]
+                                                : product.imageUrl[1]
+                                        "
                                         alt=""
                                         class="lazy_loader"
                                     />
@@ -449,11 +393,7 @@
                                         </button>
                                         <button
                                             class="quick-view"
-                                            @click="
-                                                handleShowModalCollection(
-                                                    product.id - 1
-                                                )
-                                            "
+                                            @click="ShowproductModal(product)"
                                         >
                                             Xem nhanh
                                             <font-awesome-icon
@@ -479,13 +419,18 @@
                                     {{ product.salePercent }}% OFF
                                 </div>
                                 <div class="price">
-                                    <del class="cost"
+                                    <del
+                                        class="cost"
+                                        v-if="product.salePercent !== 0"
                                         >{{ currencyVND(product.price) }}
                                     </del>
                                     <span class="price-sale"
                                         >{{
                                             currencyVND(
-                                                priceSale(product.id - 1)
+                                                product.price *
+                                                    ((100 -
+                                                        product.salePercent) *
+                                                        0.01)
                                             )
                                         }}
                                     </span>
@@ -552,81 +497,6 @@
                 </div>
             </div>
         </div>
-        <v-dialog
-            v-model="isShowModalCollection"
-            width="500px"
-            height="350px"
-            class="dialog"
-        >
-            <v-card
-                width="100%"
-                height="100%"
-                class="card-loader"
-                variant="outlined"
-            >
-                <swiper
-                    :navigation="true"
-                    :modules="modules"
-                    :loop="true"
-                    class="modal-image"
-                >
-                    <swiper-slide
-                        class="image-content"
-                        v-for="image in productCollectionShow.quickImage"
-                        :key="image.id"
-                    >
-                        <img :src="image" alt="" />
-                    </swiper-slide>
-                </swiper>
-                <div class="modal-content">
-                    <div class="detail">
-                        <div class="detail--name">
-                            <h3>{{ productCollectionShow.name }}</h3>
-                        </div>
-                        <div class="detail--price">
-                            <h5>
-                                {{ currencyVND(productCollectionShow.price) }}
-                            </h5>
-                            <del>
-                                <h5>
-                                    {{
-                                        currencyVND(
-                                            priceSale(
-                                                productCollectionShow.id - 1
-                                            )
-                                        )
-                                    }}
-                                </h5>
-                            </del>
-                        </div>
-                    </div>
-                    <div class="break-line"></div>
-                    <div class="order">
-                        <div class="size">
-                            <span>Size: </span>
-                            <button class="size-btn">S</button
-                            ><button class="size-btn">M</button
-                            ><button class="size-btn">L</button>
-                        </div>
-                        <div class="size-choosing">
-                            <a href="">HƯỚNG DẪN CHỌN SIZE</a>
-                        </div>
-                        <div class="add-to-cart">
-                            <button class="add-btn">Thêm vào giỏ</button>
-                        </div>
-                        <div class="logo-small">
-                            <div class="logo-image">
-                                <img
-                                    src="../assets/images/MiddleLogo.png"
-                                    alt=""
-                                    class="logo-img"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </v-card>
-        </v-dialog>
     </section>
     <GoToTop></GoToTop>
     <Footer></Footer>
@@ -638,6 +508,7 @@ import GoToTop from "@/components/GoToTop.vue";
 import Header from "../components/Header.vue";
 import HeaderBottomNav from "../components/HeaderBottomNav.vue";
 import Footer from "../components/Footer.vue";
+import ProductModal from "@/components/ProductModal.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css/grid";
 // Import Swiper styles
@@ -664,6 +535,7 @@ export default {
         Footer,
         HeaderBottomNav,
         Swiper,
+        ProductModal,
         SwiperSlide,
         GoToTop,
     },
@@ -699,139 +571,21 @@ export default {
                 params: { collectionName: path },
             });
         },
+        ShowproductModal(item) {
+            this.productInModal = item;
+            this.isShowproductModal = true;
+            console.log(item);
+        },
     },
     data() {
         return {
             products: [],
-            productCollection: [
-                {
-                    id: 1,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 33000000,
-                    salePercent: 30,
-                    quickImage: [],
-                },
-                {
-                    id: 2,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 3,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 4,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 5,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 6,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 7,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-                {
-                    id: 8,
-                    imageUrl:
-                        "https://product.hstatic.net/1000351433/product/5677_e0ce5f2d8cbe47248975bcfc810a3f3d_grande.jpg",
-                    imageOverlayUrl:
-                        "https://product.hstatic.net/1000351433/product/7__15__b82550fcffd34a87a2aa79bea4c71e90_grande.jpg",
-                    name: "BASIC TEE - BLACK",
-                    price: 330000,
-                    salePercent: 30,
-                    quickImage: [
-                        "https://product.hstatic.net/1000351433/product/7091_0c15e040a2644a63b7e7435c246d1480_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7093_c100b276eb8b491b9bd08e80d70ffaf8_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7086_f6f680bd8675471cbd6382d12b82227c_master.jpg",
-                        "https://product.hstatic.net/1000351433/product/dsc_7087_3877dca91f0541d7b64be0be8faa44c3_master.jpg",
-                    ],
-                },
-            ],
-            isShowModal: false,
+            productCollection: [],
             isShowModalCollection: false,
-            productShowInModal: {},
             productCollectionShow: {},
+            productInModal: {},
+            isShowproductModal: false,
+            itemInShowProductModal: 0,
         };
     },
     computed: {},
@@ -849,6 +603,14 @@ export default {
             .get(`http://localhost:3000/collections?path_like=best-seller`)
             .then((res) => {
                 this.products = res.data[0].products;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        axios
+            .get(`http://localhost:3000/collections?path_like=sale-end-season`)
+            .then((res) => {
+                this.productCollection = res.data[0].products;
             })
             .catch((error) => {
                 console.log(error);
@@ -1350,175 +1112,6 @@ section {
                         background-position: center;
                         text-transform: uppercase;
                         font-weight: 700;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.dialog {
-    border: 2px solid #000;
-
-    .card-loader {
-        width: 500px;
-        height: 350px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-
-        .modal-image {
-            height: 100%;
-            width: 60%;
-            background-color: white;
-
-            .image-content {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 40%;
-                height: auto;
-
-                img {
-                    width: 90%;
-                    height: auto;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-        }
-
-        .modal-content {
-            height: 100%;
-            width: 40%;
-            background-color: white;
-            padding-right: 10px;
-            display: flex;
-            justify-content: left;
-            flex-direction: column;
-
-            .detail {
-                margin-top: 20px;
-                display: flex;
-                justify-content: left;
-                align-items: center;
-                flex-direction: column;
-                width: 100%;
-                height: 30%;
-
-                .detail--name {
-                    margin-top: 5px;
-                    height: 60%;
-                    width: 100%;
-
-                    h3 {
-                        font-weight: 700;
-                        text-transform: uppercase;
-                    }
-                }
-
-                .detail--price {
-                    height: 40%;
-                    width: 100%;
-                    display: flex;
-                    justify-content: left;
-                    align-items: center;
-                    align-content: space-between;
-                    h5 {
-                        font-weight: 700;
-                        font-size: 14px;
-                        text-transform: uppercase;
-                    }
-                }
-            }
-
-            .break-line {
-                width: 100%;
-                height: 5%;
-                border-bottom: 3px solid #000;
-            }
-
-            .order {
-                width: 100%;
-                height: 57%;
-                display: flex;
-                justify-content: left;
-                // align-items: center;
-                flex-direction: column;
-
-                .size {
-                    width: 70%;
-                    height: 20%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-
-                    span {
-                        text-transform: uppercase;
-                        font-size: 14px;
-                        color: #000;
-                        font-weight: 700;
-                    }
-
-                    .size-btn {
-                        width: fit-content;
-                        padding: 0 4px;
-                        border: 1px solid var(--primary-text);
-                        border-radius: 4px;
-                        font-size: 12px;
-
-                        &:hover {
-                            background-color: #000;
-                            color: white;
-                        }
-                    }
-                }
-
-                .size-choosing {
-                    width: 100%;
-                    height: 30%;
-
-                    a {
-                        text-decoration: none;
-                        color: var(--primary-color);
-                        font-weight: 700;
-                    }
-                }
-
-                .add-to-cart {
-                    width: 80%;
-                    height: 20%;
-
-                    .add-btn {
-                        border: none;
-                        background-color: var(--primary-color);
-                        font-size: 14px;
-                        font-weight: 600;
-                        width: 90%;
-                        border-radius: 4px;
-                        padding: 5px;
-
-                        &:hover {
-                            opacity: 0.9;
-                        }
-                    }
-                }
-
-                .logo-small {
-                    height: 30%;
-                    width: 100%;
-
-                    .logo-image {
-                        height: 100%;
-                        width: 100%;
-
-                        .logo-img {
-                            height: 100%;
-                            width: auto;
-                            object-fit: cover;
-                            object-position: center;
-                        }
                     }
                 }
             }

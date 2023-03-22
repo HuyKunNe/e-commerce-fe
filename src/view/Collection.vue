@@ -30,7 +30,10 @@
                                             icon="fa-regular fa-eye"
                                         />
                                     </button>
-                                    <button class="quick-view">
+                                    <button
+                                        class="quick-view"
+                                        @click="ShowproductModal(item)"
+                                    >
                                         Xem nhanh
                                         <font-awesome-icon
                                             icon="fa-regular fa-eye"
@@ -38,7 +41,6 @@
                                     </button>
                                 </div>
                             </div>
-
                             <div class="card-tag" v-if="item.status !== ''">
                                 <div class="car-tag--text">
                                     {{ item.status }}
@@ -79,6 +81,10 @@
                             </div>
                         </div>
                     </div>
+                    <product-modal
+                        v-model="isShowproductModal"
+                        :product="productInModal"
+                    />
                 </div>
             </div>
         </div>
@@ -95,6 +101,8 @@ import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import axios from "axios";
 import { globals } from "../globals";
+import ProductModal from "@/components/ProductModal.vue";
+
 export default {
     name: "CollectionPage",
     components: {
@@ -103,12 +111,15 @@ export default {
         GoToTop,
         Sidebar,
         Footer,
+        ProductModal,
     },
     data() {
         return {
             collectionName: "",
             collection: [],
-            product: {},
+            productInModal: {},
+            isShowproductModal: false,
+            itemInShowProductModal: 0,
         };
     },
     methods: {
@@ -131,6 +142,13 @@ export default {
                 style: "currency",
                 currency: "VND",
             });
+        },
+        logItem(item) {
+            console.log(item);
+        },
+        ShowproductModal(item) {
+            this.productInModal = item;
+            this.isShowproductModal = true;
         },
     },
     mounted() {
