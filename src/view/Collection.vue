@@ -83,17 +83,24 @@
                     </div>
                     <product-modal
                         v-model="isShowproductModal"
+                        @click="getProductPaging()"
                         :product="productInModal"
                     />
                 </div>
             </div>
         </div>
+        <pagination-bar
+            :total-pages="totalPage"
+            v-model="currentPage"
+            @click="getProductPaging()"
+        ></pagination-bar>
     </div>
     <Footer></Footer>
     <GoToTop></GoToTop>
 </template>
 
 <script>
+import { ref } from "vue";
 import Footer from "@/components/Footer.vue";
 import GoToTop from "@/components/GoToTop.vue";
 import Header from "@/components/Header.vue";
@@ -102,6 +109,7 @@ import Sidebar from "@/components/Sidebar.vue";
 import axios from "axios";
 import { globals } from "../globals";
 import ProductModal from "@/components/ProductModal.vue";
+import PaginationBar from "@/components/PaginationBar.vue";
 
 export default {
     name: "CollectionPage",
@@ -112,14 +120,18 @@ export default {
         Sidebar,
         Footer,
         ProductModal,
+        PaginationBar,
     },
     data() {
         return {
             collectionName: "",
             collection: [],
+            productPaging: [],
             productInModal: {},
             isShowproductModal: false,
             itemInShowProductModal: 0,
+            totalPage: 0,
+            pageSize: 5,
         };
     },
     methods: {
@@ -132,6 +144,14 @@ export default {
                 )
                 .then((res) => {
                     this.collection = res.data[0].products;
+                    this.totalPage = Math.floor(
+                        this.collection.length / this.pageSize
+                    );
+
+                    if (this.totalPage * this.pageSize < this.collection.length)
+                        this.totalPage++;
+                    this.currentPage = 1;
+                    this.getProductPaging();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -150,6 +170,12 @@ export default {
             this.productInModal = item;
             this.isShowproductModal = true;
         },
+        getProductPaging() {
+            const startIndex = (this.currentPage - 1) * this.pageSize;
+            var endIndex = startIndex + this.pageSize - 1;
+            if (endIndex > this.collection.length)
+                endIndex = this.collection.length;
+        },
     },
     mounted() {
         this.collectionName = this.$route.params.collectionName;
@@ -165,8 +191,10 @@ export default {
     },
     setup() {
         const categories = globals.categories;
+        const currentPage = ref(1);
         return {
             categories,
+            currentPage,
         };
     },
 };
