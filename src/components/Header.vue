@@ -4,34 +4,22 @@
         <div class="header">
             <div class="left-logo">
                 <router-link to="/">
-                    <img
-                        src="../assets/images/LeftLogo.png"
-                        alt="Bad Habits Official Store"
-                        class="left-logo-img"
-                        style="height: 95px"
-                    />
+                    <img src="../assets/images/LeftLogo.png" alt="Bad Habits Official Store" class="left-logo-img"
+                        style="height: 95px" />
                 </router-link>
             </div>
             <div class="middle-logo">
                 <router-link to="/">
-                    <img
-                        src="../assets/images/MiddleLogo.png"
-                        alt="Bad Habits Official Store"
-                        class="middle-logo-img"
-                        style="height: 95px"
-                    />
+                    <img src="../assets/images/MiddleLogo.png" alt="Bad Habits Official Store" class="middle-logo-img"
+                        style="height: 95px" />
                 </router-link>
             </div>
             <div class="header-icon">
                 <router-link to="/">
                     <div class="icon">
                         <div class="right-logo">
-                            <img
-                                src="../assets/images/RightLogo.png"
-                                alt="Bad Habits Official Store"
-                                class="right-logo-img"
-                                style="height: 55px; width: 40px"
-                            />
+                            <img src="../assets/images/RightLogo.png" alt="Bad Habits Official Store" class="right-logo-img"
+                                style="height: 55px; width: 40px" />
                         </div>
                     </div>
                 </router-link>
@@ -39,43 +27,22 @@
                 <!-- Search -->
                 <div class="icon">
                     <div class="search-icon" @click="handleShowSearchModal()">
-                        <img
-                            src="../assets/images/search-icon.png"
-                            class="search-icon-img"
-                            style="height: 40px; width: 40px"
-                        />
+                        <img src="../assets/images/search-icon.png" class="search-icon-img"
+                            style="height: 40px; width: 40px" />
                     </div>
                     <div class="icon--hover"></div>
                 </div>
-                <v-dialog
-                    v-model="isShowSearchModal"
-                    width="1860px"
-                    height="540px"
-                    class="dialog"
-                >
-                    <v-card
-                        width="100%"
-                        height="100%"
-                        class="dialog-loader"
-                        variant="outlined"
-                    >
+                <v-dialog v-model="isShowSearchModal" width="1860px" height="540px" class="dialog">
+                    <v-card width="100%" height="100%" class="dialog-loader" variant="outlined">
                         <div class="search-modal">
                             <div class="category">
-                                <button
-                                    class="category-btn"
-                                    v-for="item in category"
-                                    :key="item.id"
-                                >
+                                <button class="category-btn" v-for="item in category" :key="item.id">
                                     {{ item }}
                                 </button>
                             </div>
                             <div class="search-wrapper">
                                 <div class="search-filed">
-                                    <input
-                                        class="search-field-input"
-                                        type="text"
-                                        placeholder="Search"
-                                    />
+                                    <input class="search-field-input" type="text" placeholder="Search" />
                                 </div>
                                 <div class="search-btn-field">
                                     <button class="search-btn">Search</button>
@@ -86,11 +53,7 @@
                                     <p class="popular-heading--text">POPULAR</p>
                                 </div>
                                 <div class="popular-list">
-                                    <div
-                                        class="popular-item"
-                                        v-for="item in popular"
-                                        :key="item.id"
-                                    >
+                                    <div class="popular-item" v-for="item in popular" :key="item.id">
                                         <p class="popular-item--text">
                                             {{ item }}
                                         </p>
@@ -102,39 +65,25 @@
                 </v-dialog>
                 <!-- Cart -->
                 <div class="icon">
-                    <div
-                        class="cart-icon"
-                        @click="
-                            isOpened = true;
-                            calcTotalPriceOnClick();
-                        "
-                    >
-                        <img
-                            src="../assets/images/cart.png"
-                            alt=""
-                            class="search-icon-img"
-                            style="height: 40px; width: 40px"
-                        />
+                    <div class="cart-icon" @click="
+                        isOpened = true;
+                    calcTotalPriceOnClick();
+                                                                                                ">
+                        <img src="../assets/images/cart.png" alt="" class="search-icon-img"
+                            style="height: 40px; width: 40px" />
                         <div class="cart-icon-count">
                             <p class="">{{ carts.length }}</p>
                         </div>
                     </div>
                     <div class="icon--hover"></div>
                 </div>
-                <VueSidePanel
-                    v-model="isOpened"
-                    width="600px"
-                    class="side-panel"
-                    hide-close-btn
-                >
+                <VueSidePanel v-model="isOpened" width="600px" class="side-panel" hide-close-btn>
                     <template #header>
                         <div style="text-align: left; height: 60px">
-                            <h2
-                                :style="{
-                                    fontSize: '28px',
-                                    margin: '30px 20px 0 30px',
-                                }"
-                            >
+                            <h2 :style="{
+                                fontSize: '28px',
+                                margin: '30px 20px 0 30px',
+                            }">
                                 Giỏ hàng
                             </h2>
                         </div>
@@ -142,53 +91,31 @@
                     </template>
                     <template #default>
                         <div class="cart list-item">
-                            <div
-                                class="cart list-item--empty"
-                                v-if="carts.length === 0"
-                            >
+                            <div class="cart list-item--empty" v-if="carts.length === 0">
                                 Không có sản phẩm trong giỏ hàng
                             </div>
-                            <div
-                                class="cart list-item item"
-                                v-for="item in carts"
-                                :key="item.id"
-                            >
+                            <div class="cart list-item item" v-for="item in carts" :key="item.id">
                                 <div class="item-image">
                                     <a :href="item.href">
-                                        <img
-                                            class="item-image--img"
-                                            :src="item.imageUrl"
-                                            alt=""
-                                        />
+                                        <img class="item-image--img" :src="item.imageUrl" alt="" />
                                     </a>
                                 </div>
                                 <div class="item-info">
                                     <div class="item-info--title">
                                         <div class="item-infor--title title">
-                                            <a
-                                                class="item-link"
-                                                :href="item.href"
-                                                >{{ item.name }}</a
-                                            >
+                                            <a class="item-link" :href="item.href">{{ item.name }}</a>
                                         </div>
-                                        <div
-                                            class="item-infor--title remove-btn"
-                                        >
-                                            <button
-                                                class="remove-btn"
+                                        <div class="item-infor--title remove-btn">
+                                            <button class="remove-btn"
                                                 @click="
                                                     removeItemInCarts(item.id);
-                                                    calcTotalPrice();
-                                                "
-                                            >
+                                                calcTotalPrice();
+                                                                                                                                                                                                    ">
                                                 x
                                             </button>
                                         </div>
                                     </div>
-                                    <div
-                                        class="item-info--size"
-                                        style="font-size: 18px"
-                                    >
+                                    <div class="item-info--size" style="font-size: 18px">
                                         <span>size SIZE {{ item.size }}</span>
                                     </div>
                                     <div class="item-info--price">
@@ -196,41 +123,24 @@
                                             <button
                                                 @click="
                                                     minus(item.id);
-                                                    calculatePrice(item.id);
-                                                "
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-minus"
-                                                />
+                                                calculatePrice(item.id);
+                                                                                                                                                                                                    ">
+                                                <font-awesome-icon icon="fa-solid fa-minus" />
                                             </button>
-                                            <input
-                                                class="quantity-btn--counter"
-                                                id="quantity-item"
-                                                placeholder="1"
-                                                name="quantity"
-                                                v-model.lazy="item.quantity"
-                                                type="text"
-                                                readonly
-                                            />
+                                            <input class="quantity-btn--counter" id="quantity-item" placeholder="1"
+                                                name="quantity" v-model.lazy="item.quantity" type="text" readonly />
                                             <button
                                                 @click="
                                                     plus(item.id);
-                                                    calculatePrice(item.id);
-                                                "
-                                                class="plus"
-                                            >
-                                                <font-awesome-icon
-                                                    icon="fa-solid fa-plus"
-                                                />
+                                                calculatePrice(item.id);
+                                                                                                                                                                                                    "
+                                                class="plus">
+                                                <font-awesome-icon icon="fa-solid fa-plus" />
                                             </button>
                                         </div>
                                         <div class="item-info--totalprice">
-                                            <input
-                                                type="text"
-                                                class="price-item"
-                                                readonly
-                                                v-model.lazy="item.priceFormat"
-                                            />
+                                            <input type="text" class="price-item" readonly
+                                                v-model.lazy="item.priceFormat" />
                                         </div>
                                     </div>
                                 </div>
@@ -240,13 +150,8 @@
                         <div class="cart payment">
                             <div class="cart payment--header">
                                 <p class="payment-header--title">Tạm tính</p>
-                                <input
-                                    type="text"
-                                    class="payment-price"
-                                    v-model.lazy="totalPrice"
-                                    @changed="formatNumber(totalPrice)"
-                                    readonly
-                                />
+                                <input type="text" class="payment-price" v-model.lazy="totalPrice"
+                                    @changed="formatNumber(totalPrice)" readonly />
                             </div>
                             <div class="cart payment-description">
                                 <p class="payment-description--text">
@@ -265,49 +170,30 @@
                             </div>
                             <div class="cart-recommend content">
                                 <div class="cart-recommend list-products">
-                                    <div
-                                        class="list-products-item"
-                                        v-for="item in recommends"
-                                        :key="item.id"
-                                    >
+                                    <div class="list-products-item" v-for="item in recommends" :key="item.id">
                                         <div class="item-img">
                                             <a :href="item.href">
-                                                <img
-                                                    :src="item.imageUrl"
-                                                    alt=""
-                                                />
+                                                <img :src="item.imageUrl" alt="" />
                                             </a>
                                         </div>
                                         <div class="item-info">
-                                            <a
-                                                :href="item.href"
-                                                class="title"
-                                                >{{ item.name }}</a
-                                            >
+                                            <a :href="item.href" class="title">{{ item.name }}</a>
                                             <div class="price">
                                                 {{ formatNumber(item.price) }}
                                             </div>
-                                            <a :href="item.href" class="detail"
-                                                >Xem chi tiết</a
-                                            >
+                                            <a :href="item.href" class="detail">Xem chi tiết</a>
                                         </div>
                                     </div>
-                                    <div
-                                        class="line-break"
-                                        :style="{
-                                            marginLeft: 30 + 'px',
-                                            marginBottom: 20 + 'px',
-                                        }"
-                                    ></div>
+                                    <div class="line-break" :style="{
+                                        marginLeft: 30 + 'px',
+                                        marginBottom: 20 + 'px',
+                                    }"></div>
                                 </div>
                             </div>
                             <div class="car-recommend-bottom">
-                                <button
-                                    class="view-more"
-                                    @click="
-                                        viewCollection('all-products')
-                                    "
-                                >
+                                <button class="view-more" @click="
+                                    viewCollection('all-products')
+                                ">
                                     Xem thêm
                                 </button>
                             </div>
@@ -316,12 +202,8 @@
                 </VueSidePanel>
                 <div class="icon">
                     <div class="account-icon" @click="viewAccount">
-                        <img
-                            src="../assets/images/account.png"
-                            alt=""
-                            class="search-icon-img"
-                            style="height: 40px; width: 40px"
-                        />
+                        <img src="../assets/images/account.png" alt="" class="search-icon-img"
+                            style="height: 40px; width: 40px" />
                     </div>
                     <div class="icon--hover"></div>
                 </div>
@@ -482,9 +364,11 @@ export default {
             this.totalPrice = this.formatNumber(totalPrice);
         },
         async viewAccount() {
-            let user = localStorage.getItem("user-login");
+            let user = localStorage.getItem("user-info");
             if (!user) {
                 this.$router.push({ name: "Login" });
+            } else {
+                this.$router.push({ name: "Profile" });
             }
         },
         removeItemInCarts(id) {
@@ -540,6 +424,7 @@ export default {
     position: absolute;
     top: -100px;
 }
+
 .header-wrapper {
     width: (100%);
     height: 125px;
@@ -603,6 +488,7 @@ export default {
     box-shadow: 1px 5px 5px 5px rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+
 .category {
     top: 0;
     position: relative;
@@ -616,6 +502,7 @@ export default {
     flex-wrap: wrap;
     box-shadow: none;
 }
+
 .category-btn {
     width: fit-content;
     height: fit-content;
@@ -627,6 +514,7 @@ export default {
     color: var(--primary-text);
     background-color: rgba(214, 213, 211, 0.1);
 }
+
 .category-btn:hover {
     cursor: pointer;
     opacity: 0.8;
@@ -645,9 +533,11 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+
     .search-filed {
         height: 100%;
         width: 70%;
+
         .search-field-input {
             display: inline-block;
             width: 100%;
@@ -656,11 +546,13 @@ export default {
             font-size: 17px;
         }
     }
+
     .search-btn-field {
         height: 100%;
         width: 20%;
         margin: calc(15%-50px) 0;
         background-color: var(--primary-color);
+
         .search-btn {
             border: none;
             background-color: transparent;
@@ -670,11 +562,13 @@ export default {
             font-weight: 600;
         }
     }
+
     .search-btn-field:hover {
         opacity: 0.8;
         background-color: var(--primary-color);
     }
 }
+
 .search-btn:hover {
     cursor: pointer;
 }
@@ -734,15 +628,15 @@ export default {
     cursor: pointer;
 }
 
-.search-icon:hover + .icon--hover {
+.search-icon:hover+.icon--hover {
     display: block;
 }
 
-.cart-icon:hover + .icon--hover {
+.cart-icon:hover+.icon--hover {
     display: block;
 }
 
-.account-icon:hover + .icon--hover {
+.account-icon:hover+.icon--hover {
     display: block;
 }
 
@@ -822,6 +716,7 @@ export default {
 }
 
 .item-infor--title.title {
+    color: black;
     width: 90%;
 }
 
@@ -907,11 +802,13 @@ export default {
 .item-info--title a:visited {
     color: black;
 }
+
 .item-info--title {
     a:hover {
         color: var(--primary-color);
     }
 }
+
 .cart.payment {
     width: 540px;
     margin-bottom: 30px;
@@ -1037,12 +934,15 @@ export default {
             a {
                 text-decoration: none;
             }
+
             .price {
                 font-size: 16px;
             }
+
             .title {
                 color: black;
             }
+
             .title:hover {
                 color: var(--primary-color);
             }
@@ -1133,5 +1033,4 @@ export default {
     100% {
         left: -100%;
     }
-}
-</style>
+}</style>

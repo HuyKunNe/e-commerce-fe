@@ -31,13 +31,14 @@
                     <div class="account-main">
                         <div class="infor-account">
                             <p class="title-detail">Thông tin tài khoản</p>
-                            <h2 class="name">Dinh Quang Huy</h2>
-                            <p class="email">dinhquanghuydt@gmail.com</p>
+                            <h2 class="name">{{ userInfor.fullName }}</h2>
+                            <p class="email">{{ userInfor.email ? userInfor.email : "" }}</p>
                             <div class="address">
-                                <div class="street">176/4 Le Van Sy</div>
-                                <div class="district">Phu Nhuan</div>
-                                <div class="city">Ho Chi Minh</div>
-                                <div class="phone-number">0888465559</div>
+                                <div class="street" v-if="userInfor.street">{{ userInfor.street }}
+                                </div>
+                                <div class="district" v-if="userInfor.district">{{ userInfor.district }}</div>
+                                <div class="city" v-if="userInfor.city">{{ userInfor.city }}</div>
+                                <div class="phone-number">{{ userInfor.phoneNumber ? userInfor.phoneNumber : "" }}</div>
                                 <a @click="viewAddress()">Xem địa chỉ</a>
                             </div>
                         </div>
@@ -46,10 +47,7 @@
                                 DANH SÁCH ĐƠN HÀNG MỚI NHẤT
                             </div>
                             <div class="order-content">
-                                <div
-                                    class="empty-alert"
-                                    v-if="orders.length === 0"
-                                >
+                                <div class="empty-alert" v-if="orders.length === 0">
                                     <p>Bạn chưa đặt mua sản phẩm.</p>
                                 </div>
                             </div>
@@ -68,6 +66,8 @@ import Footer from "@/components/Footer.vue";
 import GoToTop from "@/components/GoToTop.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
+import { globals } from "@/globals";
+
 export default {
     name: "ProfilePage",
     components: {
@@ -83,16 +83,19 @@ export default {
     },
     methods: {
         async viewAddress() {
-            // let user = localStorage.getItem("user-login");
-            // if (!user) {
-            //     this.$router.push({ name: "Login" });
-            // } else this.$router.push({ name: "Address" });
+            
         },
         async logOut() {
-            this.$router.push({ name: "Home" });
-            localStorage.removeItem("user-login");
+            await localStorage.removeItem("user-info");
+            await this.$router.push({ name: "Home" });
         },
     },
+    setup() {
+        const userInfor = globals.userInfor;
+        return {
+            userInfor,
+        }
+    }
 };
 </script>
 
@@ -101,17 +104,21 @@ export default {
     font-family: "Cousine", monospace;
     // height: 540px;
     padding: 48px 0;
+
     .layout-profile {
         height: fit-content;
         margin: auto;
+
         .container {
             width: calc(75%);
             height: 100%;
             margin: auto;
+
             .wrapper-heading {
                 height: 20%;
                 width: 100%;
                 text-align: right;
+
                 .wapper-heading--text {
                     font-size: 25px;
                     font-weight: 700;
@@ -120,16 +127,19 @@ export default {
                     padding-right: 20px;
                 }
             }
+
             .wrapper-content {
                 height: 80%;
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: flex-start;
+
                 .account-sidebar {
                     width: 18%;
                     height: 100%;
                     padding: 0 15px;
+
                     .title-sidebar {
                         font-size: 15px;
                         font-weight: 700;
@@ -138,23 +148,28 @@ export default {
                         text-transform: uppercase;
                         padding-bottom: 10px;
                     }
+
                     .account-content {
                         width: 100%;
                         height: 70%;
+
                         .account-list {
                             height: 100%;
                             width: 100%;
+
                             .list-content {
                                 .item-content {
                                     padding-left: 10px;
                                     padding-bottom: 10px;
                                     list-style-position: inside;
                                     list-style: none;
+
                                     a {
                                         text-decoration: none;
                                         color: black;
                                         font-size: 14px;
                                         font-weight: 400;
+
                                         &:hover {
                                             cursor: pointer;
                                         }
@@ -164,14 +179,17 @@ export default {
                         }
                     }
                 }
+
                 .account-main {
                     width: 80%;
                     height: 100%;
                     border-left: 1px solid black;
                     padding-left: 30px;
+
                     .infor-account {
                         height: 100%;
                         width: 100%;
+
                         .title-detail {
                             padding-bottom: 8px;
                             margin-bottom: 3px;
@@ -181,6 +199,7 @@ export default {
                             letter-spacing: 1px;
                             font-weight: 700;
                         }
+
                         .name {
                             font-weight: 500;
                             font-size: 16px;
@@ -188,12 +207,14 @@ export default {
                             margin: 10px 0 5px;
                             display: block;
                         }
+
                         .email {
                             margin-bottom: 3px;
                             line-height: 24px;
                             font-weight: 400;
                             font-size: 14px;
                         }
+
                         .address {
                             width: 100%;
                             height: 30%;
@@ -201,19 +222,24 @@ export default {
                             font-size: 14px;
                             margin-bottom: 3px;
                             font-weight: 400;
+
                             div {
                                 margin-bottom: 3px;
                             }
+
                             a {
                                 color: black;
                                 cursor: pointer;
                                 text-decoration: underline;
                             }
+
                             margin-bottom: 30px;
                         }
                     }
+
                     .order-account {
                         width: 100%;
+
                         .order-heading {
                             text-transform: uppercase;
                             font-size: 15px;
@@ -222,6 +248,7 @@ export default {
                             position: relative;
                             padding-bottom: 8px;
                         }
+
                         .empty-alert {
                             position: relative;
                             padding: 0.75rem 1.25rem;
@@ -238,6 +265,7 @@ export default {
         }
     }
 }
+
 .section-test {
     height: 580px;
     width: 100vw;
