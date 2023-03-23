@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import axios from "axios";
-import Header from "@/components/Header.vue";
+import api from "@/api";
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 export default {
     name: "LoginPage",
@@ -81,8 +81,7 @@ export default {
             document.getElementById("recover-password").style.display = "none";
         },
         async login() {
-            let result = await axios.post(
-                `http://localhost:8080/auth/login`,
+            let result = await api.post(`/auth/login`,
                 this.loginDTO
             );
             if (result.status == 200 && result.data) {

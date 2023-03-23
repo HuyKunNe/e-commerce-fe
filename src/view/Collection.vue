@@ -6,38 +6,19 @@
         <div class="products-layout">
             <div class="container">
                 <div class="collection-list">
-                    <div
-                        class="collection-item"
-                        v-for="item in collection"
-                        :key="item.id"
-                    >
+                    <div class="collection-item" v-for="item in collection" :key="item.id">
                         <div class="item-image">
-                            <img
-                                alt=""
-                                class="item-img"
-                                :src="item.imageUrl[0]"
-                            />
+                            <img alt="" class="item-img" :src="item.imageUrl[0]" />
                             <div class="overlay-img">
-                                <img
-                                    alt=""
-                                    class="item-img--lazyload"
-                                    :src="item.imageUrl[1]"
-                                />
+                                <img alt="" class="item-img--lazyload" :src="item.imageUrl[1]" />
                                 <div class="overlay-btn">
                                     <button class="view">
                                         Xem
-                                        <font-awesome-icon
-                                            icon="fa-regular fa-eye"
-                                        />
+                                        <font-awesome-icon icon="fa-regular fa-eye" />
                                     </button>
-                                    <button
-                                        class="quick-view"
-                                        @click="ShowproductModal(item)"
-                                    >
+                                    <button class="quick-view" @click="ShowproductModal(item)">
                                         Xem nhanh
-                                        <font-awesome-icon
-                                            icon="fa-regular fa-eye"
-                                        />
+                                        <font-awesome-icon icon="fa-regular fa-eye" />
                                     </button>
                                 </div>
                             </div>
@@ -46,13 +27,10 @@
                                     {{ item.status }}
                                 </div>
                             </div>
-                            <div
-                                class="sale-label"
-                                v-if="
-                                    item.salePercent !== 0 &&
-                                    item.salePercent !== undefined
-                                "
-                            >
+                            <div class="sale-label" v-if="
+                                item.salePercent !== 0 &&
+                                item.salePercent !== undefined
+                            ">
                                 {{ item.salePercent }}% OFF
                             </div>
                         </div>
@@ -61,19 +39,16 @@
                                 {{ item.productName }}
                             </div>
                             <div class="item-price">
-                                <del
-                                    class="cost"
-                                    v-if="
-                                        item.salePercent !== 0 &&
-                                        item.salePercent !== undefined
-                                    "
-                                    >{{
-                                        currencyVND(
-                                            item.price *
-                                                ((100 - item.salePercent) *
-                                                    0.01)
-                                        )
-                                    }}
+                                <del class="cost" v-if="
+                                    item.salePercent !== 0 &&
+                                    item.salePercent !== undefined
+                                ">{{
+    currencyVND(
+        item.price *
+        ((100 - item.salePercent) *
+            0.01)
+    )
+}}
                                 </del>
                                 <span class="price-sale">
                                     {{ currencyVND(item.price) }}
@@ -81,19 +56,11 @@
                             </div>
                         </div>
                     </div>
-                    <product-modal
-                        v-model="isShowproductModal"
-                        @click="getProductPaging()"
-                        :product="productInModal"
-                    />
+                    <product-modal v-model="isShowproductModal" @click="getProductPaging()" :product="productInModal" />
                 </div>
             </div>
         </div>
-        <pagination-bar
-            :total-pages="totalPage"
-            v-model="currentPage"
-            @click="getProductPaging()"
-        ></pagination-bar>
+        <pagination-bar :total-pages="totalPage" v-model="currentPage" @click="getProductPaging()"></pagination-bar>
     </div>
     <Footer></Footer>
     <GoToTop></GoToTop>
@@ -106,11 +73,10 @@ import GoToTop from "@/components/GoToTop.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 import Sidebar from "@/components/Sidebar.vue";
-import axios from "axios";
 import { globals } from "../globals";
 import ProductModal from "@/components/ProductModal.vue";
 import PaginationBar from "@/components/PaginationBar.vue";
-
+import api from "@/api";
 export default {
     name: "CollectionPage",
     components: {
@@ -138,9 +104,9 @@ export default {
         async fetchCollectionData() {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0;
-            await axios
+            await api
                 .get(
-                    `http://localhost:3000/collections?path_like=${this.collectionName}`
+                    `collections?path_like=${this.collectionName}`
                 )
                 .then((res) => {
                     this.collection = res.data[0].products;
@@ -209,20 +175,24 @@ export default {
     display: flex;
     justify-content: right;
     align-items: center;
+
     .sidebar-product {
         height: 100%;
         width: 20%;
         position: absolute;
     }
+
     .products-layout {
         right: 0;
         height: fit-content;
         width: 80%;
+
         .container {
             padding: 0 20px;
             height: fit-content;
 
             width: 100%;
+
             .collection-list {
                 display: flex;
                 align-items: flex-start;
@@ -231,13 +201,16 @@ export default {
                 width: 100%;
                 margin: auto;
                 padding: 20px;
+
                 .collection-item {
                     height: 455px;
                     width: 24%;
+
                     .item-image {
                         height: fit-content;
                         width: 100%;
                         position: relative;
+
                         .item-img {
                             width: 100%;
                             height: auto;
@@ -256,15 +229,18 @@ export default {
                             object-fit: cover;
                             transition: 0.3s ease;
                             opacity: 0;
+
                             .item-img--lazyload {
                                 width: 100%;
                                 height: 100%;
                                 object-fit: cover;
                             }
                         }
+
                         &:hover {
                             cursor: pointer;
                         }
+
                         .overlay-btn {
                             height: 100%;
                             width: 70%;
@@ -304,6 +280,7 @@ export default {
                                 cursor: pointer;
                             }
                         }
+
                         .card-tag {
                             position: absolute;
                             top: 0;
@@ -317,6 +294,7 @@ export default {
                             justify-content: center;
                             align-items: center;
                         }
+
                         .sale-label {
                             position: absolute;
                             bottom: 30px;
@@ -334,9 +312,11 @@ export default {
                             font-weight: 700;
                         }
                     }
+
                     .item-image:hover .overlay-img {
                         opacity: 1;
                     }
+
                     .item-description {
                         display: flex;
                         width: 100%;
@@ -349,6 +329,7 @@ export default {
                         font-weight: 600;
                         font-size: 15px;
                         line-height: 20px;
+
                         .item-name {
                             width: 100%;
                             height: 30%;
@@ -356,12 +337,14 @@ export default {
                             justify-content: center;
                             align-items: center;
                         }
+
                         .item-price {
                             width: 100%;
                             height: 30%;
                             display: flex;
                             justify-content: center;
                             align-items: center;
+
                             .cost {
                                 display: flex;
                                 justify-content: center;
@@ -369,6 +352,7 @@ export default {
                                 font-size: 12px;
                                 padding-right: 30px;
                             }
+
                             .price-sale {
                                 display: flex;
                                 justify-content: center;
@@ -381,6 +365,7 @@ export default {
             }
         }
     }
+
     .sidebar-product {
         height: 100%;
         width: 15%;
