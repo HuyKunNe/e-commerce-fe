@@ -15,7 +15,7 @@
                             id="email-input"
                             class="email-input"
                             placeholder="Email"
-                            v-model="email"
+                            v-model="loginDTO.email"
                         />
                         <input
                             type="password"
@@ -23,7 +23,7 @@
                             id="password-input"
                             class="password-input"
                             placeholder="Password"
-                            v-model="password"
+                            v-model="loginDTO.password"
                         />
                     </div>
                     <div class="action">
@@ -32,7 +32,9 @@
                             Privacy Policy and Terms of Service apply.
                         </div>
                         <div class="button">
-                            <button class="login-btn">Đăng nhập</button>
+                            <button class="login-btn" @click="login()">
+                                Đăng nhập
+                            </button>
                             <div class="other-action">
                                 <a href="#" @click="showRecovery()"
                                     >Quên mật khẩu?</a
@@ -80,6 +82,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
@@ -92,8 +95,7 @@ export default {
     },
     data() {
         return {
-            email: "",
-            password: "",
+            loginDTO: { email: "", password: "" },
         };
     },
     methods: {
@@ -102,6 +104,20 @@ export default {
         },
         hideRecovery() {
             document.getElementById("recover-password").style.display = "none";
+        },
+        async login() {
+            let result = await axios.post(
+                `http://localhost:8080/auth/login`,
+                this.loginDTO
+            );
+            if (result.status == 200 && result.data) {
+                console.log(result.data.data);
+                localStorage.setItem(
+                    "user-info",
+                    JSON.stringify(result.data[0])
+                );
+                this.$router.push({ name: "Home" });
+            }
         },
     },
     mounted() {
