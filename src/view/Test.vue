@@ -1,20 +1,24 @@
 <template>
-    <div class="pagination">
-        <pagination-button :total-pages="totalPages"></pagination-button>
+    <div class="test">
+        <ToastMessage :toast="toast"></ToastMessage>
     </div>
 </template>
 
 <script>
-import PaginationButton from "@/components/TestComponent.vue";
+import ToastMessage from '@/components/ToastMessage.vue';
 
 export default {
     components: {
-        PaginationButton,
+        ToastMessage,
     },
     name: "TestComponent",
     data() {
         return {
-            totalPages: 10,
+            toast: {
+                status: "Success",
+                title: "Success",
+                msg: "Login Successfully",
+            },
         };
     },
 };
