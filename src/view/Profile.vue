@@ -83,7 +83,7 @@ export default {
     },
     methods: {
         async viewAddress() {
-            
+            await this.$router.push({ name: "Address" });
         },
         async logOut() {
             await localStorage.removeItem("user-info");
