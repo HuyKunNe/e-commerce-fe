@@ -1,13 +1,12 @@
-import axios from "axios";
+import api from "@/api";
 
-const API_URL = "http://localhost:3000/auth/";
 
 class AuthService {
-    login(user) {
-        return axios
-            .post(API_URL + "signin", {
-                username: user.username,
-                password: user.password,
+    login(loginDTO) {
+        return api
+            .post("auth/login", {
+                email: loginDTO.email,
+                password: loginDTO.password,
             })
             .then((response) => {
                 if (response.data.accessToken) {
@@ -22,13 +21,13 @@ class AuthService {
         localStorage.removeItem("user");
     }
 
-    register(user) {
-        return axios.post(API_URL + "signup", {
-            username: user.username,
-            email: user.email,
-            password: user.password,
-        });
-    }
+    // register(user) {
+    //     return axios.post(`auth/register`, {
+    //         username: user.username,
+    //         email: user.email,
+    //         password: user.password,
+    //     });
+    // }
 }
 
 export default new AuthService();

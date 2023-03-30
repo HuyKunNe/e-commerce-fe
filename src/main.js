@@ -13,7 +13,7 @@ import * as directives from "vuetify/directives";
 import router from "./router";
 import vueClickOutsideElement from "vue-click-outside-element";
 import "./assets/css/main.css";
-
+import store from "./store";
 const vuetify = createVuetify({
     components,
     directives,
@@ -25,5 +25,6 @@ createApp(App)
     .use(router)
     .use(vueClickOutsideElement)
     .use(vuetify)
+    .use(store)
     .component("font-awesome-icon", FontAwesomeIcon)
     .mount("#app");

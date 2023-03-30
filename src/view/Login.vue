@@ -9,10 +9,22 @@
                 </div>
                 <div class="content">
                     <div class="login-form">
-                        <input type="email" name="email" id="email-input" class="email-input" placeholder="Email"
-                            v-model="loginDTO.email" />
-                        <input type="password" name="password" id="password-input" class="password-input"
-                            placeholder="Password" v-model="loginDTO.password" />
+                        <input
+                            type="email"
+                            name="email"
+                            id="email-input"
+                            class="email-input"
+                            placeholder="Email"
+                            v-model="loginDTO.email"
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            id="password-input"
+                            class="password-input"
+                            placeholder="Password"
+                            v-model="loginDTO.password"
+                        />
                     </div>
                     <div class="action">
                         <div class="description">
@@ -20,13 +32,20 @@
                             Privacy Policy and Terms of Service apply.
                         </div>
                         <div class="button">
-                            <button class="login-btn" @click="login()">
+                            <button
+                                class="login-btn"
+                                @click="handleLogin(loginDTO)"
+                            >
                                 Đăng nhập
                             </button>
                             <div class="other-action">
-                                <a href="#" @click="showRecovery()">Quên mật khẩu?</a>
+                                <a href="#" @click="showRecovery()"
+                                    >Quên mật khẩu?</a
+                                >
                                 <br />hoặc
-                                <a href="/account/register" title="Đăng ký">Đăng ký</a>
+                                <a href="/account/register" title="Đăng ký"
+                                    >Đăng ký</a
+                                >
                             </div>
                         </div>
                     </div>
@@ -37,8 +56,15 @@
                     </div>
                     <form action="#" class="recovery">
                         <div class="input">
-                            <input type="email" size="30" name="email" placeholder="Email" id="recover-email"
-                                class="recover-input" v-model="email" />
+                            <input
+                                type="email"
+                                size="30"
+                                name="email"
+                                placeholder="Email"
+                                id="recover-email"
+                                class="recover-input"
+                                v-model="email"
+                            />
                         </div>
                         <div class="description">
                             This site is protected by reCAPTCHA and the Google
@@ -46,7 +72,9 @@
                         </div>
                         <div class="action">
                             <button class="submit">Gửi</button>
-                            <a href="#" class="cancle" @click="hideRecovery()">Hủy</a>
+                            <a href="#" class="cancle" @click="hideRecovery()"
+                                >Hủy</a
+                            >
                         </div>
                     </form>
                 </div>
@@ -54,23 +82,34 @@
         </div>
     </section>
     <Footer></Footer>
+    <ToastMessage
+        v-for="toast in toasts"
+        :key="toast.id"
+        :toast="toast"
+        @close="removeToast(toast.id)"
+    ></ToastMessage>
 </template>
 
 <script>
-import api from "@/api";
 import Footer from "@/components/Footer.vue";
+import ToastMessage from "@/components/ToastMessage.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
+import { globals } from "@/globals";
 export default {
     name: "LoginPage",
     components: {
         Header,
         Footer,
+        ToastMessage,
         HeaderBottomNav,
     },
     data() {
         return {
             loginDTO: { email: "", password: "" },
+            loading: false,
+            toastId: 0,
+            toasts: [],
         };
     },
     methods: {
@@ -80,25 +119,67 @@ export default {
         hideRecovery() {
             document.getElementById("recover-password").style.display = "none";
         },
-        async login() {
-            let result = await api.post(`/auth/login`,
-                this.loginDTO
+        // async login() {
+        //     let result = await api.post(`/auth/login`, this.loginDTO);
+        //     if (result.status == 200 && result.data) {
+        //         console.log(result.data.data);
+        //         localStorage.setItem(
+        //             "user-info",
+        //             JSON.stringify(result.data.data)
+        //         );
+        //         this.$router.push({ name: "Home" });
+        //     }
+        // },
+        handleLogin(user) {
+            this.loading = true;
+            let result = this.$store.dispatch("auth/login", user).then(
+                () => {
+                    this.$router.push({ name: "Home" });
+                },
+                (error) => {
+                    this.loading = false;
+                    this.showToast({
+                        status: this.toastStatus.ERROR,
+                        title: this.toastStatus.ERROR,
+                        msg: error.response.message,
+                    });
+                }
             );
-            if (result.status == 200 && result.data) {
-                console.log(result.data.data);
-                localStorage.setItem(
-                    "user-info",
-                    JSON.stringify(result.data.data)
-                );
-                this.$router.push({ name: "Home" });
+            console.log(result);
+            if (result.status !== 200) {
+                this.showToast({
+                    status: this.toastStatus.ERROR,
+                    title: this.toastStatus.ERROR,
+                    msg: "Login failed",
+                });
             }
         },
+        showToast(item) {
+            const toast = {
+                id: this.toastId++,
+                status: item.status,
+                title: item.title,
+                msg: item.msg,
+            };
+            this.toasts.push(toast);
+            setTimeout(() => {
+                this.removeToast(toast.id);
+            }, 3000);
+        },
+        removeToast(id) {
+            this.toasts = this.toasts.filter((toast) => toast.id !== id);
+        },
     },
-    mounted() {
-        let user = localStorage.getItem("user-login");
-        if (user) {
+    created() {
+        if (this.loggedIn) {
             this.$router.push({ name: "Home" });
         }
+    },
+    setup() {
+        const toastStatus = globals.toastStatus;
+        return {
+            toastStatus,
+        };
     },
 };
 </script>
