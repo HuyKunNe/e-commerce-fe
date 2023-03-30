@@ -1,13 +1,23 @@
 <template>
-    <button @click="displayToast()">show Toast</button>
-
     <div id="toast">
         <div class="toast" :style="{ color: color }">
             <div class="toast__icon">
-                <font-awesome-icon :icon="['fas', 'circle-check']" v-if="toast.status === 'Success'" />
-                <font-awesome-icon :icon="['fas', 'circle-exclamation']" v-if="toast.status === 'Warning'" />
-                <font-awesome-icon :icon="['fas', 'circle-info']" v-if="toast.status === 'Info'" />
-                <font-awesome-icon :icon="['fas', 'circle-xmark']" v-if="toast.status === 'Error'" />
+                <font-awesome-icon
+                    :icon="['fas', 'circle-check']"
+                    v-if="toast.status === 'Success'"
+                />
+                <font-awesome-icon
+                    :icon="['fas', 'circle-exclamation']"
+                    v-if="toast.status === 'Warning'"
+                />
+                <font-awesome-icon
+                    :icon="['fas', 'circle-info']"
+                    v-if="toast.status === 'Info'"
+                />
+                <font-awesome-icon
+                    :icon="['fas', 'circle-xmark']"
+                    v-if="toast.status === 'Error'"
+                />
             </div>
             <div class="toast__body">
                 <h3 class="toast__title">{{ toast.title }}</h3>
@@ -15,7 +25,6 @@
             </div>
             <div class="toast__close">
                 <font-awesome-icon :icon="['fas', 'fa-times']" />
-
             </div>
         </div>
     </div>
@@ -23,51 +32,53 @@
 
 <script>
 export default {
-    name: 'ToastMessage',
+    name: "ToastMessage",
     props: {
         toast: {
             type: Object,
-            default: () => { }
-        }
+            default: () => {},
+        },
     },
     data() {
         return {
-            color: '',
-        }
+            color: "",
+        };
     },
     mounted() {
-        if (this.toast.status == 'Success') {
-            this.color = '#47d864';
-        } else if (this.toast.status == 'Warning') {
-            this.color = '#ffc021';
-        } else if (this.toast.status == 'Error') {
-            this.color = '#ff623d';
-        } else this.color = '#2f86eb';
+        if (this.toast.status == "Success") {
+            this.color = "#47d864";
+        } else if (this.toast.status == "Warning") {
+            this.color = "#ffc021";
+        } else if (this.toast.status == "Error") {
+            this.color = "#ff623d";
+        } else this.color = "#2f86eb";
     },
-    methods:{
-        
-    },
-}
+    methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
 #toast {
-    position: absolute;
+    position: relative;
+    display: flex;
+    display: flex;
+    justify-content: right;
+    align-items: center;
     right: 32px;
     top: 100px;
 
     .toast {
         position: relative;
-        width: 380px;
         display: flex;
+        justify-content: center;
         align-items: center;
+        width: 380px;
         padding: 10px 10px;
-        justify-content: space-between;
         background-color: #fff;
         border-radius: 4px;
         border-left: 6px solid;
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.8);
-        animation: slideInLeft ease .3s, fadeOut linear 1s 2.5s forwards;
+        animation: slideInLeft ease 0.3s, fadeOut linear 1s 2.5s forwards;
 
         .toast__icon {
             font-size: 20px;
@@ -97,7 +108,7 @@ export default {
 
         .toast__close {
             display: flex;
-            justify-content: right;
+            justify-content: left;
             width: 5%;
             color: rgba(0, 0, 0, 0.3);
 
@@ -105,10 +116,6 @@ export default {
                 cursor: pointer;
             }
         }
-    }
-
-    .toast+.toast {
-        margin-top: 20px;
     }
 
     @keyframes slideInLeft {
@@ -124,10 +131,12 @@ export default {
     }
 
     @keyframes fadeOut {
-
         to {
             opacity: 0;
         }
     }
+}
+#toast + #toast {
+    margin-top: 20px;
 }
 </style>
