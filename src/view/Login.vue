@@ -145,7 +145,6 @@ export default {
                     });
                 }
             );
-            console.log(result);
             if (result.status !== 200) {
                 this.showToast({
                     status: this.toastStatus.ERROR,

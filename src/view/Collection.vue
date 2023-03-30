@@ -119,18 +119,12 @@ export default {
                     this.currentPage = 1;
                     this.getProductPaging();
                 })
-                .catch((error) => {
-                    console.log(error);
-                });
         },
         currencyVND(value) {
             return value.toLocaleString("it-IT", {
                 style: "currency",
                 currency: "VND",
             });
-        },
-        logItem(item) {
-            console.log(item);
         },
         ShowproductModal(item) {
             this.productInModal = item;

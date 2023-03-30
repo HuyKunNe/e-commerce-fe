@@ -344,7 +344,6 @@ export default {
             this.productShowInModal = this.products.find(
                 (item) => item.id === id
             );
-            console.log("product: ", this.productShowInModal);
         },
         priceSale(i) {
             return (
@@ -362,7 +361,6 @@ export default {
         handleShowModalCollection(id) {
             this.isShowModalCollection = true;
             this.productCollectionShow = this.productCollection[id];
-            console.log(this.productCollectionShow);
         },
         async viewCollection(path) {
             await this.$router.push({
@@ -373,7 +371,6 @@ export default {
         ShowproductModal(item) {
             this.productInModal = item;
             this.isShowproductModal = true;
-            console.log(item);
         },
     },
     data() {
@@ -403,17 +400,11 @@ export default {
             .then((res) => {
                 this.products = res.data[0].products;
             })
-            .catch((error) => {
-                console.log(error);
-            });
         api
             .get(`collections?path_like=sale-end-season`)
             .then((res) => {
                 this.productCollection = res.data[0].products;
             })
-            .catch((error) => {
-                console.log(error);
-            });
     },
 };
 </script>

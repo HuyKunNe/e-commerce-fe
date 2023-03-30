@@ -372,28 +372,16 @@ export default {
             }
         },
         removeItemInCarts(id) {
-            console.log(id);
             var carts = this.carts.filter((item) => item.id !== id);
-            console.log(carts);
             this.carts = carts;
             return this.carts;
         },
         minus(id) {
             if (this.carts.find((obj) => obj.id === id).quantity === 0) return;
             this.carts.find((obj) => obj.id === id).quantity--;
-            console.log(
-                id,
-                " ",
-                this.carts.find((obj) => obj.id === id).quantity
-            );
         },
         plus(id) {
             this.carts.find((obj) => obj.id === id).quantity++;
-            console.log(
-                id,
-                " ",
-                this.carts.find((obj) => obj.id === id).quantity
-            );
         },
         formatNumber(number) {
             return new Intl.NumberFormat("vi-VN", {
