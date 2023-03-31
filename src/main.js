@@ -13,7 +13,7 @@ import * as directives from "vuetify/directives";
 import router from "./router";
 import vueClickOutsideElement from "vue-click-outside-element";
 import "./assets/css/main.css";
-import store from "./store";
+import store from "./store/index";
 const vuetify = createVuetify({
     components,
     directives,

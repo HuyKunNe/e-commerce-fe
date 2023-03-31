@@ -127,7 +127,7 @@
                                                                                                                                                                                                     ">
                                                 <font-awesome-icon icon="fa-solid fa-minus" />
                                             </button>
-                                            <input class="quantity-btn--counter" id="quantity-item" placeholder="1"
+                                            <input class="quantity-btn--counter" :id="`quantity-item ${item.id}`" placeholder="1"
                                                 name="quantity" v-model.lazy="item.quantity" type="text" readonly />
                                             <button
                                                 @click="

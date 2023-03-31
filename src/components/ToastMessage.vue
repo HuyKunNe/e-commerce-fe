@@ -1,5 +1,5 @@
 <template>
-    <div id="toast">
+    <div id="toast" :style="{ top: `${spacing}px` }">
         <div class="toast" :style="{ color: color }">
             <div class="toast__icon">
                 <font-awesome-icon
@@ -23,9 +23,9 @@
                 <h3 class="toast__title">{{ toast.title }}</h3>
                 <p class="toast__msg">{{ toast.msg }}</p>
             </div>
-            <div class="toast__close">
+            <!-- <div class="toast__close">
                 <font-awesome-icon :icon="['fas', 'fa-times']" />
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -37,6 +37,10 @@ export default {
         toast: {
             type: Object,
             default: () => {},
+        },
+        spacing: {
+            type: Number,
+            default: 0,
         },
     },
     data() {
@@ -59,14 +63,21 @@ export default {
 
 <style lang="scss" scoped>
 #toast {
-    position: relative;
+    // z-index: 9999;
+    // position: absolute;
+    // display: flex;
+    // justify-content: right;
+    // align-items: center;
+    // right: 32px;
+    // margin-top: 100px;
+    position: fixed;
+    top: 120px;
+    right: 32px;
     display: flex;
-    display: flex;
+    margin-top: 100px;
     justify-content: right;
     align-items: center;
-    right: 32px;
-    top: 100px;
-
+    z-index: 9999;
     .toast {
         position: relative;
         display: flex;
@@ -87,7 +98,7 @@ export default {
 
         .toast__body {
             color: black;
-            width: 80%;
+            width: 85%;
             display: flex;
             flex-direction: column;
             justify-content: left;
@@ -101,21 +112,22 @@ export default {
 
             .toast__msg {
                 padding-top: 5px;
+                font-size: 14px;
                 word-wrap: break-word;
                 color: #888;
             }
         }
 
-        .toast__close {
-            display: flex;
-            justify-content: left;
-            width: 5%;
-            color: rgba(0, 0, 0, 0.3);
+        // .toast__close {
+        //     display: flex;
+        //     justify-content: left;
+        //     width: 5%;
+        //     color: rgba(0, 0, 0, 0.3);
 
-            &:hover {
-                cursor: pointer;
-            }
-        }
+        //     &:hover {
+        //         cursor: pointer;
+        //     }
+        // }
     }
 
     @keyframes slideInLeft {
@@ -135,8 +147,5 @@ export default {
             opacity: 0;
         }
     }
-}
-#toast + #toast {
-    margin-top: 20px;
 }
 </style>

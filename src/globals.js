@@ -25,10 +25,7 @@ export const globals = reactive({
         },
     ],
     userInfor: localStorage.getItem("user-info"),
-    toastStatus: [
-        {SUCCESS: "Success"},
-        {ERROR: "Error"},
-        {WARNING: "Warning"},
-        {INFOR: "Infor"},
-    ],
+    toastStatus_SUCCESS: "Success",
+    toastStatus_ERROR: "Error",
+    toastStatus_WARNING: "Warning",
 });

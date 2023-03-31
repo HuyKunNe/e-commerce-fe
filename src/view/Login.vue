@@ -1,6 +1,6 @@
 <template>
     <Header></Header>
-    <HeaderBottomNav :class="header - navbar"></HeaderBottomNav>
+    <HeaderBottomNav :class="header - navbar"> </HeaderBottomNav>
     <section class="customer" id="customer">
         <div class="container">
             <div class="customer-login">
@@ -83,10 +83,11 @@
     </section>
     <Footer></Footer>
     <ToastMessage
-        v-for="toast in toasts"
+        v-for="(toast, index) in toasts"
         :key="toast.id"
         :toast="toast"
         @close="removeToast(toast.id)"
+        :spacing="100 * index"
     ></ToastMessage>
 </template>
 
@@ -95,7 +96,7 @@ import Footer from "@/components/Footer.vue";
 import ToastMessage from "@/components/ToastMessage.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
-import { globals } from "@/globals";
+import * as ToastStatus from "../constant/ToastStatus";
 export default {
     name: "LoginPage",
     components: {
@@ -109,6 +110,7 @@ export default {
             loginDTO: { email: "", password: "" },
             loading: false,
             toastId: 0,
+            loginSuccessful: false,
             toasts: [],
         };
     },
@@ -119,39 +121,34 @@ export default {
         hideRecovery() {
             document.getElementById("recover-password").style.display = "none";
         },
-        // async login() {
-        //     let result = await api.post(`/auth/login`, this.loginDTO);
-        //     if (result.status == 200 && result.data) {
-        //         console.log(result.data.data);
-        //         localStorage.setItem(
-        //             "user-info",
-        //             JSON.stringify(result.data.data)
-        //         );
-        //         this.$router.push({ name: "Home" });
-        //     }
-        // },
-        handleLogin(user) {
-            this.loading = true;
-            let result = this.$store.dispatch("auth/login", user).then(
-                () => {
-                    this.$router.push({ name: "Home" });
-                },
-                (error) => {
-                    this.loading = false;
-                    this.showToast({
-                        status: this.toastStatus.ERROR,
-                        title: this.toastStatus.ERROR,
-                        msg: error.response.message,
-                    });
-                }
-            );
-            if (result.status !== 200) {
-                this.showToast({
-                    status: this.toastStatus.ERROR,
-                    title: this.toastStatus.ERROR,
-                    msg: "Login failed",
+        // ...mapActions("auth", ["login"]),
+        handleLogin() {
+            this.$store
+                .dispatch("login", this.loginDTO)
+                .then((res) => {
+                    this.$store.state.userLogin = res.data.data;
+                    this.$store.state.isLoggedIn = true;
+                    if (res.status === 200) {
+                        this.$store.state.showLoginToast = 1;
+                        setTimeout(() => {
+                            this.$router.push({ name: "Home" });
+                        }, 1000);
+                    }
+                })
+                .catch((err) => {
+                    if (err.response.status) {
+                        this.showToast({
+                            status: ToastStatus.ERROR,
+                            title: ToastStatus.ERROR,
+                            msg: err.response.data.message,
+                        });
+                    } else
+                        this.showToast({
+                            status: ToastStatus.ERROR,
+                            title: ToastStatus.ERROR,
+                            msg: "Something went wrong",
+                        });
                 });
-            }
         },
         showToast(item) {
             const toast = {
@@ -163,22 +160,16 @@ export default {
             this.toasts.push(toast);
             setTimeout(() => {
                 this.removeToast(toast.id);
-            }, 3000);
+            }, 2500);
         },
         removeToast(id) {
             this.toasts = this.toasts.filter((toast) => toast.id !== id);
         },
     },
-    created() {
-        if (this.loggedIn) {
-            this.$router.push({ name: "Home" });
+    mounted() {
+        if (this.$store.state.isLoggedIn) {
+            this.$router.push({ name: "Profile" });
         }
-    },
-    setup() {
-        const toastStatus = globals.toastStatus;
-        return {
-            toastStatus,
-        };
     },
 };
 </script>

@@ -14,7 +14,7 @@
                             <div class="account-list">
                                 <ul class="list-content">
                                     <li class="item-content">
-                                        <a href=""> Thông tin tài khoản </a>
+                                        <a> Thông tin tài khoản </a>
                                     </li>
                                     <li class="item-content">
                                         <a @click="viewAddress()">
@@ -32,13 +32,26 @@
                         <div class="infor-account">
                             <p class="title-detail">Thông tin tài khoản</p>
                             <h2 class="name">{{ userInfor.fullName }}</h2>
-                            <p class="email">{{ userInfor.email ? userInfor.email : "" }}</p>
+                            <p class="email">
+                                {{ userInfor.email ? userInfor.email : "" }}
+                            </p>
                             <div class="address">
-                                <div class="street" v-if="userInfor.street">{{ userInfor.street }}
+                                <div class="street" v-if="userInfor.street">
+                                    {{ userInfor.street }}
                                 </div>
-                                <div class="district" v-if="userInfor.district">{{ userInfor.district }}</div>
-                                <div class="city" v-if="userInfor.city">{{ userInfor.city }}</div>
-                                <div class="phone-number">{{ userInfor.phoneNumber ? userInfor.phoneNumber : "" }}</div>
+                                <div class="district" v-if="userInfor.district">
+                                    {{ userInfor.district }}
+                                </div>
+                                <div class="city" v-if="userInfor.city">
+                                    {{ userInfor.city }}
+                                </div>
+                                <div class="phone-number">
+                                    {{
+                                        userInfor.phoneNumber
+                                            ? userInfor.phoneNumber
+                                            : ""
+                                    }}
+                                </div>
                                 <a @click="viewAddress()">Xem địa chỉ</a>
                             </div>
                         </div>
@@ -47,7 +60,10 @@
                                 DANH SÁCH ĐƠN HÀNG MỚI NHẤT
                             </div>
                             <div class="order-content">
-                                <div class="empty-alert" v-if="orders.length === 0">
+                                <div
+                                    class="empty-alert"
+                                    v-if="orders.length === 0"
+                                >
                                     <p>Bạn chưa đặt mua sản phẩm.</p>
                                 </div>
                             </div>
@@ -66,7 +82,6 @@ import Footer from "@/components/Footer.vue";
 import GoToTop from "@/components/GoToTop.vue";
 import Header from "@/components/Header.vue";
 import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
-import { globals } from "@/globals";
 
 export default {
     name: "ProfilePage",
@@ -79,23 +94,27 @@ export default {
     data() {
         return {
             orders: [],
+            userInfor: {},
         };
     },
     methods: {
         async viewAddress() {
             await this.$router.push({ name: "Address" });
         },
-        async logOut() {
-            await localStorage.removeItem("user-info");
-            await this.$router.push({ name: "Home" });
+        logOut() {
+            this.$store.state.userLogin = null;
+            this.$store.state.isLoggedIn = false;
+            setTimeout(() => {
+                this.$router.push({ name: "Login" });
+            }, 1000);
         },
     },
-    setup() {
-        const userInfor = globals.userInfor;
-        return {
-            userInfor,
+    mounted() {
+        this.userInfor = this.$store.state.userLogin;
+        if (this.userInfor === null || this.userInfor === undefined) {
+            this.$router.push({ name: "Login" });
         }
-    }
+    },
 };
 </script>
 
