@@ -132,11 +132,11 @@ export default {
                         this.$store.state.showLoginToast = 1;
                         setTimeout(() => {
                             this.$router.push({ name: "Home" });
-                        }, 1000);
+                        }, 0);
                     }
                 })
                 .catch((err) => {
-                    if (err.response.status) {
+                    if (err?.response?.status) {
                         this.showToast({
                             status: ToastStatus.ERROR,
                             title: ToastStatus.ERROR,

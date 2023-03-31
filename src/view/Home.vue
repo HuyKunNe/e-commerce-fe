@@ -634,9 +634,9 @@ export default {
                 this.showToast({
                     status: ToastStatus.SUCCESS,
                     title: ToastStatus.SUCCESS,
-                    msg: "Login successfully",
+                    msg: "Login successfully", 
                 });
-            }, 1000);
+            }, 1500);
             this.$store.state.showLoginToast = 0;
         }
     },
