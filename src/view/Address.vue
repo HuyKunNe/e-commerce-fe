@@ -30,9 +30,9 @@
                     </div>
                     <div class="address-main">
                         <div class="infor-address">
-                            <div class="address">
+                            <div class="address" v-for="(address) in addresses" :key="address.id">
                                 <div class="address-title">
-                                    <p class="text">Huy Dinh Quang (Địa chỉ mặc định)</p>
+                                    <p class="text">{{ address.name }}</p>
                                     <p class="address_actions ">
                                         <span class="action_link action_edit">
                                             <a href="#" onclick="#">
@@ -47,68 +47,26 @@
                                     </p>
                                 </div>
                                 <div class="address-content">
-                                    <div class="full-name">Huy Dinh Quang</div>
+                                    <div class="full-name">{{ address.name }}</div>
                                     <div class="address-row">
                                         <div class="lb-left"><b>Công ty:</b> </div>
                                         <div class="lb-right">
-                                            <p>Quantic</p>
+                                            <p>{{ address.company }}</p>
                                         </div>
                                     </div>
                                     <div class="address-row">
                                         <div class="lb-left"><b>Địa chỉ</b> </div>
                                         <div class="lb-right">
-                                            <p>S302 - vinhomes grand park</p>
-                                            <p>Long Thạnh Mỹ</p>
-                                            <p>Thu Duc</p>
-                                            <p>Hồ Chí Minh, Việt Nam</p>
+                                            <p>{{ address.no }} {{ address.street }}</p>
+                                            <p>{{ address.ward }}</p>
+                                            <p>{{ address.district }}</p>
+                                            <p>{{ address.city }}, {{ address.nationality }}</p>
                                         </div>
                                     </div>
                                     <div class="address-row">
                                         <div class="lb-left"><b>Số điện thoại:</b> </div>
                                         <div class="lb-right">
-                                            <p>0888465559</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="address">
-                                <div class="address-title">
-                                    <p class="text">Huy Dinh Quang (Địa chỉ mặc định)</p>
-                                    <p class="address_actions ">
-                                        <span class="action_link action_edit">
-                                            <a href="#" onclick="#">
-                                                <font-awesome-icon :icon="['far', 'pen-to-square']" />
-                                            </a>
-                                        </span>
-                                        <span class="action_link action_delete">
-                                            <a href="#" onclick="#">
-                                                <font-awesome-icon :icon="['fas', 'trash-can']" />
-                                            </a>
-                                        </span>
-                                    </p>
-                                </div>
-                                <div class="address-content">
-                                    <div class="full-name">Huy Dinh Quang</div>
-                                    <div class="address-row">
-                                        <div class="lb-left"><b>Công ty:</b> </div>
-                                        <div class="lb-right">
-                                            <p>Quantic</p>
-                                        </div>
-                                    </div>
-                                    <div class="address-row">
-                                        <div class="lb-left"><b>Địa chỉ</b> </div>
-                                        <div class="lb-right">
-                                            <p>S302 - vinhomes grand park</p>
-                                            <p>Long Thạnh Mỹ</p>
-                                            <p>Thu Duc</p>
-                                            <p>Hồ Chí Minh, Việt Nam</p>
-                                        </div>
-                                    </div>
-                                    <div class="address-row">
-                                        <div class="lb-left"><b>Số điện thoại:</b> </div>
-                                        <div class="lb-right">
-                                            <p>0888465559</p>
+                                            <p>{{ address.phoneNumber }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -191,12 +149,14 @@ import HeaderBottomNav from "@/components/HeaderBottomNav.vue";
 import Footer from "@/components/Footer.vue";
 import { globals } from "@/globals";
 import GoToTop from "@/components/GoToTop.vue";
+import api from "@/api";
 export default {
     name: "AddressPage",
     data() {
         return {
             selected: "",
             isShowAddForm: false,
+            addresses: [],
         }
     },
     components: {
@@ -221,6 +181,16 @@ export default {
         return {
             userInfor,
         }
+    },
+    mounted() {
+        api.get(`http://localhost:3000/address/getByCustomer?id=${this.$store.state.userLogin.customerId}`)
+            .then((res) => {
+                this.addresses = res.data.data.addresses
+                console.log(res.data.data.addresses);
+            })
+            .catch((err) => {
+                console.error(err)
+            })
     }
 };
 </script>
